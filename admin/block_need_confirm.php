@@ -12,7 +12,7 @@ $qw2 = mysqli_fetch_array($qw);
                <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">Block Need Confirm</li>
+              <li class="breadcrumb-item active">Block Need Confirmm</li>
                             </ol>
             </div>
   
