@@ -164,6 +164,7 @@ $qw[] = $tyu['token_push'];
 		curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
 		$result = curl_exec($ch );
 		curl_close( $ch );
+        echo "-email-".$_POST['email'];
 		echo $result . "\n\n".$qw;
        //echo "-";
 	}
