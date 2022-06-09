@@ -480,7 +480,7 @@ $rt2 = mysqli_fetch_array($rt);
       if(data == "success"){
         location = "https://ufe-section-indonesie.org/ufeapp/admin/index.php?p=block_need_confirm";
       }else{
-    alert("Error");
+    alert("Error"+data+"-");
       }
   });
                 }

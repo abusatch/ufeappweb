@@ -165,6 +165,7 @@ $qw[] = $tyu['token_push'];
 		$result = curl_exec($ch );
 		curl_close( $ch );
 		//echo $result . "\n\n".$qw;
+        echo "-";
 	}
 
 }
