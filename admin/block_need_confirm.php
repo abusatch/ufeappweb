@@ -441,7 +441,7 @@ $rt2 = mysqli_fetch_array($rt);
                 }else{
                     // alert(document.getElementById("reareject<?php echo $idd ?>").value);
                     
-                               $.post("https://ufe-section-indonesie.org/ufeapp/block_reject.php",
+                               $.post("https://ufe-section-indonesie.org/ufeapp/admin/block_reject.php",
   {
     email: "<?php echo $kj2['username'] ?>",
     token: "<?php echo $nkw2['token_push'] ?>",
