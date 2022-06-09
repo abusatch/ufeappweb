@@ -65,9 +65,11 @@ Désolé, après avoir examiné votre raison, nous ne pouvons accepter votre dem
 <b>".$_POST['text']."</b>
 </p>
 <br>
+
+Veuillez contacter notre administrateur pour plus d’informations.
 <table style='width:100%;border-top:1px solid #D1D1D1;margin-top:20px;'>
     <tr>
-        <td>Veuillez contacter notre administrateur pour plus d’informations.</td>
+        <td></td>
     </tr>
     </table>
 <table style='width:100%;margin-top:5px;'>
