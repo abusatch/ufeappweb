@@ -2,4 +2,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/t49403/public_html/tesss/
     - /bin/cp index.php $DEPLOYPATH
-    - /bin/cp block_need_confirm.php $DEPLOYPATH
+    - /bin/cp admin/block_need_confirm.php $DEPLOYPATH
