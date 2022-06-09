@@ -1,6 +1,6 @@
 <?php 
 //echo $_POST['token'];
-include('db.php');
+include('../db.php');
 
 $bf = mysqli_query($koneksi,"select * from user where username = '$_POST[email]' and token_push = '$_POST[token]'");
 
