@@ -314,7 +314,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             $no = 1;
             while($kj2 = mysqli_fetch_array($kj)){
 
-                  // $cm = mysqli_query($koneksi,"select * from tb_banding_reject where id_banding = '$kj2[id_banding]'");
+                   $cm = mysqli_query($koneksi,"select * from tb_banding_reject where id_banding = '$kj2[id_banding]'");
 
                 $nkw = mysqli_query($koneksi,"select * from user where username = '$kj2[username]'");
                 $nkw2 = mysqli_fetch_assoc($nkw);
