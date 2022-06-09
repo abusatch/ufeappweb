@@ -326,9 +326,11 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
                                               <tr>
                             <td><?php echo $no; ?></td>
                             <td><?php echo substr($kj2['tanggal2'],0,16); ?>
-                          <?php //if(mysqli_num_rows($cm) == 0){}else{ ?> 
-                            <span style="color:red;">&nbsp;Rejected <?php echo mysqli_num_rows($cm); ?></span>
-                            <?php //} ?>
+                          <?php if(mysqli_num_rows($cm) >= 1){?>  <span style="color:red;">&nbsp;Rejected 
+                            <?php //echo mysqli_num_rows($cm); ?></span>
+                            <?php }else{ ?> 
+                           
+                            <?php } ?>
                           </td>
                              <td><?php echo $kj2['telp']; ?></td>
                             <td><?php echo $nkw2['first_name'] ?> <?php echo $nkw2['second_name'] ?></td>
