@@ -243,7 +243,7 @@ $fro2 = mysqli_fetch_array($fro);
 
 // How to use
 $titleNoti = "Bonjour ".$namanya;
-$bodyNoti = "Votre compte a été confirmé par l'administrateur";
+$bodyNoti = "Votre compte a été reconfirmé par l'administrateur";
 $actionNoti = "https://medium.com/@ptuckyeagle";
 $gambarrr = "https://ufe-section-indonesie.org/ufeapp/confirmed.jpeg";
 $callNoti = new startSendNotification();
