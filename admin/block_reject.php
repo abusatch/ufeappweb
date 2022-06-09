@@ -116,7 +116,7 @@ class startSendNotification
 		function sendNoti($titleNoti, $bodyNoti,$gambarrr){
 
 		define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
-        include 'db.php';
+        include '../db.php';
 
 
  date_default_timezone_set('Asia/Jakarta');
@@ -179,7 +179,7 @@ $tujuan = $_GET['vsde'];
 
 
 
-include('db.php');
+include('../db.php');
 
 
 $ewww = mysqli_query($koneksi,"select * from user where username = '$_POST[email]'");
