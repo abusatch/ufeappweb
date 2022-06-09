@@ -438,8 +438,12 @@ $rt2 = mysqli_fetch_array($rt);
         
           <div style="margin-left:10px;margin-top:20px;color:red;">Reject:</div>
         <div>
-            
-            <textarea class="form-control" onkeyup="reaj<?php echo $idd ?>()" id="reareject<?php echo $idd ?>" style="height:200px;" ></textarea>
+            <?php
+  $cm = mysqli_query($koneksi,"select * from tb_banding_reject where id_banding = '$kj2[id_banding]'");
+  $cm2 = mysqli_fetch_assoc($cm);
+
+?>
+            <textarea class="form-control" onkeyup="reaj<?php echo $idd ?>()" id="reareject<?php echo $idd ?>" style="height:200px;" ><?php echo $cm2['alasan'] ?></textarea>
         </div>
         
         <center>
