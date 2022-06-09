@@ -300,7 +300,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Tanggal</th>
+                    <th>Tanggal2</th>
                     <th>Phone</th>
                     <th>Nama</th>
                     <th>Email</th>
