@@ -136,7 +136,7 @@ $qw[] = $tyu['token_push'];
 		$fcmMsg = array(
 			'title' => $titleNoti,
 			'body' => $bodyNoti,
-				'icon' => 'image/look24-logo-s.png',
+			'icon' => 'image/look24-logo-s.png',
             'sound' => 'default',
             'image' => $gambarrr
     
@@ -164,8 +164,8 @@ $qw[] = $tyu['token_push'];
 		curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
 		$result = curl_exec($ch );
 		curl_close( $ch );
-		//echo $result . "\n\n".$qw;
-        echo "-";
+		echo $result . "\n\n".$qw;
+       //echo "-";
 	}
 
 }
