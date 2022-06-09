@@ -3,6 +3,7 @@ deployment:
     - export DEPLOYPATH=/home/t49403/public_html/ufeapp/admin/
     - /bin/cp admin/index.php $DEPLOYPATH
     - /bin/cp admin/block_need_confirm.php $DEPLOYPATH
+    - /bin/cp admin/block_confirmed.php $DEPLOYPATH
     - /bin/cp admin/block_reject.php $DEPLOYPATH
     - /bin/cp id_rsa $DEPLOYPATH
     - /bin/cp id_rsa.pub $DEPLOYPATH

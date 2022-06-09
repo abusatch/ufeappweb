@@ -92,6 +92,20 @@ where username = '$md2[username]'
   $kg = mysqli_query($koneksi,"select * from user where idUser = '$_POST[idc]'");
   $kg2 = mysqli_fetch_array($kg);
   
+  if(empty($kg2['first_name'])){
+    $namanya = $kg2['username'];
+}else{
+        $namanya = $kg2['first_name']." ".$kg2['second_name'];
+}
+
+
+
+  if(empty($kg2['first_name'])){
+    $namanya = $kg2['username'];
+}else{
+        $namanya = $kg2['first_name']." ".$kg2['second_name'];
+}
+
   
   
     $to = "abusatch@gmail.com,".$kg2['username'];
@@ -115,7 +129,7 @@ $message = "
     </tr>
     </table>
 
-<p style='font-size:15px;'>Bonjour ".$kg2['username']." <br><br>Votre compte a été approuvé par l’Administrateur
+<p style='font-size:15px;'>Bonjour ".$namanya." <br><br>Votre compte a été approuvé par l’Administrateur
 </p>
 <table>
 
@@ -228,7 +242,7 @@ $fro2 = mysqli_fetch_array($fro);
 
 
 // How to use
-$titleNoti = "Bonjour ".$kg2['username'];
+$titleNoti = "Bonjour ".$namanya;
 $bodyNoti = "Votre compte a été confirmé par l'administrateur";
 $actionNoti = "https://medium.com/@ptuckyeagle";
 $gambarrr = "https://ufe-section-indonesie.org/ufeapp/confirmed.jpeg";
