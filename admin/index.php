@@ -2587,6 +2587,7 @@ keterangan = '$keterangan1',
 url = '$_POST[urll]',
 tanggal_edit = '$tanggal',
 id_kate = '$_POST[pil_kategori]',
+id_kate2 = '$_POST[pil_kategori2]',
 tanggal_edit2 = '$tanggal2'
 where id_actualite = '$_POST[id_template]'
 ");
@@ -2600,6 +2601,7 @@ gambar = '$namaa',
 url = '$_POST[urll]',
 tanggal_edit = '$tanggal',
 id_kate = '$_POST[pil_kategori]',
+id_kate2 = '$_POST[pil_kategori2]',
 tanggal_edit2 = '$tanggal2'
 where id_actualite = '$_POST[id_template]'
 ");   
