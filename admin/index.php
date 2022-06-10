@@ -2234,7 +2234,41 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['deskripsi']);
 </script> 
 
 
-
+<div>
+    Country
+    </div>
+    
+    <div style="margin-bottom:30px;">
+    <select class="form-control" name="pil_kategori2" required>
+    <?php 
+    
+    
+    $of = mysqli_query($koneksi,"select * from tb_kategori_2 where id_kategori = '$rt2[id_kate2]'");
+    $of2 = mysqli_fetch_assoc($of);
+    if(mysqli_num_rows($of) == 0){
+      ?>
+    <option value = "">-Country-</option>
+      
+      <?php
+    }else{
+      ?>
+    <option value="<?php echo $of2['id_kategori2'] ?>"><?php echo $of2['nama_kategori2'] ?></option>
+      
+      <?php
+    }
+    
+    ?>
+    
+    <?php 
+    $fk = mysqli_query($koneksi,"select * from tb_kategori_2 where id_kategori2 != '$rt2[id_kate2]'");
+    while($fk2 = mysqli_fetch_array($fk)){
+      ?>
+      <option value="<?php echo $fk2['id_kategori2'] ?>"><?php echo $fk2['nama_kategori2'] ?></option>
+      <?php
+    }
+    ?>
+    </select>
+  </div>
 
 
     <div>
