@@ -2643,7 +2643,8 @@ location = "?p=tb_actualite&ac=art";
                 <tr>
                     <th>No. </th>
           <th>Act</th>                   
-           <th>Category</th>              
+          <th>Country</th>   
+          <th>Category</th>              
            <th>Title</th>
                
                   <th>Description</th>
@@ -2682,8 +2683,13 @@ location = "?p=tb_actualite&ac=art";
 
 $fns = mysqli_query($koneksi,"select * from tb_kategori_artikel where id_kategori = '$kj2[id_kate]'");
 $fns2  = mysqli_fetch_assoc($fns);
+
+
+$fnss = mysqli_query($koneksi,"select * from tb_kategori_2 where id_kategori2 = '$kj2[id_kate2]'");
+$fnss2  = mysqli_fetch_assoc($fnss);
                     
                     ?>
+                       <td><?php echo $fnss2['nama_kategori2'] ?></td>
               <td><?php echo $fns2['nama_kategori'] ?></td>
 
               <td><?php echo $judul1 ?></td>
