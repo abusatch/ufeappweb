@@ -2954,7 +2954,8 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['deskripsi']);
                 <tr>
                     <th>No. </th>
           <th>Act</th>                   
-    <th>Category</th>                   
+          <th>Country</th>    
+          <th>Category</th>                   
             
       <th>Title</th>
                
