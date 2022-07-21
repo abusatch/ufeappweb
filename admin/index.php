@@ -555,7 +555,16 @@ location = "?p=tb_dm_1";
           </li>
 
 
+<li class="nav-item">
+            <a href="?p=espace_membre" class="nav-link">
 
+              <i class="nav-icon fas fa-flag"></i>
+              <p>
+                Espace Membre
+               
+              </p>
+            </a>
+          </li>
 
  <li class="nav-item">
             <a href="?p=tb_actualite" class="nav-link">
@@ -1973,10 +1982,6 @@ if($_FILES['image_linkact']['name'] == null){
 mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesanbaru1','pesanbaru1')");
   ?>
 
-<script>
-
-window.open("https://ufe-section-indonesie.org/ufeapp/tesfb2.php");
-</script>
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -18550,6 +18555,436 @@ $rt2 = mysqli_fetch_array($rt);
    </div>
 </div>
 
+<?php }else if($_GET['p'] == "espace_membre"){ ?>
+ <div class="card shadow-sm border-bottom-primary">
+    <div class="card-header bg-white py-3">
+        <div class="row">
+            <div class="col">
+<?php 
+include('../db.php');
+?>
+  
+           <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
+    
+              <li class="breadcrumb-item active">Espace Membre </li>
+                            </ol>
+      
+      </div>
+   
+                 
+ <?php 
+
+if(isset($_POST['update_membre'])){
+    
+if(!empty($_POST['judul'])){
+
+$maxDimW = 1000;
+$maxDimH = 500;
+list($width, $height, $type, $attr) = getimagesize( $_FILES['image_link']['tmp_name'] );
+if ( $width > $maxDimW || $height > $maxDimH ) {
+    $target_filename = $_FILES['image_link']['tmp_name'];
+    $fn = $_FILES['image_link']['tmp_name'];
+    $size = getimagesize( $fn );
+    $ratio = $size[0]/$size[1];
+        $width = $maxDimW;
+        $height = ($maxDimW / $size[0]) * $size[1];
+
+    $src = imagecreatefromstring(file_get_contents($fn));
+    $dst = imagecreatetruecolor( $width, $height );
+    imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
+
+    imagejpeg($dst, $target_filename); // adjust format as needed
+
+
+}
+
+$namaa = $_FILES['image_link']['name'];
+
+move_uploaded_file($_FILES['image_link']['tmp_name'],"../images/advert/".$_FILES['image_link']['name']);
+
+$judul1 = str_replace("'","&petiksatu&",$_POST['judul']);
+$judul2 = str_replace('"','&petikdua&',$judul1);
+
+$deskripsi1 = str_replace("'","&petiksatu&",$_POST['deskripsi']);
+$deskripsi2 = str_replace('"','&petikdua&',$deskripsi1);
+
+
+
+    if($_FILES['image_link']['name'] == null){
+mysqli_query($koneksi,"update tb_advert set 
+keterangan = '$_POST[keterangan]'
+where id_advert = '$_POST[id_advert]'
+");
+  }else{
+    
+mysqli_query($koneksi,"update tb_advert set
+keterangan = '$_POST[keterangan]',
+gambar = '$namaa'
+where id_advert = '$_POST[id_advert]'
+");   
+    
+  }
+
+if($_FILES['image_link']['name'] == null){
+
+mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan1','pesan1')");
+?>
+
+<?php
+if($_POST['keterangan'] == "release"){
+  mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan3','pesan3')");
+
+  ?>
+  
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+  
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+ crossorigin="anonymous"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase.js"></script>
+ 
+<script type="text/javascript">
+
+ var nextkey =0;
+ var config = {
+
+    
+      apiKey: "AIzaSyCLaApKgiVWIg3ylCHoM339-3zp_ilHDlQ",
+  authDomain: "ufe-indonesie-f76c4.firebaseapp.com",
+  databaseURL: "https://ufe-indonesie-f76c4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ufe-indonesie-f76c4",
+  storageBucket: "ufe-indonesie-f76c4.appspot.com",
+  messagingSenderId: "297827279494",
+  appId: "1:297827279494:web:da1440b3e1fb07d752e707",
+  measurementId: "G-8G1DDJS92V"
+
+ 
+ };
+ firebase.initializeApp(config);
+ var database = firebase.database();
+ 
+ 
+ 
+        function writeUserData(id_user, id_jadwal,id_pelanggan, nama_user,nama_pelanggan, pesan, tanggal) {
+            database.ref('laporan').child("3").set({
+       
+        iii:tanggal,
+        id_user:id_user,
+      id_jadwal: id_jadwal,
+      id_pelanggan: id_pelanggan,
+      nama_user: nama_user,
+    nama_pelanggan: nama_pelanggan,
+    pesan: pesan,      
+      tanggal: pesan,
+      pesan2: pesan,
+    tgl2: pesan
+    });
+    
+        }
+        
+        
+        <?php
+
+ date_default_timezone_set('Asia/Jakarta');
+  $tanggal2 = date('Y-m-d H:i:s');
+
+
+mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesanbaru2','pesanbaru2')");
+
+?>
+
+writeUserData("2", "2","2", "tes 1","tes 2","<?php echo $tanggal2; ?>","tes 4");
+</script>
+
+          <?php
+class startSendNotification
+{
+  
+    function sendNoti($titleNoti, $bodyNoti){
+
+    define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+        include('../db.php');
+
+    $ewww = mysqli_query($koneksi,"select * from user where token_push != '' ");
+while ($tyu = mysqli_fetch_array($ewww)){
+  
+  
+$qw[] = $tyu['token_push'];
+
+}
+
+
+$fdb = mysqli_query($koneksi,"select * from tb_advert where id_advert = '$_POST[id_advert]'");
+$fdb2 = mysqli_fetch_assoc($fdb);
+
+    $fcmMsg = array(
+      'title' => $titleNoti,
+      'body' => $bodyNoti,
+      'icon' => 'image/look24-logo-s.png',
+            'sound' => 'default',
+      'image' => 'https://ufe-section-indonesie.org/ufeapp/images/advert/'.$fdb2['gambar']
+    
+    );
+    
+    $fcmFields = array(
+      'registration_ids' => $qw,
+      'priority' => 'high',
+      'notification' => $fcmMsg
+    );
+
+    $headers = array(
+      'Authorization: key=' . API_ACCESS_KEY,
+      'Content-Type: application/json'
+    );
+    
+    $ch = curl_init();
+    curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+    curl_setopt( $ch,CURLOPT_POST, true );
+    curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+    curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+    curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+    curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+    $result = curl_exec($ch );
+    curl_close( $ch );
+    echo $result . "\n\n".$qw;
+  }
+
+}
+?>
+
+<?php 
+
+$titleNoti = str_replace("-spasi-", " ", $judul2);
+$bodyNoti = str_replace("-spasi-", " ", $deskripsi2);
+
+$callNoti = new startSendNotification();
+
+$callNoti->sendNoti($titleNoti, $bodyNoti);
+
+?>
+  
+  <?php
+}else{
+  mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan4','pesan4')");
+}
+
+?>
+
+<script>
+alert("Data had been changed <?php echo mysqli_error($koneksi); ?>");
+location = "?p=espace_membre&ac=art";
+
+</script>
+
+<?php }else{
+mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan2','pesan2')");
+  ?>
+
+<?php
+if($_POST['keterangan'] == "release"){
+  ?>
+  
+
+<script>
+alert("Data had been changed <?php echo mysqli_error($koneksi); ?>");
+location = "?p=espace_membre&ac=arti";
+
+</script>
+
+<?php } ?>
+
+<?php 
+ } 
+}
+}
+ ?>
+    <div class="table-responsive" style="padding:5px;">
+        <table class="table table-striped w-100 dt-responsive " id="example">
+            <thead>
+                <tr>
+                    <th>No. </th>
+          <th>Act</th>                   
+           <th>Title</th>
+               
+                  <th>Description</th>
+          <th>Member name</th>
+                   <th>Email</th>
+           <th>Date</th>
+            <th>Pic</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
+            $no = 1;
+
+      $kj = mysqli_query($koneksi,"select * from tb_advert where keterangan  = 'pending' and visibility = '1' order by tanggal desc");
+            while($kj2 = mysqli_fetch_array($kj)){
+            $idd = $kj2['id_advert'];
+            ?>
+
+                                              <tr>
+                            <td><?php echo $no; ?></td>
+                            <td>
+              
+                                <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
+
+
+              </td>
+
+                <?php 
+                
+                $judul1 = str_replace("&petiksatu&","'",$kj2['judul']);
+                $judul2 = str_replace("&petikdua&",'"',$judul1);
+
+                $deskripsi1 = str_replace("&petiksatu&","'",$kj2['deskripsi']);
+                $deskripsi2 = str_replace("&petikdua&",'"',$deskripsi1);
+                
+                ?>
+
+              <td><?php echo $judul2 ?></td>
+                          
+                 <td><?php echo substr($deskripsi2,0,100); ?></td>
+            <?php
+            $ok = mysqli_query($koneksi,"select * from user where idUser = '$kj2[id_member]'");
+            $ok2 = mysqli_fetch_array($ok);
+            ?>            
+<td><?php echo $ok2['first_name']."&nbsp;".$ok2['second_name'] ?></td>
+<td><?php echo $ok2['username']; ?></td>  
+<td><?php echo $kj2['tanggal']; ?></td>       
+                                    <td><img src="https://ufe-section-indonesie.org/ufeapp/images/advert/<?php echo $kj2['gambar'] ?>"
+                  style="width:50px;height:auto;" 
+                  /></td>
+                
+                        </tr
+                        >
+            
+            
+        <div class="modal fade" id="modal-lg_<?php echo $idd; ?>">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+<?php 
+$rt = mysqli_query($koneksi,"select * from tb_advert where id_advert = '$idd'");
+$rt2 = mysqli_fetch_array($rt);
+?>
+
+              <h4 class="modal-title">Edit <?php echo $rt2['judul'] ?></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            
+      <form method="POST" enctype="multipart/form-data" >
+            <div class="modal-body" style="overflow-y:scroll;height:70vh">
+
+      <center>
+              <img src="https://ufe-section-indonesie.org/ufeapp/images/advert/<?php echo $kj2['gambar'] ?>"  style="width:200px;" />
+      </center> 
+      
+    <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
+      </a><br>
+      <center>
+      <i><font style="font-size:10px;">* mode kamera landscape
+      </font></i><br><img src="" id="product_image<?php echo $idd; ?>" 
+      style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" 
+      class="img-thumbnail">
+      </center>
+                <script>
+  function readURL<?php echo $idd; ?>(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#product_image<?php echo $idd; ?>')
+                .attr('src', e.target.result)
+                .width(100)
+        .height(100);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+    
+  }
+</script> 
+  
+             <div class="input-group mb-3" style="margin-top:10px;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="width:120px;">Title</span>
+                  </div>
+         
+          <input type="hidden" name="id_advert" value="<?php echo $idd; ?>" />
+                 <input name="judul" class="form-control" 
+         value="<?php echo $judul2 ?>" />
+                </div>
+        
+             <div style="margin-top:10px;padding-left:5px;">
+                           Description
+                </div>
+                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
+                <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
+              
+                          ><?php echo $deskripsi2 ?></textarea>
+             
+        <select style="margin-top:10px;" class="form-control" name="keterangan">
+        <option value="<?php echo $rt2['keterangan'] ?>">
+        <?php echo $rt2['keterangan'] ?></option>
+        <?php if($rt2['keterangan'] == "release"){ ?>
+        <option value="pending">Pending</option>
+        <?php }else{ ?>
+        <option value="release">Release</option>
+        
+        <?php } ?>
+        </select>
+        
+      </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" name="update_membre" class="btn btn-primary">Save changes</button>
+            </div>
+      </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>      
+            
+             <?php $no++;} ?>          
+            
+                                           
+                                                </tbody>
+        
+     <tfoot>
+                <tr>
+                    <th>No.. </th>
+          <th>Act.</th>                   
+           <th>Title.</th>
+               
+                  <th>Description.</th>
+          <th>Member name.</th>
+                   <th>Email.</th>
+           <th>Date.</th>
+            <th>Pic.</th>
+                    
+                </tr>
+            </tfoot>
+    </table>
+    </div>
+</div>
+   </div>
+</div>
 
 <?php
 }else if($_GET['p'] == "home"){
