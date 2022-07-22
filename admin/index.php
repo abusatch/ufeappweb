@@ -2102,13 +2102,18 @@ $fdb2 = mysqli_fetch_assoc($fdb);
     
     );
     
+    $fcmData = array(
+      'halaman' => 'actualite',
+      'nomor' => $fdb2['id_actualite'],
+    );
+    
     $fcmFields = array(
     //  'to' => "e2Ns7U3A0GI:APA91bFVM1soWWG-MrQAsjkiuxgkMdnDdZY3jKzYnhzcx4bJFblyuAdBTkiocnrJNBOWCQuieQVNoOWIttpknML46HF-zgjeEHsm9iGvZ4wfyShCKVX-BO83yLSnq4AoVhIUvqXT2sYq",
     //  'registration_ids' => $registrationIDs,
       'registration_ids' => $qw,
-      
       'priority' => 'high',
-      'notification' => $fcmMsg
+      'notification' => $fcmMsg,
+      'data' => $fcmData
     );
 
     $headers = array(
@@ -18737,11 +18742,17 @@ $fdb2 = mysqli_fetch_assoc($fdb);
       'image' => 'https://ufe-section-indonesie.org/ufeapp/images/advert/'.$fdb2['gambar']
     
     );
+
+    $fcmData = array(
+      'halaman' => 'espace_membre',
+      'nomor' => $fdb2['id_advert'],
+    );
     
     $fcmFields = array(
       'registration_ids' => $qw,
       'priority' => 'high',
-      'notification' => $fcmMsg
+      'notification' => $fcmMsg,
+      'data' => $fcmData
     );
 
     $headers = array(
