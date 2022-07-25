@@ -1979,7 +1979,7 @@ if($_FILES['image_linkact']['name'] == null){
 
 
 
-mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesanbaru1','pesanbaru1')");
+
   ?>
 
 <script
@@ -2049,7 +2049,7 @@ mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesa
   $tanggal2 = date('Y-m-d H:i:s');
 
 
-mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesanbaru2','pesanbaru2')");
+
 
 ?>
 
@@ -2151,7 +2151,12 @@ $tujuan = $_GET['vsde'];
 // $iu2 = mysqli_fetch_array($iu);
 
 
-$fdb = mysqli_query($koneksi,"select * from tb_actualite order by id_actualite desc");
+$fdb = mysqli_query($koneksi,"SELECT a.*, b.nama_kategori 
+from tb_actualite a
+join tb_kategori_artikel b on(a.id_kate = b.id_kategori) 
+order by a.id_actualite desc
+LIMIT 1
+");
 $fdb2 = mysqli_fetch_assoc($fdb);
 
 
@@ -2167,13 +2172,13 @@ $deskk7 = str_replace(".",".",$deskk6);
 // How to use
 $titleNoti = str_replace("-spasi-", " ", $deskk7);
 $bodyNoti = str_replace("-spasi-", " ", $fdb2['deskripsi']);
-$actionNoti = "https://medium.com/@ptuckyeagle";
+
+$tgl = date('d/m/Y');
+mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+VALUES ('actualite', 'Actualités', '$titleNoti', '".$fdb2['nama_kategori']."', '$tgl', '', '".$fdb2['url']."', 'all', '-', '-')
+");
 
 $callNoti = new startSendNotification();
-
-
-
-//$callNoti->sendNoti($titleNoti, $bodyNoti, $actionNoti);
 $callNoti->sendNoti($titleNoti, $bodyNoti);
 
 ?>
@@ -16787,7 +16792,6 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
  $short_desc1 = str_replace("&petiksatu&","'",$kj2['short_desc']);
 ?>
         <td><?php echo $judul1 ?></td>
-                            <!-- <td><?php// echo $kj2['judul2'] ?></td> -->
                  
                                           <td><?php echo $short_desc1 ?></td>
                             
@@ -17219,10 +17223,6 @@ alert('Data berhasil ditambahkan<?php echo mysqli_error($koneksi); ?>');
 location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
 </script>
 
-
-
-<?php// }else{
-?>
 <script>
 //alert("gagal 2<?php echo mysqli_error($koneksi); ?>");
 </script>
@@ -18633,12 +18633,12 @@ where id_advert = '$_POST[id_advert]'
 
 if($_FILES['image_link']['name'] == null){
 
-mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan1','pesan1')");
+
 ?>
 
 <?php
 if($_POST['keterangan'] == "release"){
-  mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan3','pesan3')");
+  
 
   ?>
   
@@ -18706,7 +18706,7 @@ if($_POST['keterangan'] == "release"){
   $tanggal2 = date('Y-m-d H:i:s');
 
 
-mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesanbaru2','pesanbaru2')");
+
 
 ?>
 
@@ -18780,15 +18780,122 @@ $fdb2 = mysqli_fetch_assoc($fdb);
 $titleNoti = str_replace("-spasi-", " ", $judul2);
 $bodyNoti = str_replace("-spasi-", " ", $deskripsi2);
 
-$callNoti = new startSendNotification();
+$fdb = mysqli_query($koneksi,"SELECT a.*, b.second_name, b.propic
+  from tb_advert a
+  left join user b ON(a.id_member = b.idUser)
+  where a.id_advert = '$_POST[id_advert]'");
+$fdb2 = mysqli_fetch_assoc($fdb);
+$propic = $fdb2['propic'] ? "https://ufe-section-indonesie.org/ufeapp/images/propic/".$fdb2['propic'] : '';
 
+$tgl = date('d/m/Y');
+mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+VALUES ('espace', 'Espace Members', '$titleNoti', '".$fdb2['second_name']."', '$tgl', '$propic', '".$fdb2['id_advert']."', 'all', '-', '-')
+");
+
+$callNoti = new startSendNotification();
 $callNoti->sendNoti($titleNoti, $bodyNoti);
 
 ?>
   
   <?php
-}else{
-  mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan4','pesan4')");
+}else if($_POST['keterangan'] == "rejected") {
+  ?>
+  
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+  
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+ integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+ crossorigin="anonymous"></script>
+ <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase.js"></script>
+
+          <?php
+class startSendNotification
+{
+  
+    function sendNoti($titleNoti, $bodyNoti){
+
+    define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+        include('../db.php');
+
+$fdb = mysqli_query($koneksi,"select * from tb_advert where id_advert = '$_POST[id_advert]'");
+$fdb2 = mysqli_fetch_assoc($fdb);
+
+    $ewww = mysqli_query($koneksi,"select * from user where idUser = '$fdb2[id_member]' ");
+    while ($tyu = mysqli_fetch_array($ewww)){
+      $qw[] = $tyu['token_push'];
+    }
+
+    $fcmMsg = array(
+      'title' => $titleNoti,
+      'body' => $bodyNoti,
+      'icon' => 'image/look24-logo-s.png',
+            'sound' => 'default',
+      'image' => 'https://ufe-section-indonesie.org/ufeapp/images/announcement.png'
+    
+    );
+
+    $fcmData = array(
+      'halaman' => 'myespace',
+      'nomor' => $fdb2['id_advert'],
+    );
+    
+    $fcmFields = array(
+      'registration_ids' => $qw,
+      'priority' => 'high',
+      'notification' => $fcmMsg,
+      'data' => $fcmData
+    );
+
+    $headers = array(
+      'Authorization: key=' . API_ACCESS_KEY,
+      'Content-Type: application/json'
+    );
+    
+    $ch = curl_init();
+    curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+    curl_setopt( $ch,CURLOPT_POST, true );
+    curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+    curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+    curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+    curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+    $result = curl_exec($ch );
+    curl_close( $ch );
+    echo $result . "\n\n".$qw;
+  }
+
+}
+?>
+
+<?php 
+
+$titleNoti = str_replace("-spasi-", " ", $judul2);
+$bodyNoti = str_replace("-spasi-", " ", $deskripsi2);
+
+$fdb = mysqli_query($koneksi,"SELECT a.*
+  from tb_advert a
+  where a.id_advert = '$_POST[id_advert]'");
+$fdb2 = mysqli_fetch_assoc($fdb);
+$propic = $fdb2['propic'] ? "https://ufe-section-indonesie.org/ufeapp/images/propic/".$fdb2['propic'] : '';
+
+$tgl = date('d/m/Y');
+mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+VALUES ('myespace', 'Espace Members', 'Alerte – Votre contenu doit être révisé', '', '$tgl', '', '".$fdb2['id_advert']."', '".$fdb2['id_member']."', '-', '-')
+");
+
+$callNoti = new startSendNotification();
+$callNoti->sendNoti('Alerte – Votre contenu doit être révisé', $titleNoti);
+
 }
 
 ?>
@@ -18800,7 +18907,7 @@ location = "?p=espace_membre&ac=art";
 </script>
 
 <?php }else{
-mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan2','pesan2')");
+
   ?>
 
 <?php
@@ -18951,12 +19058,16 @@ $rt2 = mysqli_fetch_array($rt);
              
         <select style="margin-top:10px;" class="form-control" name="keterangan">
         <option value="<?php echo $rt2['keterangan'] ?>">
-        <?php echo $rt2['keterangan'] ?></option>
+        <?php echo ucwords($rt2['keterangan']) ?></option>
         <?php if($rt2['keterangan'] == "release"){ ?>
         <option value="pending">Pending</option>
-        <?php }else{ ?>
+        <option value="rejected">Rejected</option>
+        <?php }else if($rt2['keterangan'] == "pending"){ ?>
         <option value="release">Release</option>
-        
+        <option value="rejected">Rejected</option>
+        <?php }else{ ?>
+        <option value="pending">Pending</option>
+        <option value="release">Release</option>
         <?php } ?>
         </select>
         
