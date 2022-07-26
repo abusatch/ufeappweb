@@ -46,7 +46,9 @@ $nb2 = mysqli_num_rows($nb);
 $nb3 = mysqli_fetch_array($nb);   
 if($nb2 >= 1){
 setcookie("email", $_POST['email'], time()+10800);
-
+setcookie("first_name", $nb3['first_name'], time()+10800);
+setcookie("second_name", $nb3['second_name'], time()+10800);
+setcookie("propic", $nb3['propic'], time()+10800);
     ?>
 <script>
 //alert("oke");
@@ -163,9 +165,6 @@ alert("password atau username salah");
 
       <link href="https://ufe-section-indonesie.org/ufeapp/admin/menuhome/ufe2.png" rel="shortcut icon" type="image/vnd.microsoft.icon" /> 
   
-  <link rel="stylesheet" type="text/css" href="https://rp.fratekindo.com/media/css/jquery.dataTables.css">
-  <link rel="stylesheet" type="text/css" href="https://rp.fratekindo.com/resources/syntax/shCore.css">
-  <link rel="stylesheet" type="text/css" href="https://rp.fratekindo.com/resources/demo.css">
 <script src="plugins/jquery/jquery.min.js"></script>
   
   
@@ -507,14 +506,14 @@ location = "?p=tb_dm_1";
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="?p=tb_dm_1" class="brand-link elevation-4">
       <img src="dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Halaman Admin</span>
+      <span class="brand-text font-weight-light">Admin Page</span>
     </a>
 
     <!-- Sidebar -->
@@ -522,10 +521,16 @@ location = "?p=tb_dm_1";
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="height:60px;">
         <div class="image">
-          <img src="men.png" class="img-circle elevation-2" alt="User Image">
+          <?php 
+            if($_COOKIE['propic'] != '') {
+              echo '<img src="https://ufe-section-indonesie.org/ufeapp/images/propic/'.$_COOKIE['propic'].'" class="img-circle elevation-2" alt="User Image">';
+            } else {
+              echo '<img src="men.png" class="img-circle elevation-2" alt="User Image">';
+            }
+          ?>
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block"><?php echo $_COOKIE['first_name']." ".$_COOKIE['second_name']; ?></a>
         </div>
       </div>
 
@@ -534,52 +539,66 @@ location = "?p=tb_dm_1";
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="?p=tulisan" class="nav-link">
-            <!-- <i class="nav-icon fas fa-adjust"></i> -->
-            <i class="nav-icon fas fa-highlighter"></i>
-              <p>
-                Tulisan
-              </p>
-            </a>
-          </li>
-      
-          <li class="nav-item">
+          
+          <!-- <li class="nav-item">
             <a href="?p=background" class="nav-link">
-            <!-- <i class="nav-icon fas fa-adjust"></i> -->
             <i class="nav-icon fas fa-image"></i>
               <p>
                 Background
               </p>
             </a>
-          </li>
+          </li> -->
 
-
-<li class="nav-item">
-            <a href="?p=espace_membre" class="nav-link">
-
-              <i class="nav-icon fas fa-flag"></i>
-              <p>
-                Espace Membre
-               
-              </p>
-            </a>
-          </li>
-
- <li class="nav-item">
+          <li class="nav-item">
             <a href="?p=tb_actualite" class="nav-link">
-
               <i class="nav-icon fas fa-flag"></i>
               <p>
-                Tb Actualite
-               
+                News
+              </p>
+            </a>
+          </li>
+    
+          <li class="nav-item">
+            <a href="?p=espace_membre" class="nav-link">
+              <i class="nav-icon fas fa-flag"></i>
+              <p>
+                Members Corner
               </p>
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="?p=tb_ufe" class="nav-link">
+            <i class="nav-icon fas fa-adjust"></i>
+              <p>
+                Activities
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="?p=tb_dm_1" class="nav-link">
+            <i class="nav-icon fas fa-adjust"></i>
+              <p>
+                Demarches
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="?p=tulisan" class="nav-link">
+            <!-- <i class="nav-icon fas fa-adjust"></i> -->
+            <i class="nav-icon fas fa-highlighter"></i>
+              <p>
+                Text Writing
+              </p>
+            </a>
+          </li>
+          
 
 
- <li class="nav-item">
+
+          <!-- <li class="nav-item">
             <a href="#" class="nav-link">
 
               <i class="nav-icon fas fa-flag"></i>
@@ -603,11 +622,11 @@ location = "?p=tb_dm_1";
               </li>
        
             </ul>
-          </li>
+          </li> -->
 
            
       
-         <li class="nav-item">
+         <!-- <li class="nav-item">
             <a href="#" class="nav-link">
 
               <i class="nav-icon fas fa-flag"></i>
@@ -632,19 +651,18 @@ location = "?p=tb_dm_1";
             <?php } ?>
        
             </ul>
-          </li>
+          </li> -->
 
 
- <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="?p=tb_france" class="nav-link">
 
               <i class="nav-icon fas fa-flag"></i>
               <p>
                 Tb France
-               
               </p>
             </a>
-          </li>
+          </li> -->
 
 
 
@@ -677,41 +695,24 @@ location = "?p=tb_dm_1";
           </li>
 
   -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
             <a href="?p=data_presiden" class="nav-link">
             <i class="nav-icon far fa-flag"></i>
               <p>
                 Tb President
               </p>
             </a>
-          </li>
-       <li class="nav-item">
+          </li> -->
+       <!-- <li class="nav-item">
             <a href="?p=info_member" class="nav-link">
             <i class="nav-icon far fa-flag"></i>
               <p>
                 Info Member
               </p>
             </a>
-          </li>
-      <li class="nav-item">
-            <a href="?p=tb_dm_1" class="nav-link">
-            <i class="nav-icon fas fa-adjust"></i>
-              <p>
-                Tb Demarches
-              </p>
-            </a>
-          </li>
-      <li class="nav-item">
-            <a href="?p=tb_ufe" class="nav-link">
-            <i class="nav-icon fas fa-adjust"></i>
-              <p>
-                Tb UFE
-              </p>
-            </a>
-          </li>
+          </li> -->
       
-     
-         <li class="nav-item">
+         <!-- <li class="nav-item">
             <a href="#" class="nav-link">
 
               <i class="nav-icon fab fa-mendeley"></i>
@@ -752,7 +753,7 @@ location = "?p=tb_dm_1";
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
       
        <li class="nav-item">
             <a href="#" class="nav-link">
@@ -898,7 +899,7 @@ location = "?p=tb_dm_1";
                  <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">Data Demarches</li>
+              <li class="breadcrumb-item active">Demarches</li>
                             </ol>
             </div>
 
@@ -920,7 +921,7 @@ location = "?p=tb_dm_1";
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data</h4>
+              <h4 class="modal-title">Add</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -938,7 +939,7 @@ values
 
 ?>
 <script>
-alert('Data berhasil ditambahkan<?php echo mysqli_error($koneksi); ?>');
+alert('Data added successfully<?php echo mysqli_error($koneksi); ?>');
 </script>
 
 
@@ -952,7 +953,7 @@ alert('Data berhasil ditambahkan<?php echo mysqli_error($koneksi); ?>');
       <!-- <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -975,13 +976,13 @@ alert('Data berhasil ditambahkan<?php echo mysqli_error($koneksi); ?>');
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Nama Kategori" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Category Name" required>
                 </div>
         
         <!-- <div class="input-group mb-3">
@@ -1042,7 +1043,7 @@ alert('Data berhasil ditambahkan<?php echo mysqli_error($koneksi); ?>');
                                            
                    <?php 
                    include('../db.php');
-                   $kj = mysqli_query($koneksi,"select * from tb_menu where jenis = 'DEMARCHES'");
+                   $kj = mysqli_query($koneksi,"SELECT * from tb_menu where jenis = 'DEMARCHES' ORDER BY sort");
 
 
                    ?>                            
@@ -1144,7 +1145,8 @@ $deskripsi1 = str_replace("'","&petiksatu&",$_POST['deskripsi']);
 if($namaa == null){
 mysqli_query($koneksi,"update tb_menu set nama_menu = '$_POST[nama]',
 short_desc = '$deskripsi1',
-long_desc = '$_POST[long_deskripsi]'
+long_desc = '$_POST[long_deskripsi]',
+warna = '$_POST[warna]'
 where id_menu = '$_POST[idc]'
 ");
 }else{
@@ -1152,7 +1154,8 @@ move_uploaded_file($_FILES['image_link']['tmp_name'],"../images/menu/".$_FILES['
 mysqli_query($koneksi,"update tb_menu set nama_menu = '$_POST[nama]',
 short_desc = '$deskripsi1',
 gambar2 = '$namaa',
-long_desc = '$_POST[long_deskripsi]'
+long_desc = '$_POST[long_deskripsi]',
+warna = '$_POST[warna]'
 where id_menu = '$_POST[idc]'
 ");
 }
@@ -1160,7 +1163,7 @@ where id_menu = '$_POST[idc]'
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
 </script>
 
@@ -1174,12 +1177,13 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
-                    <th>Background Splash</th>
-                    <th>Background</th>
-                  <th>Short Desc</th>
-                  
-                    <th>Opsi</th>
+                    <th>Name</th>
+                    <th>Picture</th>
+                    <!-- <th>Background Splash</th>
+                    <th>Background</th> -->
+                    <th>Short Desc</th>
+                    <th>Color</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -1192,23 +1196,20 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
                                               <tr>
                             <td><?php echo $no; ?></td>
                             <td><?php echo $kj2['nama_menu'] ?></td>
-                            <td><img src="https://ufe-section-indonesie.org/ufeapp/admin/bg/<?php echo $kj2['bg'] ?>"
-                            style="height:100px;" />
-                            </td>
-                            <td><img src="https://ufe-section-indonesie.org/ufeapp/admin/bg/<?php echo $kj2['bg2'] ?>"
-                            style="height:100px;" /></td>
-
-
+                            <td><img src="https://ufe-section-indonesie.org/ufeapp/images/menu/<?php echo $kj2['gambar2'] ?>" style="height:100px;" /></td>
+                            <!-- <td><img src="https://ufe-section-indonesie.org/ufeapp/admin/bg/<?php echo $kj2['bg2'] ?>" style="height:100px;" /></td>
+                            <td><img src="https://ufe-section-indonesie.org/ufeapp/admin/bg/<?php echo $kj2['bg2'] ?>" style="height:100px;" /></td> -->
                  <?php
                   $short_desc1 = str_replace("&petiksatu&","'",$kj2['short_desc']);
                  ?>
                                           <td><?php echo $short_desc1; ?></td>
+                                          <td><?php echo $kj2['warna']; ?></td>
                             
               <td>
 
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
-                                <a href="?p=rincian&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                <a href="?p=rincian&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
 
@@ -1221,7 +1222,7 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">4. Edit Produk</h4>
+              <h4 class="modal-title">4. Edit Product</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -1240,7 +1241,7 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -1263,13 +1264,13 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="text" name="nama" value="<?php echo $kj2['nama_menu'] ?>" class="form-control" placeholder="Nama Menu" required>
+                  <input type="text" name="nama" value="<?php echo $kj2['nama_menu'] ?>" class="form-control" placeholder="Menu Name" required>
                 </div>
         
         <!-- <div class="input-group mb-3">
@@ -1304,11 +1305,15 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
                $short_desc1 = str_replace("&petiksatu&","'",$kj2['short_desc']);
 
                ?>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php echo $short_desc1 ?></textarea>
-             
+                <div class="input-group mb-3" style="margin-top:10px;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="width:120px;">Color</span>
+                  </div>
+                  <input type="text" name="warna" value="<?php echo $kj2['warna'] ?>" class="form-control" placeholder="Color Theme">
+                </div>
 
                 <div></div>
                 <fieldset style="margin-top:10px;text-align:center;width:100%;">
@@ -1477,7 +1482,7 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_2";
       <!-- <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -1626,7 +1631,7 @@ alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 
-                                <a href="?p=rincian&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                <a href="?p=rincian&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
 
@@ -1662,7 +1667,7 @@ alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
       <!-- <input onchange="readURL<?php //echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image50" style="width:1px;height:1px;" name="product_image50" class="img-thumbnail">
       </center>
                 <script>
@@ -1722,7 +1727,6 @@ alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
           <div>
                 Short Desc
                </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php echo $kj2['short_desc'] ?></textarea>
@@ -1730,7 +1734,6 @@ alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
              <div style="margin-top:15px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['long_desc'] ?></textarea>
@@ -1791,7 +1794,7 @@ include('../db.php');
            <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">All Actualite</li>
+              <li class="breadcrumb-item active">News</li>
                             </ol>
     </td>
 <td style="text-align:right;">
@@ -2225,7 +2228,7 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['deskripsi']);
     <input onchange="readURLactualite(this);" type="file" name="image_linkact" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="image_actualite" 
       style="width:1px;height:1px;" name="image_actualitee" 
       class="img-thumbnail">
@@ -2812,7 +2815,7 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['deskripsi']);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" 
       style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" 
       class="img-thumbnail">
@@ -2920,7 +2923,6 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['deskripsi']);
              <div style="margin-top:10px;padding-left:5px;">
                            Description
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                           ><?php echo $deskripsi1 ?></textarea>
@@ -3400,7 +3402,7 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['short_desc']);
     <input onchange="readURLactualite(this);" type="file" name="image_linkactfrance" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="image_actualite" 
       style="width:1px;height:1px;" name="image_actualitee" 
       class="img-thumbnail">
@@ -3438,7 +3440,6 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['short_desc']);
              <div style="margin-top:10px;padding-left:5px;">
                            Description
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsiactualitefrance" placeholder="Place some text here"
               
                           required></textarea>
@@ -3884,7 +3885,7 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['short_desc']);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_linkfrance" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" 
       style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" 
       class="img-thumbnail">
@@ -3958,7 +3959,6 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['short_desc']);
              <div style="margin-top:10px;padding-left:5px;">
                            Description
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsifrance" placeholder="Place some text here"
               
                           ><?php echo $deskripsi1 ?></textarea>
@@ -4339,7 +4339,7 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['deskripsi']);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" 
       style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" 
       class="img-thumbnail">
@@ -4377,7 +4377,6 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['deskripsi']);
              <div style="margin-top:10px;padding-left:5px;">
                            Description
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                           ><?php echo $deskripsi1 ?></textarea>
@@ -4908,7 +4907,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" 
       style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" 
       class="img-thumbnail">
@@ -4946,7 +4945,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:10px;padding-left:5px;">
                            Description
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                           ><?php echo $deskripsi2 ?></textarea>
@@ -5132,7 +5130,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -5140,7 +5138,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -5154,7 +5152,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -5427,7 +5425,7 @@ location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
  } else{
    ?>
    <script>
-   alert("gagal");
+   alert("Failed");
    </script>
    <?php
  }
@@ -5479,7 +5477,7 @@ location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>21" href="" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-edit"></i> Edit Ikon</a>
 
-                              <!--  <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                              <!--  <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                 -->
@@ -5527,7 +5525,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -5564,7 +5562,6 @@ $rt2 = mysqli_fetch_array($rt);
          <div style="margin-top:15px;padding-left:5px;">
                            Short Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="textarea"  name="short_desc" placeholder="Place some text here"
               
                           ><?php echo $short_desc1 ?></textarea>
@@ -5572,7 +5569,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;padding-left:5px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="textarea"  name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $long_desc1 ?></textarea>
@@ -5637,7 +5633,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL21<?php echo $idd; ?>(this);" type="file" name="image_link21" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image21<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image21<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -5713,8 +5709,7 @@ $qw2 = mysqli_fetch_array($qw);
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">
-
-                       1-1. Tambah Data
+                       1. Add
                     </span>
                 </a>
             </div>
@@ -5724,8 +5719,7 @@ $qw2 = mysqli_fetch_array($qw);
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">
-
-                       1. Import Data
+                       1. Import
                     </span>
                 </a>
             </div>
@@ -5735,7 +5729,7 @@ $qw2 = mysqli_fetch_array($qw);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data (<?php echo $qw2['nama_menu'] ?>)</h4>
+              <h4 class="modal-title">Add (<?php echo $qw2['nama_menu'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -5831,7 +5825,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -5839,7 +5833,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -5853,7 +5847,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -5876,7 +5870,7 @@ alert("gagal");
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 
                   <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
@@ -5890,10 +5884,10 @@ alert("gagal");
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
+                    <span class="input-group-text" style="width:120px;">Name (Tablayout)</span>
                   </div>
 
-                  <input type="text" name="nama2" value="" class="form-control" placeholder="Nama (Tablayout)" required>
+                  <input type="text" name="nama2" value="" class="form-control" placeholder="Name (Tablayout)" required>
                 </div>
 
         <!-- <div class="input-group mb-3">
@@ -5929,7 +5923,7 @@ alert("gagal");
              
              
                           <div style="margin-top:15px">Long Desc</div>        
-                <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
+                <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea>
              
           
@@ -6055,9 +6049,9 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Act</th>
-                    <th>Nama</th>
-                    <th>Nama (Tablayout)</th>
+                    <th>Options</th>
+                    <th>Name</th>
+                    <th>Name (Tablayout)</th>
 
                   <th>Description</th>
                   
@@ -6079,11 +6073,11 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
                                 href="" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fa fa-edit"></i></a>
                 <a href="?p=rincian2&id=<?php echo $idd ?>" 
-                                class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                  <a onclick="return 
-                                 confirm('Are you sure you want to delete this item?');" href="hapustbdemar2.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
+                                 confirm('Are you sure you want to delete this item?');" href="hapustbdemar2.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Delete
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-trash"></i></a>
               </td>
@@ -6135,7 +6129,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -6158,27 +6152,27 @@ $rt2 = mysqli_fetch_array($rt);
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="text" name="nama" value="<?php echo $judul1 ?>" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="<?php echo $judul1 ?>" class="form-control" placeholder="Name" required>
                 </div>
         
 
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
+                    <span class="input-group-text" style="width:120px;">Name(Tablayout)</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="text" name="nama2" value="<?php echo $judul21 ?>" class="form-control" placeholder="Nama (Tablayout)" required>
+                  <input type="text" name="nama2" value="<?php echo $judul21 ?>" class="form-control" placeholder="Name (Tablayout)" required>
                 </div>
         <!-- <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -6208,7 +6202,6 @@ $rt2 = mysqli_fetch_array($rt);
           <div>
                 Short Desc
                </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php echo $short_desc1 ?></textarea>
@@ -6216,8 +6209,7 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-                <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
+                <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
               <?php 
               $long_desc1 = str_replace("&petiksatu&","'",$kj2['long_desc']);
               ?>
@@ -6676,7 +6668,7 @@ $nimm++;}
            <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">Tulisan</li>
+              <li class="breadcrumb-item active">Text Writing</li>
                             </ol>
       
       
@@ -6709,10 +6701,10 @@ $nimm++;}
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Jenis</th>
+                    <th>Type</th>
                     
                   
-                    <th>Opsi</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -6722,7 +6714,7 @@ $nimm++;}
                             <td>Home</td>
                             
               <td>
-                                <a href="?p=home" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                <a href="?p=home" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                             </td>
@@ -6744,7 +6736,7 @@ $nimm++;}
 
 
                                
-                                <a href="?p=edit_tulisan&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                <a href="?p=edit_tulisan&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                 
@@ -6835,7 +6827,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -6889,7 +6881,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -6940,7 +6932,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -6991,7 +6983,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7042,7 +7034,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7093,7 +7085,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7144,7 +7136,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7195,7 +7187,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7246,7 +7238,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7297,7 +7289,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7348,7 +7340,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7399,7 +7391,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7450,7 +7442,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7501,7 +7493,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7552,7 +7544,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7603,7 +7595,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7654,7 +7646,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7705,7 +7697,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7756,7 +7748,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7807,7 +7799,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7858,7 +7850,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -7909,7 +7901,7 @@ $rg2 = mysqli_fetch_array($rg);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit Tulisan</h4>
+              <h4 class="modal-title">Edit Text</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -8051,7 +8043,7 @@ location = "?p=data_presiden";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -8059,7 +8051,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -8073,7 +8065,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -8285,7 +8277,7 @@ location = "?p=data_presiden";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 
-                                <!--<a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                <!--<a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>-->
                 
@@ -8333,7 +8325,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -8399,7 +8391,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Deskripsi
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['deskripsi'] ?></textarea>
@@ -8540,7 +8531,7 @@ location = "?p=data_presiden";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -8548,7 +8539,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -8562,7 +8553,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -8771,7 +8762,7 @@ location = "?p=info_member";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 
-                                <!--<a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                <!--<a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>-->
                 
@@ -8819,7 +8810,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -8885,7 +8876,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Deskripsi
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['deskripsi'] ?></textarea>
@@ -9024,7 +9014,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -9032,7 +9022,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -9046,7 +9036,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -9294,7 +9284,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                <!-- <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 -->
-                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                 
@@ -9342,7 +9332,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -9415,7 +9405,6 @@ $rt2 = mysqli_fetch_array($rt);
           <div>
                 Short Desc
                </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php echo $kj2['short_desc'] ?></textarea>
@@ -9423,7 +9412,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['long_desc'] ?></textarea>
@@ -9577,7 +9565,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -9585,7 +9573,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -9599,7 +9587,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -9845,7 +9833,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 -->
-                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                 
@@ -9893,7 +9881,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -9966,7 +9954,6 @@ $rt2 = mysqli_fetch_array($rt);
           <div>
                 Short Desc
                </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php echo $kj2['short_desc'] ?></textarea>
@@ -9974,7 +9961,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['long_desc'] ?></textarea>
@@ -10129,7 +10115,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -10137,7 +10123,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -10151,7 +10137,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -10396,7 +10382,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 -->
-                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                 
@@ -10575,7 +10561,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -10648,7 +10634,6 @@ $rt2 = mysqli_fetch_array($rt);
           <div>
                 Short Desc
                </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php echo $kj2['short_desc'] ?></textarea>
@@ -10656,7 +10641,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['long_desc'] ?></textarea>
@@ -10721,7 +10705,7 @@ $qw2 = mysqli_fetch_array($qw);
                <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">User Personal sudah dikonfirmasi</li>
+              <li class="breadcrumb-item active">Personal user confirmed</li>
                             </ol>
             </div>
 
@@ -10743,7 +10727,7 @@ $qw2 = mysqli_fetch_array($qw);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data (<?php echo $qw2['nama_menu'] ?>)</h4>
+              <h4 class="modal-title">Add (<?php echo $qw2['nama_menu'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -10810,7 +10794,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -10818,7 +10802,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -10832,7 +10816,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -10855,7 +10839,7 @@ alert("gagal");
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 
                   <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
@@ -10863,44 +10847,17 @@ alert("gagal");
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Name" required>
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
+                    <span class="input-group-text" style="width:120px;">Name (Tablayout)</span>
                   </div>
 
-                  <input type="text" name="nama2" value="" class="form-control" placeholder="Nama (Tablayout)" required>
+                  <input type="text" name="nama2" value="" class="form-control" placeholder="Name (Tablayout)" required>
                 </div>
 
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="" >- kategori -</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div>
-            <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="" class="form-control" placeholder="Short Desc" required>
-                </div>
-        
-        
-           -->
         <div>Short Desc</div>        
                 <textarea class="form-control" name="short_desc" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
@@ -11017,13 +10974,13 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Email</th>
 
                   <th>Company</th>
-                  <th>Tgl Daftar</th>
+                  <th>Registration Date</th>
                   
-                    <th>Opsi</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -11046,7 +11003,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
 
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
     -->           
@@ -11071,7 +11028,7 @@ $rt = mysqli_query($koneksi,"select * from user where idUser = '$idd'");
 $rt2 = mysqli_fetch_array($rt);
 ?>
 
-              <h4 class="modal-title">14. Edit <?php echo $rt2['username'] ?></h4>
+              <h4 class="modal-title">Edit <?php echo $rt2['username'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -11094,7 +11051,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -11117,14 +11074,14 @@ $rt2 = mysqli_fetch_array($rt);
   -->
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input readonly type="text" name="nama" value="<?php echo $kj2['first_name'] ?> <?php echo $kj2['second_name'] ?>" class="form-control" placeholder="Nama" required>
+                  <input readonly type="text" name="nama" value="<?php echo $kj2['first_name'] ?> <?php echo $kj2['second_name'] ?>" class="form-control" placeholder="Name" required>
                 </div>
         
 
@@ -11197,55 +11154,6 @@ $st = date('D, d M Y', strtotime($st . ' +0 day'));
         
         <?php } } ?>
         
-        
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        <!--
-          <div>
-                Alamat
-               </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-              <!--
-          <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
-              
-                           required><?php echo $kj2['alamat'] ?></textarea>-->
-             <!--
-             <div style="margin-top:15px;">
-                           Long Desc
-                </div> -->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-            <!--    <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
-              
-                          ><?php echo $kj2['long_desc'] ?></textarea>
-             -->
-             
-        
-        
-        
-        
-        
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -11267,13 +11175,13 @@ $st = date('D, d M Y', strtotime($st . ' +0 day'));
         <tfoot>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Email</th>
 
                   <th>Company</th>
-                  <th>Tgl Daftar</th>
+                  <th>Registration Date</th>
                   
-                    <th>Opsi</th>
+                    <th>Options</th>
                 </tr>
             </tfoot>
     </table>
@@ -11384,7 +11292,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -11392,7 +11300,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -11406,7 +11314,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -11809,7 +11717,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
 
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
     -->           
@@ -11859,7 +11767,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -11955,7 +11863,6 @@ $rt2 = mysqli_fetch_array($rt);
           <div>
                 Alamat
                </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
               <!--
           <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
@@ -11964,7 +11871,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div> -->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
             <!--    <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['long_desc'] ?></textarea>
@@ -12038,7 +11944,7 @@ $qw2 = mysqli_fetch_array($qw);
                <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">User personal belum dikonfirmasi</li>
+              <li class="breadcrumb-item active">Personal user not confirmed</li>
                             </ol>
             </div>
 
@@ -12060,7 +11966,7 @@ $qw2 = mysqli_fetch_array($qw);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data (<?php echo $qw2['nama_menu'] ?>)</h4>
+              <h4 class="modal-title">Add (<?php echo $qw2['nama_menu'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -12127,7 +12033,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -12135,7 +12041,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -12149,7 +12055,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -12172,7 +12078,7 @@ alert("gagal");
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 
                   <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
@@ -12180,44 +12086,16 @@ alert("gagal");
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Name" required>
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
+                    <span class="input-group-text" style="width:120px;">Name (Tablayout)</span>
                   </div>
 
-                  <input type="text" name="nama2" value="" class="form-control" placeholder="Nama (Tablayout)" required>
+                  <input type="text" name="nama2" value="" class="form-control" placeholder="Name (Tablayout)" required>
                 </div>
-
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="" >- kategori -</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div>
-            <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="" class="form-control" placeholder="Short Desc" required>
-                </div>
-        
-        
-           -->
         <div>Short Desc</div>        
                 <textarea class="form-control" name="short_desc" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
@@ -12227,12 +12105,6 @@ alert("gagal");
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea>
              
-          
-        
-        
-        
-        
-        
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -12471,21 +12343,6 @@ $callNoti->sendNoti($titleNoti, $bodyNoti,$gambarrr);
 
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 if($_FILES['image_link']['name'] == null){
 
 ?>
@@ -12516,14 +12373,14 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Email</th>
-          <th>Telp</th>
-          <th>Kode Verif</th>
-          <th>Verifikasi email</th>
+          <th>Phone</th>
+          <th>Verification Code</th>
+          <th>Email Verification</th>
                   <th>Company</th>
-                  <th>Tgl Daftar</th>
-                    <th>Opsi</th>
+                  <th>Registration Date</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -12551,11 +12408,11 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
 
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
     -->           
-                 <a href="kirimulangkode.php?id=<?php echo $idd ?>&p=<?php echo $_GET['p'] ?>" class="btn btn-danger btn-circle btn-sm">Kirim ulang kode
+                 <a href="kirimulangkode.php?id=<?php echo $idd ?>&p=<?php echo $_GET['p'] ?>" class="btn btn-danger btn-circle btn-sm">resend code
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="far fa-paper-plane"></i></a>
   <!--              
@@ -12578,7 +12435,7 @@ $rt = mysqli_query($koneksi,"select * from user where idUser = '$idd'");
 $rt2 = mysqli_fetch_array($rt);
 ?>
 
-              <h4 class="modal-title">121. Edit <?php echo $rt2['username'] ?></h4>
+              <h4 class="modal-title">Edit <?php echo $rt2['username'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -12601,7 +12458,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -12624,14 +12481,14 @@ $rt2 = mysqli_fetch_array($rt);
   -->
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input readonly type="text" name="nama" value="<?php echo $kj2['first_name'] ?> <?php echo $kj2['second_name'] ?>" class="form-control" placeholder="Nama" required>
+                  <input readonly type="text" name="nama" value="<?php echo $kj2['first_name'] ?> <?php echo $kj2['second_name'] ?>" class="form-control" placeholder="Name" required>
                 </div>
         
 
@@ -12668,55 +12525,7 @@ $rt2 = mysqli_fetch_array($rt);
           
                   <input type="text" name="nama2" value="<?php echo $kj2['alamat'] ?>" class="form-control" placeholder="" readonly required>
                 </div>
-
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        <!--
-          <div>
-                Alamat
-               </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-              <!--
-          <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
-              
-                           required><?php echo $kj2['alamat'] ?></textarea>-->
-             <!--
-             <div style="margin-top:15px;">
-                           Long Desc
-                </div> -->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-            <!--    <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
-              
-                          ><?php echo $kj2['long_desc'] ?></textarea>
-             -->
-             
-        
-        
-        
-        
-        
+ 
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -12760,7 +12569,7 @@ $qw2 = mysqli_fetch_array($qw);
           <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">User VIP belum dikonfirmasi</li>
+              <li class="breadcrumb-item active">VIP user not confirmed</li>
                             </ol>
             </div>
 
@@ -12772,7 +12581,7 @@ $qw2 = mysqli_fetch_array($qw);
                     </span>
                     <span class="text">
 
-                       1. Tambah Data
+                       1. Add
                     </span>
                 </a>
             </div>
@@ -12782,7 +12591,7 @@ $qw2 = mysqli_fetch_array($qw);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data (<?php echo $qw2['nama_menu'] ?>)</h4>
+              <h4 class="modal-title">Add (<?php echo $qw2['nama_menu'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -12849,7 +12658,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -12857,7 +12666,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -12871,7 +12680,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -12894,7 +12703,7 @@ alert("gagal");
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 
                   <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
@@ -12902,15 +12711,15 @@ alert("gagal");
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Name" required>
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
+                    <span class="input-group-text" style="width:120px;">Name (Tablayout)</span>
                   </div>
 
-                  <input type="text" name="nama2" value="" class="form-control" placeholder="Nama (Tablayout)" required>
+                  <input type="text" name="nama2" value="" class="form-control" placeholder="Name (Tablayout)" required>
                 </div>
 
         <!-- <div class="input-group mb-3">
@@ -13223,7 +13032,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=user_vip_belum_dikonfirmasi";
 
 </script>
@@ -13231,7 +13040,7 @@ location = "?p=user_vip_belum_dikonfirmasi";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -13248,16 +13057,16 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th>Telp</th>
-          <th>Kode Verif</th>
-          <th>Verifikasi email</th>
-          <th>Kode VIP</th>
+                    <th>Phone</th>
+          <th>Verification Code</th>
+          <th>Email Verification</th>
+          <th>VIP Code</th>
                   <th>Company</th>
-                  <th>Tgl Daftar</th>
+                  <th>Registration Date</th>
                   
-                    <th>Opsi</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -13284,13 +13093,13 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
 
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
     -->           
                 
               
-                 <a href="kirimulangkode.php?id=<?php echo $idd ?>&p=<?php echo $_GET['p'] ?>" class="btn btn-danger btn-circle btn-sm">Kirim ulang kode
+                 <a href="kirimulangkode.php?id=<?php echo $idd ?>&p=<?php echo $_GET['p'] ?>" class="btn btn-danger btn-circle btn-sm">Resend code
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="far fa-paper-plane"></i></a>
 
@@ -13332,7 +13141,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -13355,14 +13164,14 @@ $rt2 = mysqli_fetch_array($rt);
   -->
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input readonly type="text" name="nama" value="<?php echo $kj2['first_name'] ?> <?php echo $kj2['second_name'] ?>" class="form-control" placeholder="Nama" required>
+                  <input readonly type="text" name="nama" value="<?php echo $kj2['first_name'] ?> <?php echo $kj2['second_name'] ?>" class="form-control" placeholder="Name" required>
                 </div>
         
 
@@ -13428,7 +13237,6 @@ $rt2 = mysqli_fetch_array($rt);
           <div>
                 Alamat
                </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
               <!--
           <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
@@ -13437,7 +13245,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div> -->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
             <!--    <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['long_desc'] ?></textarea>
@@ -13486,7 +13293,7 @@ $qw2 = mysqli_fetch_array($qw);
               <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">User VIP sudah dikonfirmasi</li>
+              <li class="breadcrumb-item active">VIP user confirmed</li>
                             </ol>
             </div>
 
@@ -13508,7 +13315,7 @@ $qw2 = mysqli_fetch_array($qw);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data (<?php echo $qw2['nama_menu'] ?>)</h4>
+              <h4 class="modal-title">Add (<?php echo $qw2['nama_menu'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -13575,7 +13382,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -13583,7 +13390,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -13597,7 +13404,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -13620,7 +13427,7 @@ alert("gagal");
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 
                   <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
@@ -13628,15 +13435,15 @@ alert("gagal");
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Name" required>
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
+                    <span class="input-group-text" style="width:120px;">Name (Tablayout)</span>
                   </div>
 
-                  <input type="text" name="nama2" value="" class="form-control" placeholder="Nama (Tablayout)" required>
+                  <input type="text" name="nama2" value="" class="form-control" placeholder="Name (Tablayout)" required>
                 </div>
 
         <!-- <div class="input-group mb-3">
@@ -13795,9 +13602,9 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th>Masa Aktif</th>
+                    <th>Active Period</th>
                     <th>Counter</th>
                     <th>Ket</th>
                     <th>Desc</th>
@@ -13823,13 +13630,13 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
           
           
           
-          <th>Kode VIP</th>
+          <th>VIP Code</th>
 
-          <th>Tgl Mendaftar</th>
+          <th>Registration Date</th>
 
                   <th>Company</th>
                   
-                    <th>Opsi</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -13889,7 +13696,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
 
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
     -->           
@@ -13937,7 +13744,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -13960,14 +13767,14 @@ $rt2 = mysqli_fetch_array($rt);
   -->
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input readonly type="text" name="nama" value="<?php echo $kj2['first_name'] ?> <?php echo $kj2['second_name'] ?>" class="form-control" placeholder="Nama" required>
+                  <input readonly type="text" name="nama" value="<?php echo $kj2['first_name'] ?> <?php echo $kj2['second_name'] ?>" class="form-control" placeholder="Name" required>
                 </div>
         
 
@@ -13997,11 +13804,11 @@ $rt2 = mysqli_fetch_array($rt);
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Masa Aktif</span>
+                    <span class="input-group-text" style="width:120px;">Active Period</span>
                   </div>
           
           
-                  <input type="date" name="masa_aktif" value="<?php echo $kj2['masa_aktif'] ?>" class="form-control" placeholder="Masa Aktif" required>
+                  <input type="date" name="masa_aktif" value="<?php echo $kj2['masa_aktif'] ?>" class="form-control" placeholder="Active Period" required>
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
@@ -14053,7 +13860,6 @@ $rt2 = mysqli_fetch_array($rt);
           <div>
                 Alamat
                </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
               <!--
           <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
@@ -14062,7 +13868,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div> -->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
             <!--    <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['long_desc'] ?></textarea>
@@ -14095,14 +13900,13 @@ $rt2 = mysqli_fetch_array($rt);
               <tfoot>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th>Masa Aktif</th>
+                    <th>Active Period</th>
                     
           <th>Desc</th>
           <th>Phone</th>
           <th>Mobile</th>
-          
           <th>Address</th>
           <th>Link Address</th>
           <th>City</th>
@@ -14122,13 +13926,13 @@ $rt2 = mysqli_fetch_array($rt);
           
           
           
-          <th>Kode VIP</th>
+          <th>VIP Code</th>
 
-          <th>Tgl Mendaftar</th>
+          <th>Registration Date</th>
 
                   <th>Company</th>
                   
-                    <th>Opsi</th>
+                    <th>Options</th>
                 </tr>
             </tfoot>
     </table>
@@ -14172,7 +13976,7 @@ $qw2 = mysqli_fetch_array($qw);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data (<?php echo $qw2['nama'] ?>)</h4>
+              <h4 class="modal-title">Add (<?php echo $qw2['nama'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -14230,7 +14034,7 @@ mysqli_query($koneksi,"insert into tb_demar2 (gambar,id_kategori,judul,judul2,sh
 }
 ?>
 <script>
-alert('Data berhasil ditambahkan<?php echo mysqli_error($koneksi); ?>');
+alert('Data saved successfully<?php echo mysqli_error($koneksi); ?>');
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 </script>
 
@@ -14239,7 +14043,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -14247,7 +14051,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -14261,7 +14065,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -14284,7 +14088,7 @@ alert("gagal");
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 
                   <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
@@ -14297,7 +14101,7 @@ alert("gagal");
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
+                    <span class="input-group-text" style="width:120px;">Name (Tablayout)</span>
                   </div>
 
                   <input type="text" name="nama2" value="" class="form-control" placeholder="Nama (Tablayout)" required>
@@ -14499,7 +14303,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 
-                             <!--   <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                             <!--   <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                 -->
@@ -14547,7 +14351,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -14700,10 +14504,11 @@ $qw2 = mysqli_fetch_array($qw);
 
 $nama1 = str_replace("&petiksatu&","'",$qw2['nama']);
 ?>
-
-
-                <h4 class="h5 align-middle m-0 font-weight-bold text-primary">
-                    <?php echo $nama1 ?>                 </h4>
+              <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
+              <li class="breadcrumb-item active"><a href="?p=tb_ufe">Activities</a></li>
+              <li class="breadcrumb-item active"><?php echo $nama1 ?></li>
+              </ol>
             </div>
 
 
@@ -14713,8 +14518,7 @@ $nama1 = str_replace("&petiksatu&","'",$qw2['nama']);
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">
-
-                       5. Tambah Data
+                       Add
                     </span>
                 </a>
             </div>
@@ -14724,7 +14528,7 @@ $nama1 = str_replace("&petiksatu&","'",$qw2['nama']);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data (<?php echo $qw2['nama'] ?>)</h4>
+              <h4 class="modal-title">Add (<?php echo $qw2['nama'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -14735,11 +14539,6 @@ if(isset($_POST['tambahproduk4'])){
 if(($_POST['nama'])){
 
 include('../db.php');
-
-
-
-
-
 
 $maxDimW = 1000;
 $maxDimH = 500;
@@ -14812,7 +14611,7 @@ mysqli_query($koneksi,"insert into tb_activites (
 }
 ?>
 <script>
-alert('Data berhasil ditambahkan<?php echo mysqli_error($koneksi); ?>');
+alert('Data added successfully<?php echo mysqli_error($koneksi); ?>');
 location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 </script>
 
@@ -14821,7 +14620,7 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -14829,7 +14628,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -14843,7 +14642,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -14866,7 +14665,7 @@ alert("gagal");
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 
                   <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
@@ -14874,62 +14673,28 @@ alert("gagal");
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Name" required>
                 </div>
 
 
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Instruktur</span>
+                    <span class="input-group-text" style="width:120px;">Instructor</span>
                   </div>
 
-                  <input type="text" name="instruktur" value="" class="form-control" placeholder="Instruktur" required>
+                  <input type="text" name="instruktur" value="" class="form-control" placeholder="Instructor" required>
                 </div>
         
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Ket. Instruktur</span>
+                    <span class="input-group-text" style="width:120px;">Instructor Desc.</span>
                   </div>
-                  <input type="text" name="ket_instruktur" value="" class="form-control" placeholder="Ket. Instruktur" required>
-                </div>
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="" >- kategori -</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div>
-            <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="" class="form-control" placeholder="Short Desc" required>
-                </div>
-        
-        
-           -->
-             
-                          <div style="margin-top:15px">Deskripsi</div>        
-                <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
+                  <input type="text" name="ket_instruktur" value="" class="form-control" placeholder="Instructor Description" required>
+                </div>             
+                          <div style="margin-top:15px">Description</div>        
+                <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea>
-             
-          
-        
-        
-        
-        
-        
+
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -14947,54 +14712,11 @@ alert("gagal");
                    <?php 
                    include('../db.php');
                    $kj = mysqli_query($koneksi,"select * from tb_activites where id_jenis = '$_GET[id]'");
-
-
-                   ?>                            
-     <?php 
+ 
 if(isset($_POST['tambahjadwalac'])){
-
     
 if(($_POST['nama'])){
-
-
-
-
-
-$maxDimW = 1000;
-$maxDimH = 500;
-list($width, $height, $type, $attr) = getimagesize( $_FILES['image_link']['tmp_name'] );
-if ( $width > $maxDimW || $height > $maxDimH ) {
-    $target_filename = $_FILES['image_link']['tmp_name'];
-    $fn = $_FILES['image_link']['tmp_name'];
-    $size = getimagesize( $fn );
-    $ratio = $size[0]/$size[1]; // width/height
-    //if( $ratio > 1) {
-        $width = $maxDimW;
-        $height = ($maxDimW / $size[0]) * $size[1];
-    // } else {
-    //     $width = $maxDimW*$ratio;
-    //     $height = $maxDimH;
-    // }
-    $src = imagecreatefromstring(file_get_contents($fn));
-    $dst = imagecreatetruecolor( $width, $height );
-    imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
-
-    imagejpeg($dst, $target_filename); // adjust format as needed
-
-
-}
-
-$namaa = $_FILES['image_link']['name'];
-
-move_uploaded_file($_FILES['image_link']['tmp_name'],"../images/activites/".$_FILES['image_link']['name']);
-
-    
-$nama1 = str_replace("'","&petiksatu&",$_POST['nama']);
-$deskripsi1 = str_replace("'","&petiksatu&",$_POST['deskripsi']);
-
-
-    if($_FILES['image_link']['name'] == null){
-mysqli_query($koneksi," insert into tb_jadwal_program (
+  mysqli_query($koneksi," insert into tb_jadwal_program (
     id_activites,
     jadwal,
     keterangan
@@ -15002,20 +14724,8 @@ mysqli_query($koneksi," insert into tb_jadwal_program (
         '$_POST[idc]',
         '$nama1',
         '$deskripsi1'
-)");
-  }else{
-    
-mysqli_query($koneksi,"update tb_demar2 set 
-judul = '$_POST[nama]',
-
-gambar = '$namaa',
-deskripsi = '$_POST[long_deskripsi]'
-where id_activites = '$_POST[idc]'
-");   
-    
-  }
-
-
+  )");
+  
 if($_FILES['image_link']['name'] == null){
 
 ?>
@@ -15035,31 +14745,14 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 </script>
 
 
-<?php } ?>
+<?php }
 
-<?php 
  } 
 }
- ?>
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
-      <?php 
 if(isset($_POST['updatekategori33'])){
-
     
 if(($_POST['nama'])){
-
-
-
-
 
 $maxDimW = 1000;
 $maxDimH = 500;
@@ -15130,7 +14823,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -15138,7 +14831,7 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -15162,14 +14855,14 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
+                    <th>Name</th>
                
-                  <th>Deskripsi</th>
+                  <th>Description</th>
           
-                  <th>Instruktur</th>
-          <th>Ket Instruktur</th>
+                  <th>Instructor</th>
+          <th>Instructor Desc.</th>
           
-                    <th>Opsi</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -15191,46 +14884,73 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 
  <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
  <?php if($_GET['id'] == "3"){ ?>
-  <a href="?p=r2_tb_ufe&id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-primary btn-circle btn-sm">Lebih Lanjut
+  <a href="?p=r2_tb_ufe&id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
  <?php }else{ ?>
-                                <a data-toggle="modal" data-target="#modal-tambah-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm">
-                Tambah Harga +</a>
-                
-   <a data-toggle="modal" data-target="#modal-tambah2-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm">
-                Tambah Jadwal +</a>
-                              <!--  <a href="?p=r_tb_ufe&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-                -->
-                
-                
-                 <a href="hapustbactivites.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-trash"></i></a>
+            <a data-toggle="modal" data-target="#modal-tambah-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm">
+              Add Package Price +
+            </a>    
+            <a data-toggle="modal" data-target="#modal-tambah2-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm">
+              Add Schedule +
+            </a>
+            <a data-toggle="modal" data-target="#modal-tambah3-lg_<?php echo $idd ?>" href="" class="btn btn-success btn-circle btn-sm">
+              Send Notification&nbsp;&nbsp;
+              <i class="fa fa-paper-plane"></i>
+            </a>
+            <a href="hapustbactivites.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">
+              Delete&nbsp;&nbsp;
+              <i class="fa fa-trash"></i>
+            </a>
  <?php } ?>
 
                             </td>
-                        </tr
-                        >
-          <div class="modal fade" id="modal-tambah2-lg_<?php echo $idd; ?>">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
+                        </tr>
+
 <?php 
 $rt = mysqli_query($koneksi,"select * from tb_activites where id_jenis = '$_GET[id]'");
 $rt2 = mysqli_fetch_array($rt);
 ?>
-
-              <h4 class="modal-title">7. Tambah Jadwal <?php echo $rt2['judul'] ?></h4>
+        
+      <div class="modal fade" id="modal-tambah3-lg_<?php echo $idd; ?>">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Send Notification <?php echo $rt2['judul'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            
+            <form method="POST" enctype="multipart/form-data" >
+                  <div class="modal-body" style="overflow:scroll;height:70vh">
+
+                  <div class="input-group mb-3" style="margin-top:10px;">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" style="width:120px;">Title</span>
+                        </div>          
+                        <input type="hidden" name="idc" value="<?php echo $idd ?>" />
+                        <input type="text" name="titlenotif" value="Promo - <?php echo $rt2['judul'] ?>" class="form-control" placeholder="Title" required>
+                      </div>       
+                </div>
+                  <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" name="tambahnotifac" class="btn btn-primary">Send</button>
+                  </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
 
+          <div class="modal fade" id="modal-tambah2-lg_<?php echo $idd; ?>">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Schedule <?php echo $rt2['judul'] ?></h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
       <form method="POST" enctype="multipart/form-data" >
             <div class="modal-body" style="overflow:scroll;height:70vh">
@@ -15263,115 +14983,28 @@ $rt2 = mysqli_fetch_array($rt);
       <?php } ?>
       
       </fieldset>
-      <!--      
-      <center>
-              <img src="https://ufe-section-indonesie.org/ufeapp/images/activites/<?php //echo $kj2['gambar'] ?>"  style="width:200px;" />
-      </center> 
-      
-    <input onchange="readURL<?php //echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
-      </a><br>
-      <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
-      </font></i><br><img src="" id="product_image<?php //echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php //echo $idd; ?>" class="img-thumbnail">
-      </center>
-                <script>
-  function readURL<?php //echo $idd; ?>(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#product_image<?php //echo $idd; ?>')
-                .attr('src', e.target.result)
-                .width(100)
-        .height(100);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-    
-  }
-</script> 
-  -->
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Jadwal</span>
+                    <span class="input-group-text" style="width:120px;">Schedule</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Jadwal" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Schedule" required>
                 </div>
         
 
         
                      <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Ket</span>
+                    <span class="input-group-text" style="width:120px;">Description</span>
                   </div>
           
           
-                  <input type="text" name="deskripsi" value="" class="form-control" placeholder="Keterangan" required>
-                </div>
-<!--
-                <div class="input-group mb-3" style="margin-top:10px;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
-                  </div>
-          
-          
-          <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
-                  <input type="hidden" name="idc" value="<?php //echo $idd ?>" />
-                  <input type="text" name="nama2" value="<?php //echo $kj2['judul2'] ?>" class="form-control" placeholder="Nama (Tablayout)" required>
-                </div> -->
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        
-          <!--<div>
-                Short Desc
-               </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-             <!--   <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
-              
-                           required><?php //echo $kj2['short_desc'] ?></textarea>
-             -->
-             <!--<div style="margin-top:15px;">
-                           Deskripsi
-                </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-               <!-- <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
-              
-                          ><?php //echo $kj2['deskripsi'] ?></textarea>
-             -->
-             
-        
-        
-        
-        
-        
+                  <input type="text" name="deskripsi" value="" class="form-control" placeholder="Description" required>
+                </div>        
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -15388,12 +15021,7 @@ $rt2 = mysqli_fetch_array($rt);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-<?php 
-$rt = mysqli_query($koneksi,"select * from tb_activites where id_jenis = '$idd'");
-$rt2 = mysqli_fetch_array($rt);
-?>
-
-              <h4 class="modal-title">7. Tambah Harga <?php echo $rt2['judul'] ?></h4>
+              <h4 class="modal-title">Add Package <?php echo $rt2['judul'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -15433,115 +15061,28 @@ $rt2 = mysqli_fetch_array($rt);
       <?php } ?>
       
       </fieldset>
-      <!--      
-      <center>
-              <img src="https://ufe-section-indonesie.org/ufeapp/images/activites/<?php //echo $kj2['gambar'] ?>"  style="width:200px;" />
-      </center> 
-      
-    <input onchange="readURL<?php //echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
-      </a><br>
-      <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
-      </font></i><br><img src="" id="product_image<?php //echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php //echo $idd; ?>" class="img-thumbnail">
-      </center>
-                <script>
-  function readURL<?php //echo $idd; ?>(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#product_image<?php //echo $idd; ?>')
-                .attr('src', e.target.result)
-                .width(100)
-        .height(100);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-    
-  }
-</script> 
-  -->
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
+                    <span class="input-group-text" style="width:120px;">Price</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="number" name="nama" value="<?php echo $kj2['judul'] ?>" class="form-control" placeholder="Harga" required>
+                  <input type="number" name="nama" value="<?php echo $kj2['judul'] ?>" class="form-control" placeholder="Price" required>
                 </div>
         
 
         
                      <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Ket</span>
+                    <span class="input-group-text" style="width:120px;">Package Name</span>
                   </div>
           
           
-                  <input type="text" name="deskripsi" value="" class="form-control" placeholder="Keterangan" required>
+                  <input type="text" name="deskripsi" value="" class="form-control" placeholder="Package Name" required>
                 </div>
-<!--
-                <div class="input-group mb-3" style="margin-top:10px;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
-                  </div>
-          
-          
-          <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
-                  <input type="hidden" name="idc" value="<?php //echo $idd ?>" />
-                  <input type="text" name="nama2" value="<?php //echo $kj2['judul2'] ?>" class="form-control" placeholder="Nama (Tablayout)" required>
-                </div> -->
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        
-          <!--<div>
-                Short Desc
-               </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-             <!--   <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
-              
-                           required><?php //echo $kj2['short_desc'] ?></textarea>
-             -->
-             <!--<div style="margin-top:15px;">
-                           Deskripsi
-                </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-               <!-- <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
-              
-                          ><?php //echo $kj2['deskripsi'] ?></textarea>
-             -->
-             
-        
-        
-        
-        
-        
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -15558,27 +15099,14 @@ $rt2 = mysqli_fetch_array($rt);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-<?php 
-$rt = mysqli_query($koneksi,"select * from tb_activites where id_jenis = '$idd'");
-$rt2 = mysqli_fetch_array($rt);
-?>
-
-              <h4 class="modal-title">6. Edit <?php echo $rt2['judul'] ?></h4>
+              <h4 class="modal-title">Edit <?php echo $rt2['judul'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            
-
-
-
       <form method="POST" enctype="multipart/form-data" >
             <div class="modal-body" style="overflow:scroll;height:70vh">
 
-      
-      
-      
-            
       <center>
               <img src="https://ufe-section-indonesie.org/ufeapp/images/activites/<?php echo $kj2['gambar'] ?>"  style="width:200px;" />
       </center> 
@@ -15586,7 +15114,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -15609,38 +15137,38 @@ $rt2 = mysqli_fetch_array($rt);
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="text" name="nama" value="<?php echo $kj2['judul'] ?>" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="<?php echo $kj2['judul'] ?>" class="form-control" placeholder="Name" required>
                 </div>
         
         
         
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Instruktur</span>
+                    <span class="input-group-text" style="width:120px;">Instructor</span>
                   </div>
           
           
               <input type="text" name="instruktur" value="<?php echo $kj2['instruktur'] ?>"
-          class="form-control" placeholder="Instruktur" required>
+          class="form-control" placeholder="Instructor" required>
                 </div>
         
         
         
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Ket. Instruktur</span>
+                    <span class="input-group-text" style="width:120px;">Instructor Desc.</span>
                   </div>
           
           
               <input type="text" name="ket_instruktur" value="<?php echo $kj2['ket_instruktur'] ?>"
-          class="form-control" placeholder="Ket. Instruktur" required>
+          class="form-control" placeholder="Instructor Desc." required>
                 </div>
         
 
@@ -15683,15 +15211,13 @@ $rt2 = mysqli_fetch_array($rt);
           <!--<div>
                 Short Desc
                </div>-->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
              <!--   <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php //echo $kj2['short_desc'] ?></textarea>
              -->
              <div style="margin-top:15px;">
-                           Deskripsi
+                           Description
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['deskripsi'] ?></textarea>
@@ -16396,7 +15922,7 @@ $rt2 = mysqli_fetch_array($rt);
 <?php }else if($_GET['p'] == "rincian2"){
 ?>
 
-<div class="card shadow-sm border-bottom-primary">
+<!-- <div class="card shadow-sm border-bottom-primary">
     <div class="card-header bg-white py-3">
         <div class="row">
             <div class="col">
@@ -16426,7 +15952,7 @@ $ep2 = mysqli_fetch_array($ep);
                     </span>
                     <span class="text">
 
-                        2. Tambah Data
+                        2. Add
                     </span>
                 </a>
             </div>
@@ -16437,7 +15963,7 @@ $ep2 = mysqli_fetch_array($ep);
                     </span>
                     <span class="text">
 
-                       2. Import Data
+                       2. Import
                     </span>
                 </a>
             </div>
@@ -16450,19 +15976,13 @@ $ep2 = mysqli_fetch_array($ep);
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
+            </div> -->
                 
 <?php 
 if(isset($_POST['tambahproduk2'])){
 if(($_POST['nama']) || ($_POST['deskripsi'])){
 
 include('../db.php');
-
-
-
-
-
-
 $maxDimW = 1000;
 $maxDimH = 500;
 list($width, $height, $type, $attr) = getimagesize( $_FILES['image_link']['tmp_name'] );
@@ -16549,7 +16069,7 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -16557,7 +16077,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -16565,15 +16085,15 @@ alert("gagal");
 
 ?>
 
-      <form method="POST" enctype="multipart/form-data" >
+      <!-- <form method="POST" enctype="multipart/form-data" >
             <div class="modal-body" style="height:70vh;overflow:scroll;">
             
    <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
-      </center>
+      </center> -->
                 <script>
   function readURLe(input) {
     if (input.files && input.files[0]) {
@@ -16592,9 +16112,9 @@ alert("gagal");
   }
 </script>  
   
-             <div class="input-group mb-3" style="margin-top:10px;">
+             <!-- <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 
                   <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
@@ -16602,44 +16122,8 @@ alert("gagal");
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Name" required>
                 </div>
-<!-- 
-                <div class="input-group mb-3" style="margin-top:10px;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
-                  </div>
-
-                  <input type="text" name="nama2" value="" class="form-control" placeholder="Nama (Tablayout)" required>
-                </div> -->
-
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="" >- kategori -</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div>
-            <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="" class="form-control" placeholder="Short Desc" required>
-                </div>
-        
-        
-           -->
         <div>Short Desc</div>        
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
@@ -16648,13 +16132,6 @@ alert("gagal");
                           <div style="margin-top:15px">Long Desc</div>        
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea>
-             
-          
-        
-        
-        
-        
-        
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -16662,13 +16139,8 @@ alert("gagal");
             </div>
       </form>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
-      </div>      
-            
-            
-                                           
+      </div>       -->                         
                    <?php 
                    include('../db.php');
                    $kj = mysqli_query($koneksi,"select * from tb_demar3 where id_kategori = '$_GET[id]' and visibility = '1'");
@@ -16751,18 +16223,14 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
  } 
 }
  ?>
-    <div class="table-responsive" style="padding:5px;">
+    <!-- <div class="table-responsive" style="padding:5px;">
         <table class="display responsive nowrap" id="dataTable23">
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Opsi</th>
-
-                    <th>Nama</th>
-                    <!-- <th>Nama (Tablayout)</th> -->
-
+                    <th>Options</th>
+                    <th>Name</th>
                   <th>Short Desc</th>
-                  
                 </tr>
             </thead>
             <tbody>
@@ -16778,12 +16246,7 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
 
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
-
-                                <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a> -->
-
- <a onclick="return confirm('Are you sure you want to delete this item?');" href="hapustbdemar3.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
+ <a onclick="return confirm('Are you sure you want to delete this item?');" href="hapustbdemar3.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Delete
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-trash"></i></a>
                             </td>                
@@ -16827,7 +16290,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -16849,7 +16312,7 @@ $rt2 = mysqli_fetch_array($rt);
 </script> 
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
                   <?php 
@@ -16861,49 +16324,10 @@ $rt2 = mysqli_fetch_array($rt);
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
                   <input type="text" name="nama" value="<?php echo $judul1 ?>" class="form-control" placeholder="Nama" required>
-                </div>
-        
-
-
-                <!-- <div class="input-group mb-3" style="margin-top:10px;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
-                  </div>
-          
-          
-          <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
-                  <input type="hidden" name="idc" value="<?php echo $idd ?>" /> -->
-                  <!-- <input type="text" name="nama2" value="<?php echo $kj2['judul2'] ?>" class="form-control" placeholder="Nama (Tablayout)" required>
-                </div> -->
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        
+                </div>    
           <div>
                 Short Desc
                </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php echo $short_desc1 ?></textarea>
@@ -16911,17 +16335,9 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $long_desc1 ?></textarea>
-             
-             
-        
-        
-        
-        
-        
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -16929,9 +16345,7 @@ $rt2 = mysqli_fetch_array($rt);
             </div>
       </form>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>      
             
             
@@ -16944,43 +16358,7 @@ $rt2 = mysqli_fetch_array($rt);
     </div>
 </div>
    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div> -->
 
 <div class="card shadow-sm border-bottom-primary">
     <div class="card-header bg-white py-3">
@@ -17006,7 +16384,7 @@ $qw2 = mysqli_fetch_array($qw);
                     </span>
                     <span class="text">
 
-                      3. Import Data Agent
+                      3. Import Agent
                     </span>
                 </a>
             </div>
@@ -17018,7 +16396,7 @@ $qw2 = mysqli_fetch_array($qw);
                     </span>
                     <span class="text">
 
-                        Tambah Data Agent
+                       3. Add Agent
                     </span>
                 </a>
             </div>
@@ -17029,7 +16407,7 @@ $qw2 = mysqli_fetch_array($qw);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data Agent (<?php echo $qw2['judul2'] ?>)</h4>
+              <h4 class="modal-title">Add Agent (<?php echo $qw2['judul2'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -17041,18 +16419,8 @@ if(isset($_POST['tambahproduk2agent'])){
 
 include('../db.php');
 
-
-
-
-
-
 $shortbaru = str_replace("'","&petiksatu&",$_POST['deskripsi']);
 $longbaru = str_replace("'","&petiksatu&",$_POST['long_deskripsi']);
-
-
-
-
-
 
 $maxDimW = 1000;
 $maxDimH = 500;
@@ -17219,7 +16587,7 @@ playstoreagent
 ?>
 
 <script>
-alert('Data berhasil ditambahkan<?php echo mysqli_error($koneksi); ?>');
+alert('Data added successfully<?php echo mysqli_error($koneksi); ?>');
 location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
 </script>
 
@@ -17232,7 +16600,7 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -17271,23 +16639,18 @@ alert("gagal");
         }
         </script> 
 
-
-
         <fieldset style="text-align:center;width:100%;"> 
         <img id="adjaij"   
         src="https://ufe-section-indonesie.org/ufeapp/images/agent/<?php echo $kj2['gambar2'] ?>"
         style="width:200px;visibility:hidden;" />
         </fieldset> 
 
-
-
-
         <input 
         onchange="ffri(this);" type="file" 
         name="image_liun" class="form-control"/>
         </a>
         <div>
-        Ukuran file disarankan (398*728)
+        Recommended file size (398*728)
         </div>
 
         <script>
@@ -17311,7 +16674,7 @@ alert("gagal");
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" 
-        style="width:120px;">Nama</span>
+        style="width:120px;">Name</span>
         </div>
 
 
@@ -17375,7 +16738,7 @@ alert("gagal");
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
-        <span class="input-group-text" style="width:120px;">Telp</span>
+        <span class="input-group-text" style="width:120px;">Phone</span>
         </div>
 
         <input type="text" name="telpagent" value="<?php echo $kj2['telpagent'] ?>" 
@@ -17384,7 +16747,7 @@ alert("gagal");
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
-        <span class="input-group-text" style="width:120px;">Handphone</span>
+        <span class="input-group-text" style="width:120px;">Mobile</span>
         </div>
 
         <input type="text" name="mobileagent" value="<?php echo $kj2['mobileagent'] ?>" 
@@ -17402,7 +16765,7 @@ alert("gagal");
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
-        <span class="input-group-text" style="width:120px;">Website</span>
+        <span class="input-group-text" style="width:120px;">Web</span>
         </div>
 
         <input type="text" name="webagent" value="<?php echo $kj2['webagent'] ?>" 
@@ -17448,7 +16811,6 @@ alert("gagal");
         <div>
         Short Desc
         </div>
-        <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
         <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
 
         required><?php echo $kj2['short_desc'] ?></textarea>
@@ -17456,15 +16818,7 @@ alert("gagal");
         <div style="margin-top:15px;">
         Long Desc
         </div>
-        <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
         <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"><?php echo $kj2['long_desc'] ?></textarea>
-
-
-
-
-
-
-
 
         </div>
         <div class="modal-footer justify-content-between">
@@ -17477,8 +16831,6 @@ alert("gagal");
         </div>
         <!-- /.modal-dialog -->
         </div>      
-            
-            
                                            
                    <?php 
                    include('../db.php');
@@ -17489,16 +16841,10 @@ alert("gagal");
      <?php 
 if(isset($_POST['updatekategori2'])){
 
-    
 if(($_POST['namaagent'])){
-
-
-
 
 $shortbaru = str_replace("'","&petiksatu&",$_POST['short_desc']);
 $longbaru = str_replace("'","&petiksatu&",$_POST['long_desc']);
-
-
 
 $maxDimW = 1000;
 $maxDimH = 500;
@@ -17526,11 +16872,7 @@ if ( $width > $maxDimW || $height > $maxDimH ) {
     imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
 
     imagejpeg($dst, $target_filename); // adjust format as needed
-
-
 }
-
-
 
 $maxDimW = 700;
 $maxDimH = 500;
@@ -17561,28 +16903,14 @@ if ( $width > $maxDimW || $height > $maxDimH ) {
 
 }
 
-
-
-
 $namaa = $_FILES['image_linkee']['name'];
 
-
 $namaax = $_FILES['image_linkeex']['name'];
-
-
 
 $shortt = str_replace("'","\'",$_POST['short_desc']);
 $longg = str_replace("'","\'",$_POST['long_desc']);
 
-
-
-
-
-
 if($namaax == null){
-
-
-    
     mysqli_query($koneksi,"update tb_agent set 
     short_desc = '$shortbaru',
     long_desc = '$longbaru',
@@ -17600,8 +16928,6 @@ if($namaax == null){
     twiteragent = '$_POST[twiteragent]',
     igagent = '$_POST[igagent]',
     playstoreagent = '$_POST[playstoreagent]'
-    
-    
     where id_agent = '$_POST[idc]'
     ");
     
@@ -17626,8 +16952,6 @@ if($namaax == null){
     twiteragent = '$_POST[twiteragent]',
     igagent = '$_POST[igagent]',
     playstoreagent = '$_POST[playstoreagent]'
-    
-    
     where id_agent = '$_POST[idc]'
     ");
     
@@ -17638,9 +16962,6 @@ if($namaax == null){
 
 
 if($namaa == null){
-
-
-    
 mysqli_query($koneksi,"update tb_agent set 
 short_desc = '$shortbaru',
 long_desc = '$longbaru',
@@ -17658,8 +16979,6 @@ fbagent = '$_POST[fbagent]',
 twiteragent = '$_POST[twiteragent]',
 igagent = '$_POST[igagent]',
 playstoreagent = '$_POST[playstoreagent]'
-
-
 where id_agent = '$_POST[idc]'
 ");
 
@@ -17684,14 +17003,10 @@ fbagent = '$_POST[fbagent]',
 twiteragent = '$_POST[twiteragent]',
 igagent = '$_POST[igagent]',
 playstoreagent = '$_POST[playstoreagent]'
-
-
 where id_agent = '$_POST[idc]'
 ");
-
   
 }
-
 
 ?>
 
@@ -17712,27 +17027,26 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-<th>Opsi</th>
-<th>Gambar 1</th>       
-<th>Gambar 2</th>                   
-           <th>Nama</th>
-                  <th>Gmaps</th>
-                  <th>Alamat</th>
-                  <!-- <th>Alamat 2</th>
-                  <th>Kota</th>
-                  <th>Kodepos</th> -->
-                  <th>Telp</th>
-                  <th>Mobile</th>
-                  <th>Email</th>
-                  <th>Website</th>
-                  <th>Fb</th>
-                  <th>Twitter</th>
-                  <th>IG</th>
-                  <th>Playstore</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
+<th>Options</th>
+<th>Logo</th>       
+<th>Picture</th>                   
+<th>Name</th>
+<th>Gmaps</th>
+<th>Address</th>
+<!-- <th>Alamat 2</th>
+<th>Kota</th>
+<th>Kodepos</th> -->
+<th>Phone</th>
+<th>Mobile</th>
+<th>Email</th>
+<th>Web</th>
+<th>Fb</th>
+<th>Twitter</th>
+<th>IG</th>
+<th>Playstore</th>                
+</tr>
+</thead>
+<tbody>
             <?php 
             $no = 1;
             while($kj2 = mysqli_fetch_array($kj)){
@@ -17746,10 +17060,10 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg2_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 
-                                <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a> -->
-         <a onclick="return confirm('Are you sure you want to delete this item?');"  href="hapustbagent.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
+         <a onclick="return confirm('Are you sure you want to delete this item?');"  href="hapustbagent.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Delete
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-trash"></i></a>
 
@@ -17852,7 +17166,7 @@ $rt2 = mysqli_fetch_array($rt);
        <input onchange="readURLeex<?php echo $idd; ?>(this);" type="file" name="image_linkeex" class="form-control"/>
       </a>
 <div>
-Ukuran file disarankan (398*728)
+Recommended file size (398*728)
 </div>
 
                 <script>
@@ -17876,7 +17190,7 @@ Ukuran file disarankan (398*728)
 
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
@@ -17909,7 +17223,7 @@ Ukuran file disarankan (398*728)
 
                 <div class="input-group mb-3" style="margin-top:10px;display:none;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">No. Kantor</span>
+                    <span class="input-group-text" style="width:120px;">No. Office</span>
                   </div>
           
                 <input type="text" name="alamat2agent" value="<?php echo $kj2['alamat2agent'] ?>" 
@@ -17918,7 +17232,7 @@ Ukuran file disarankan (398*728)
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kota</span>
+                    <span class="input-group-text" style="width:120px;">City</span>
                   </div>
           
                 <input type="text" name="kotaagent" value="<?php echo $kj2['kotaagent'] ?>" 
@@ -17927,7 +17241,7 @@ Ukuran file disarankan (398*728)
 
                 <div class="input-group mb-3" style="margin-top:10px;display:none;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kodepos</span>
+                    <span class="input-group-text" style="width:120px;">Postal Code</span>
                   </div>
           
                 <input type="text" name="kodeposagent" value="<?php echo $kj2['kodeposagent'] ?>" 
@@ -17936,7 +17250,7 @@ Ukuran file disarankan (398*728)
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Telp</span>
+                    <span class="input-group-text" style="width:120px;">Phone</span>
                   </div>
           
                 <input type="text" name="telpagent" value="<?php echo $kj2['telpagent'] ?>" 
@@ -17945,7 +17259,7 @@ Ukuran file disarankan (398*728)
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Handphone</span>
+                    <span class="input-group-text" style="width:120px;">Mobile</span>
                   </div>
           
                 <input type="text" name="mobileagent" value="<?php echo $kj2['mobileagent'] ?>" 
@@ -17963,7 +17277,7 @@ Ukuran file disarankan (398*728)
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Website</span>
+                    <span class="input-group-text" style="width:120px;">Web</span>
                   </div>
           
                 <input type="text" name="webagent" value="<?php echo $kj2['webagent'] ?>" 
@@ -18009,7 +17323,6 @@ Ukuran file disarankan (398*728)
           <div>
                 Short Desc
                </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="short_desc" placeholder="Place some text here"
                 <?php 
 $shirtbaru = str_replace("&petiksatu&","'",$kj2['short_desc']);
@@ -18019,7 +17332,6 @@ $shirtbaru = str_replace("&petiksatu&","'",$kj2['short_desc']);
              <div style="margin-top:15px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
 <?php 
 $lingbaru = str_replace("&petiksatu&","'",$kj2['long_desc']);
 ?>
@@ -18074,7 +17386,7 @@ $qw2 = mysqli_fetch_array($qw);
                  <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">Product of UFE</li>
+              <li class="breadcrumb-item active">Activities</li>
                             </ol>
             </div>
 
@@ -18096,7 +17408,7 @@ $qw2 = mysqli_fetch_array($qw);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Tambah Data (<?php echo $qw2['nama'] ?>)</h4>
+              <h4 class="modal-title">Add (<?php echo $qw2['nama'] ?>)</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -18163,7 +17475,7 @@ location = "?p=rincian&id=<?php //echo $_POST['idc2'] ?>";
 <?php }else{
 ?>
 <script>
-alert("gagal");
+alert("Failed");
 </script>
 <?php
 }
@@ -18171,7 +17483,7 @@ alert("gagal");
 }//else{
   ?>
 <!-- <script>
-alert("gagal");
+alert("Failed");
 </script> -->
   <?php
 //}
@@ -18185,7 +17497,7 @@ alert("gagal");
        <input onchange="readURLe(this);" type="file" name="image_link" class="form-control" />
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_imagee" style="width:1px;height:1px;" name="product_imagee" class="img-thumbnail">
       </center>
                 <script>
@@ -18208,7 +17520,7 @@ alert("gagal");
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
 <!--
                   <input type="hidden" name="idc2" value="<?php //echo $_GET['id'] ?>" />
@@ -18216,7 +17528,7 @@ alert("gagal");
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
-                  <input type="text" name="nama" value="" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="" class="form-control" placeholder="Name" required>
                 </div>
 <!--
                 <div class="input-group mb-3" style="margin-top:10px;">
@@ -18344,7 +17656,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=tb_ufe";
 
 </script>
@@ -18352,7 +17664,7 @@ location = "?p=tb_ufe";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=tb_ufe";
 
 </script>
@@ -18369,12 +17681,8 @@ location = "?p=tb_ufe";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Nama</th>
-                  <!--  <th>Nama (Tablayout)</th>
-
-                  <th>Short Desc</th>
-                  -->
-                    <th>Opsi</th>
+                    <th>Name</th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -18396,7 +17704,7 @@ location = "?p=tb_ufe";
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 
-                                <a href="?p=r_tb_ufe&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">Lebih lanjut
+                                <a href="?p=r_tb_ufe&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
                 
@@ -18444,7 +17752,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php //echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php //echo $idd; ?>" style="width:1px;height:1px;" name="product_image<?php //echo $idd; ?>" class="img-thumbnail">
       </center>
                 <script>
@@ -18467,14 +17775,14 @@ $rt2 = mysqli_fetch_array($rt);
   -->
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama</span>
+                    <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
           
           
           <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
           <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="text" name="nama" value="<?php echo $kj2['nama'] ?>" class="form-control" placeholder="Nama" required>
+                  <input type="text" name="nama" value="<?php echo $kj2['nama'] ?>" class="form-control" placeholder="Name" required>
                 </div>
         
 
@@ -18517,7 +17825,6 @@ $rt2 = mysqli_fetch_array($rt);
           <div>
                 Short Desc
                </div> -->
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                <!-- <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php //echo $kj2['short_desc'] ?></textarea> -->
@@ -18525,8 +17832,7 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:15px;">
                            Long Desc
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
-         <!--       <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
+                <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php //echo $kj2['long_desc'] ?></textarea>
              
@@ -18572,7 +17878,7 @@ include('../db.php');
            <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
-              <li class="breadcrumb-item active">Espace Membre </li>
+              <li class="breadcrumb-item active">Members Corner</li>
                             </ol>
       
       </div>
@@ -19015,7 +18321,7 @@ $rt2 = mysqli_fetch_array($rt);
     <input onchange="readURL<?php echo $idd; ?>(this);" type="file" name="image_link" class="form-control"/>
       </a><br>
       <center>
-      <i><font style="font-size:10px;">* mode kamera landscape
+      <i><font style="font-size:10px;">* landscape mode
       </font></i><br><img src="" id="product_image<?php echo $idd; ?>" 
       style="width:1px;height:1px;" name="product_image<?php echo $idd; ?>" 
       class="img-thumbnail">
@@ -19051,7 +18357,6 @@ $rt2 = mysqli_fetch_array($rt);
              <div style="margin-top:10px;padding-left:5px;">
                            Description
                 </div>
-                <!-- <textarea class="textarea" name="deskripsi" placeholder="Place some text here" -->
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                           ><?php echo $deskripsi2 ?></textarea>
@@ -19147,7 +18452,7 @@ $rt2 = mysqli_fetch_array($rt);
       
       <fieldset style="margin-top:10px;background-color:white;
       height:80vh;overflow:scroll;
-      width:90%;max-width:500px;align:center;">
+      width:90%;max-width:500px;">
       <image src="foto.png" style="width:100%;height:auto;" />
       <br>
       <br>
@@ -19746,24 +19051,6 @@ $(function () {
 
   'use strict'
 
-  // Make the dashboard widgets sortable Using jquery UI
-  $('.connectedSortable').sortable({
-    placeholder         : 'sort-highlight',
-    connectWith         : '.connectedSortable',
-    handle              : '.card-header, .nav-tabs',
-    forcePlaceholderSize: true,
-    zIndex              : 999999
-  })
-  $('.connectedSortable .card-header, .connectedSortable .nav-tabs-custom').css('cursor', 'move')
-
-  // jQuery UI sortable for the todo list
-  $('.todo-list').sortable({
-    placeholder         : 'sort-highlight',
-    handle              : '.handle',
-    forcePlaceholderSize: true,
-    zIndex              : 999999
-  })
-
   // bootstrap WYSIHTML5 - text editor
   $('.textarea').summernote()
 
@@ -19845,162 +19132,6 @@ $(function () {
     height: '250px'
   })
 
-  /* Chart.js Charts */
-  // Sales chart
-  var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d');
-  //$('#revenue-chart').get(0).getContext('2d');
-
-
- 
-
-  var salesChartData = {
-    labels  : ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
-    datasets: [
-      {
-        label               : 'Pengunjung',
-        backgroundColor     : 'rgba(60,141,188,0.9)',
-        borderColor         : 'rgba(60,141,188,0.8)',
-        pointRadius          : false,
-        pointColor          : '#3b8bba',
-        pointStrokeColor    : 'rgba(60,141,188,1)',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : ['13', '9', '22', '25', '26', '34', '20']
-      },
-      {
-        label               : 'Electronics',
-        backgroundColor     : 'rgba(210, 214, 222, 1)',
-        borderColor         : 'rgba(210, 214, 222, 1)',
-        pointRadius         : false,
-        pointColor          : 'rgba(210, 214, 222, 1)',
-        pointStrokeColor    : '#c1c7d1',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(220,220,220,1)',
-        data                : ['0', '0', '0', '0', '0', '0', '0']
-      },
-    ]
-  }
-
-  var salesChartOptions = {
-    maintainAspectRatio : false,
-    responsive : true,
-    legend: {
-      display: false
-    },
-    scales: {
-      xAxes: [{
-        gridLines : {
-          display : false,
-        }
-      }],
-      yAxes: [{
-        gridLines : {
-          display : false,
-        }
-      }]
-    }
-  }
-
-  // This will get the first returned node in the jQuery collection.
-  var salesChart = new Chart(salesChartCanvas, { 
-      type: 'line', 
-      data: salesChartData, 
-      options: salesChartOptions
-    }
-  )
-
-  // Donut Chart
-  var pieChartCanvas = $('#sales-chart-canvas').get(0).getContext('2d')
-  var pieData        = {
-    labels: [
-        'Instore Sales', 
-        'Download Sales',
-        'Mail-Order Sales', 
-    ],
-    datasets: [
-      {
-        data: [30,12,20],
-        backgroundColor : ['#f56954', '#00a65a', '#f39c12'],
-      }
-    ]
-  }
-  var pieOptions = {
-    legend: {
-      display: false
-    },
-    maintainAspectRatio : false,
-    responsive : true,
-  }
-  //Create pie or douhnut chart
-  // You can switch between pie and douhnut using the method below.
-  var pieChart = new Chart(pieChartCanvas, {
-    type: 'doughnut',
-    data: pieData,
-    options: pieOptions      
-  });
-
-  // Sales graph chart
-  var salesGraphChartCanvas = $('#line-chart').get(0).getContext('2d');
-  //$('#revenue-chart').get(0).getContext('2d');
-
-  var salesGraphChartData = {
-    labels  : ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2', '2012 Q3', '2012 Q4', '2013 Q1', '2013 Q2'],
-    datasets: [
-      {
-        label               : 'Pengunjung',
-        fill                : false,
-        borderWidth         : 2,
-        lineTension         : 0,
-        spanGaps : true,
-        borderColor         : '#efefef',
-        pointRadius         : 3,
-        pointHoverRadius    : 7,
-        pointColor          : '#efefef',
-        pointBackgroundColor: '#efefef',
-        data                : [2666, 2778, 4912, 3767, 6810, 5670, 4820, 15073, 10687, 8432]
-      }
-    ]
-  }
-
-  var salesGraphChartOptions = {
-    maintainAspectRatio : false,
-    responsive : true,
-    legend: {
-      display: false,
-    },
-    scales: {
-      xAxes: [{
-        ticks : {
-          fontColor: '#efefef',
-        },
-        gridLines : {
-          display : false,
-          color: '#efefef',
-          drawBorder: false,
-        }
-      }],
-      yAxes: [{
-        ticks : {
-          stepSize: 5000,
-          fontColor: '#efefef',
-        },
-        gridLines : {
-          display : true,
-          color: '#efefef',
-          drawBorder: false,
-        }
-      }]
-    }
-  }
-
-  // This will get the first returned node in the jQuery collection.
-  var salesGraphChart = new Chart(salesGraphChartCanvas, { 
-      type: 'line', 
-      data: salesGraphChartData, 
-      options: salesGraphChartOptions
-    }
-  )
-
 })
 
 
@@ -20060,8 +19191,6 @@ $(function () {
 
 
     <!-- Page level plugins -->
-  <script type="text/javascript" language="javascript" src="https://rp.fratekindo.com/resources/syntax/shCore.js"></script>
-  <script type="text/javascript" language="javascript" src="https://rp.fratekindo.com/resources/demo.js"></script>
 
    <!-- <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
