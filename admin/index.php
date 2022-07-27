@@ -370,14 +370,7 @@ location = "?p=tb_dm_1";
 }
   </style>
   
-  
-  
-  
-  
-  
 </head>
-
-
 
 <body  class="hold-transition sidebar-mini layout-navbar-fixed">
 <!-- Site wrapper -->
@@ -1594,7 +1587,7 @@ where id_menu = '$_POST[idc]'
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 </script>
 
 
@@ -2506,7 +2499,7 @@ location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -3597,7 +3590,7 @@ location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -4131,7 +4124,7 @@ location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -5323,7 +5316,7 @@ location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -5413,7 +5406,7 @@ location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -5476,17 +5469,6 @@ location = "?p=menu&id_menu=<?php echo $_POST['idc2'] ?>";
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>21" href="" class="btn btn-primary btn-circle btn-sm"><i class="fa fa-edit"></i> Edit Ikon</a>
-
-                              <!--  <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-                -->
-                
-                
-                <!-- <a href="hapustbdemar2.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-trash"></i></a>
--->
 
                             </td>
                         </tr
@@ -6024,7 +6006,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -6032,7 +6014,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -8225,7 +8207,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=data_presiden";
 
 </script>
@@ -8233,7 +8215,7 @@ location = "?p=data_presiden";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=data_presiden";
 
 </script>
@@ -8276,10 +8258,6 @@ location = "?p=data_presiden";
 
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
-
-                                <!--<a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>-->
                 
                 
                 
@@ -8710,7 +8688,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=info_member";
 
 </script>
@@ -8718,7 +8696,7 @@ location = "?p=info_member";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=info_member";
 
 </script>
@@ -8761,17 +8739,6 @@ location = "?p=info_member";
 
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
-
-                                <!--<a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>-->
-                
-                
-                
-                <!-- <a href="hapustbpresiden.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-trash"></i></a>
--->
 
                             </td>
                         </tr
@@ -9206,7 +9173,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -9214,7 +9181,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -9279,23 +9246,6 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
                                           <td><?php echo substr($kj2['no_invoice'],4,1000) ?></td>
                             <td><?php echo substr($kj2['no_invoice'],0,3) ?></td>
                             
-              <!--<td>-->
-
-
-                               <!-- <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
--->
-                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-                
-                
-                
-                 <a href="hapustbdemar2.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-trash"></i></a> -->
-
-
-                            <!--</td>-->
                         </tr
                         >
             
@@ -9757,7 +9707,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -9765,7 +9715,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -9828,23 +9778,6 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
                  <td><?php echo number_format($kj2['harga'],0,",",".") ?></td>
                                           <td><?php echo $kj2['no_invoice'] ?></td>
                             
-            <!--  <td>
-
-
-                                <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
--->
-                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-                
-                
-                
-                 <a href="hapustbdemar2.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-trash"></i></a> -->
-
-
-                           <!-- </td>-->
                         </tr
                         >
             
@@ -10307,7 +10240,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -10315,7 +10248,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -10377,23 +10310,6 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
                  <td><?php echo number_format($kj2['harga'],0,",",".") ?></td>
                                           <td><?php echo $kj2['no_invoice'] ?></td>
                             
-            <!--  <td>
-
-
-                                <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
--->
-                             <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-                
-                
-                
-                 <a href="hapustbdemar2.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-trash"></i></a> -->
-
-
-                        <!--    </td> -->
                         </tr
                         >
             
@@ -10949,7 +10865,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=user_personal_sudah_dikonfirmasi";
 
 </script>
@@ -10957,7 +10873,7 @@ location = "?p=user_personal_sudah_dikonfirmasi";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -11002,17 +10918,6 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
-
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-    -->           
-                
-  <!--              
-                 <a href="hapustbdemar2.php?id=<?php //echo $idd ?>&idc=<?php //echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-trash"></i></a>
--->
 
                             </td>
                         </tr
@@ -11656,7 +11561,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=user_personal_belum_dikonfirmasi";
 
 </script>
@@ -11664,7 +11569,7 @@ location = "?p=user_personal_belum_dikonfirmasi";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -11716,11 +11621,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
-
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-    -->           
+         
                  <a href="kirimulangkode.php?id=<?php echo $idd ?>&p=<?php echo $_GET['p'] ?>" class="btn btn-danger btn-circle btn-sm">Kirim ulang kode
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="far fa-paper-plane"></i></a>
@@ -12348,7 +12249,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=user_personal_belum_dikonfirmasi";
 
 </script>
@@ -12356,7 +12257,7 @@ location = "?p=user_personal_belum_dikonfirmasi";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -12407,11 +12308,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
-
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-    -->           
+          
                  <a href="kirimulangkode.php?id=<?php echo $idd ?>&p=<?php echo $_GET['p'] ?>" class="btn btn-danger btn-circle btn-sm">resend code
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="far fa-paper-plane"></i></a>
@@ -13091,12 +12988,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
               <td>
 
 
-                                <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
-
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-    -->           
+                                <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>         
                 
               
                  <a href="kirimulangkode.php?id=<?php echo $idd ?>&p=<?php echo $_GET['p'] ?>" class="btn btn-danger btn-circle btn-sm">Resend code
@@ -13577,7 +13469,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=user_vip_sudah_dikonfirmasi";
 
 </script>
@@ -13585,7 +13477,7 @@ location = "?p=user_vip_sudah_dikonfirmasi";
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -13694,12 +13586,7 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
                             
               <td>
 
-                                <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>
-
-   <!--                             <a href="?p=rincian2&id=<?php //echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-    -->           
+                                <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-eye"></i></a>         
                 
   <!--              
                  <a href="hapustbdemar2.php?id=<?php //echo $idd ?>&idc=<?php //echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
@@ -14245,7 +14132,7 @@ if($_FILES['image_link']['name'] == null){
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=r2_tb_ufe&id=<?php echo $_POST['idc2'] ?>&idc=<?php echo $_POST['idc3'] ?>";
 
 </script>
@@ -14253,7 +14140,7 @@ location = "?p=r2_tb_ufe&id=<?php echo $_POST['idc2'] ?>&idc=<?php echo $_POST['
 <?php }else{ ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -14302,17 +14189,6 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
 
 
                                 <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
-
-                             <!--   <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a>
-                -->
-                
-                
-                <!-- <a href="hapustbdemar2.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Hapus
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-trash"></i></a>
--->
 
                             </td>
                         </tr
@@ -14709,7 +14585,7 @@ if(isset($_POST['tambahnotifac'])) {
     mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
       VALUES ('activities', 'UFE Indonesié', '$_POST[titlenotif]', 'Activités', '$tgl', '', '".$_POST['idc']."', 'all', '-', '-')");
     $callNoti = new startSendNotification();
-    $callNoti->sendNoti($_POST['titlenotif'], $bodyNoti);
+    $callNoti->sendNoti($_POST['titlenotif'], 'Activités');
 
     ?>
     <script>
@@ -16120,7 +15996,7 @@ where id_demar = '$_POST[idc]'
 ?>
 
 <script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
+alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
 location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
 
 </script>
@@ -16290,8 +16166,7 @@ $qw2 = mysqli_fetch_array($qw);
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">
-
-                      3. Import Agent
+                      Import Agent
                     </span>
                 </a>
             </div>
@@ -16302,15 +16177,132 @@ $qw2 = mysqli_fetch_array($qw);
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">
-
-                       3. Add Agent
+                       Add Agent
                     </span>
                 </a>
             </div>
-            </div>
-    
-      
-       <div class="modal fade" id="modaltambahagent">
+            </div>          
+<?php 
+if(isset($_POST['addagent'])) {
+  include('../db.php');
+  $maxDimW = 1000;
+  $maxDimH = 500;
+  list($widthq, $heightq, $typeq, $attrq) = getimagesize( $_FILES['image_liun']['tmp_name'] );
+  if ( $widthq > $maxDimW || $heightq > $maxDimH ) {
+      $target_filenameq = $_FILES['image_liun']['tmp_name'];
+      $fnq = $_FILES['image_linkee2']['tmp_name'];
+      $sizeq = getimagesize( $fnq );
+      $ratioq = $sizeq[0]/$sizeq[1]; // width/height
+      //if( $ratio > 1) {
+          $widthq = $maxDimW;
+          $heightq = ($maxDimW / $size[0]) * $size[1];
+      // } else {
+      //     $width = $maxDimW*$ratio;
+      //     $height = $maxDimH;
+      // }
+      $srcq = imagecreatefromstring(file_get_contents($fnq));
+      $dstq = imagecreatetruecolor( $widthq, $heightq );
+      imagecopyresampled($dstq, $srcq, 0, 0, 0, 0, $widthq, $heightq,
+      $sizeq[0], $sizeq[1] );
+      imagejpeg($dstq, $target_filenameq); // adjust format as needed
+  }
+  $namaa = $_FILES['image_liun']['name'];
+  $longbaru = str_replace("'","&petiksatu&",$_POST['long_desc']);
+  $rating1 = $_POST['rating1'] ? $_POST['rating1'] :"0";
+  $rating2 = $_POST['rating2'] ? $_POST['rating2'] :"0";
+  $rating3 = $_POST['rating3'] ? $_POST['rating3'] :"0";
+  if($namaa == null){
+    $sql = "INSERT INTO tb_agent (id_kategori, judul, judul2, short_desc, long_desc,
+      gambar, gambar2, namaagent, gmaps, alamatagent, 
+      alamat2agent, kotaagent, kodeposagent, telpagent, mobileagent,
+      emailagent, webagent, fbagent, twiteragent, igagent,
+      waagent, telegramagent, linkedagent, youtubeagent, playstoreagent,
+      appstoreagent, rating1, rating2, rating3, searching) 
+      VALUES ('$_POST[idc2]', '', '', '', '$longbaru',
+      '', '', '$_POST[namaagent]', '$_POST[gmaps]', '$_POST[alamatagent]',
+      '', '$_POST[kotaagent]', '$_POST[kodeposagent]', '$_POST[telpagent]', '$_POST[mobileagent]',
+      '$_POST[emailagent]', '$_POST[webagent]', '$_POST[fbagent]', '$_POST[twiteragent]', '$_POST[igagent]',
+      '$_POST[waagent]', '$_POST[telegramagent]', '$_POST[linkedagent]', '$_POST[youtubeagent]', '$_POST[playstoreagent]',
+      '$_POST[appstoreagent]', '$rating1', '$rating2', '$rating3', '$_POST[searching]')";
+    mysqli_query($koneksi, $sql);
+  }else{
+    move_uploaded_file($_FILES['image_liun']['tmp_name'],"../images/agent/".$_FILES['image_liun']['name']);
+    $sql = "INSERT INTO tb_agent (id_kategori, judul, judul2, short_desc, long_desc,
+    gambar, gambar2, namaagent, gmaps, alamatagent, 
+    alamat2agent, kotaagent, kodeposagent, telpagent, mobileagent,
+    emailagent, webagent, fbagent, twiteragent, igagent,
+    waagent, telegramagent, linkedagent, youtubeagent, playstoreagent,
+    appstoreagent, rating1, rating2, rating3, searching) 
+    VALUES ('$_POST[idc2]', '', '', '', '$longbaru',
+    '', '$namaa', '$_POST[namaagent]', '$_POST[gmaps]', '$_POST[alamatagent]',
+    '', '$_POST[kotaagent]', '$_POST[kodeposagent]', '$_POST[telpagent]', '$_POST[mobileagent]',
+    '$_POST[emailagent]', '$_POST[webagent]', '$_POST[fbagent]', '$_POST[twiteragent]', '$_POST[igagent]',
+    '$_POST[waagent]', '$_POST[telegramagent]', '$_POST[linkedagent]', '$_POST[youtubeagent]', '$_POST[playstoreagent]',
+    '$_POST[appstoreagent]', '$rating1', '$rating2', '$rating3', '$_POST[searching]')";
+    mysqli_query($koneksi, $sql);
+  }
+
+  if($_POST['isshownotif'] == '1') {
+    class startSendNotification {
+      function sendNoti($titleNoti, $bodyNoti) {
+        define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+        include('../db.php');
+        $ewww = mysqli_query($koneksi,"SELECT * from user where token_push != '' ");
+        while ($tyu = mysqli_fetch_array($ewww)){
+          $qw[] = $tyu['token_push'];
+        }
+
+        $fcmMsg = array(
+          'title' => $titleNoti,
+          'body' => $bodyNoti,
+          'icon' => 'image/look24-logo-s.png',
+          'sound' => 'default' 
+        );
+
+        $fcmData = array(
+          'halaman' => 'activities',
+          'nomor' => $_POST['idc'],
+        );
+        
+        $fcmFields = array(
+          'registration_ids' => $qw,
+          'priority' => 'high',
+          'notification' => $fcmMsg,
+          'data' => $fcmData
+        );
+
+        $headers = array(
+          'Authorization: key=' . API_ACCESS_KEY,
+          'Content-Type: application/json'
+        );
+        
+        $ch = curl_init();
+        curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+        curl_setopt( $ch,CURLOPT_POST, true );
+        curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+        curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+        curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+        curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+        $result = curl_exec($ch );
+        curl_close( $ch );
+        echo $result . "\n\n".$qw;
+      }
+    }
+
+    $tgl = date('d/m/Y');
+    mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+      VALUES ('activities', 'UFE Indonesié', '$_POST[titlenotif]', 'Activités', '$tgl', '', '".$_POST['idc']."', 'all', '-', '-')");
+    $callNoti = new startSendNotification();
+    $callNoti->sendNoti($_POST['titlenotif'], 'Activités');
+  }
+  ?>
+    <script>
+    console.log("Data added successfully");
+    alert("Data added successfully <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
+    </script> <?php
+} ?>
+    <div class="modal fade" id="modaltambahagent">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -16319,237 +16311,11 @@ $qw2 = mysqli_fetch_array($qw);
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-                
-<?php 
-if(isset($_POST['tambahproduk2agent'])){
-// if($_POST['nama']){
-
-include('../db.php');
-
-$shortbaru = str_replace("'","&petiksatu&",$_POST['deskripsi']);
-$longbaru = str_replace("'","&petiksatu&",$_POST['long_deskripsi']);
-
-$maxDimW = 1000;
-$maxDimH = 500;
-list($width, $height, $type, $attr) = getimagesize( $_FILES['image_linkee2']['tmp_name'] );
-if ( $width > $maxDimW || $height > $maxDimH ) {
-    $target_filename = $_FILES['image_linkee2']['tmp_name'];
-    $fn = $_FILES['image_linkee2']['tmp_name'];
-    $size = getimagesize( $fn );
-    $ratio = $size[0]/$size[1]; // width/height
-    //if( $ratio > 1) {
-        $width = $maxDimW;
-        $height = ($maxDimW / $size[0]) * $size[1];
-    // } else {
-    //     $width = $maxDimW*$ratio;
-    //     $height = $maxDimH;
-    // }
-    $src = imagecreatefromstring(file_get_contents($fn));
-    $dst = imagecreatetruecolor( $width, $height );
-    imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
-
-    imagejpeg($dst, $target_filename); // adjust format as needed
-
-
-}
-
-
-
-list($widthq, $heightq, $typeq, $attrq) = getimagesize( $_FILES['image_liun']['tmp_name'] );
-if ( $widthq > $maxDimW || $heightq > $maxDimH ) {
-    $target_filenameq = $_FILES['image_liun']['tmp_name'];
-    $fnq = $_FILES['image_linkee2']['tmp_name'];
-    $sizeq = getimagesize( $fnq );
-    $ratioq = $sizeq[0]/$sizeq[1]; // width/height
-    //if( $ratio > 1) {
-        $widthq = $maxDimW;
-        $heightq = ($maxDimW / $size[0]) * $size[1];
-    // } else {
-    //     $width = $maxDimW*$ratio;
-    //     $height = $maxDimH;
-    // }
-    $srcq = imagecreatefromstring(file_get_contents($fnq));
-    $dstq = imagecreatetruecolor( $widthq, $heightq );
-    imagecopyresampled($dstq, $srcq, 0, 0, 0, 0, $widthq, $heightq,
-     $sizeq[0], $sizeq[1] );
-
-    imagejpeg($dstq, $target_filenameq); // adjust format as needed
-
-
-}
-
-
-
-
-$namaa = $_FILES['image_linkee2']['name'];
-
-$namaa2 = $_FILES['image_liun']['name'];
-
-
-if($namaa == null){
-  
-
-$isi = mysqli_query($koneksi,"insert into tb_agent (
-id_kategori,
-judul,
-judul2,
-short_desc,
-long_desc,
-gambar,
-gambar2,
-namaagent,
-gmaps,
-alamatagent,
-alamat2agent,
-kotaagent,
-kodeposagent,
-telpagent,
-mobileagent,
-emailagent,
-webagent,
-fbagent,
-twiteragent,
-igagent,
-playstoreagent
-) values
-(
-'$_POST[idc2]',
-'$_POST[nama]',
-'$_POST[nama]',
-'$shortbaru',
-'$longbaru',
-'',
-'$namaa2',
-'$_POST[namaagent]',
-'$_POST[gmaps]',
-'$_POST[alamatagent]',
-'$_POST[alamat2agent]',
-'$_POST[kotaagent]',
-'$_POST[kodeposagent]',
-'$_POST[telpagent]',
-'$_POST[mobileagent]',
-'$_POST[emailagent]',
-'$_POST[webagent]',
-'$_POST[fbagent]',
-'$_POST[twiteragent]',
-'$_POST[igagent]',
-'$_POST[playstoreagent]'
-)
-");
-
-}else{
-move_uploaded_file($_FILES['image_linkee2']['tmp_name'],"../images/agent/".$_FILES['image_linkee2']['name']);
-move_uploaded_file($_FILES['image_liun']['tmp_name'],"../images/agent/".$_FILES['image_liun']['name']);
-$isi = mysqli_query($koneksi,"insert into tb_agent (
-id_kategori,
-judul,
-judul2,
-short_desc,
-long_desc,
-gambar,
-gambar2,
-namaagent,
-gmaps,
-alamatagent,
-alamat2agent,
-kotaagent,
-kodeposagent,
-telpagent,
-mobileagent,
-emailagent,
-webagent,
-fbagent,
-twiteragent,
-igagent,
-playstoreagent
-) values
-(
-'$_POST[idc2]',
-'$_POST[nama]',
-'$_POST[nama]',
-'$shortbaru',
-'$longbaru',
-'$namaa',
-'$namaa2',
-'$_POST[namaagent]',
-'$_POST[gmaps]',
-'$_POST[alamatagent]',
-'$_POST[alamat2agent]',
-'$_POST[kotaagent]',
-'$_POST[kodeposagent]',
-'$_POST[telpagent]',
-'$_POST[mobileagent]',
-'$_POST[emailagent]',
-'$_POST[webagent]',
-'$_POST[fbagent]',
-'$_POST[twiteragent]',
-'$_POST[igagent]',
-'$_POST[playstoreagent]'
-)
-");
-
-}
-
-
-?>
-
-<script>
-alert('Data added successfully<?php echo mysqli_error($koneksi); ?>');
-location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
-</script>
-
-<script>
-//alert("gagal 2<?php echo mysqli_error($koneksi); ?>");
-</script>
-<?php
-//}
-
-}//else{
-  ?>
-<!-- <script>
-alert("Failed");
-</script> -->
-  <?php
-//}
-
-
-?>
-
         <form method="POST" enctype="multipart/form-data" >
         <div class="modal-body" style="height:70vh;overflow:scroll;">
 
-
-        <fieldset style="width:100%;text-align:center;">
-        <img src="" id="product_imageee2" 
-        style="width:1px;height:1px;visibility:hidden;" 
-        name="product_imageee2" class="img-thumbnail">
-        </fieldset>
-
-
-        <input onchange="readURLee2(this);" type="file" name="image_linkee2" class="form-control"/>
-        </a><br>
-        <script>
-        function readURLee2(input) {
-        if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        document.getElementById("product_imageee2").style.visibility = 'visible';
-        reader.onload = function (e) {
-        $('#product_imageee2')
-        .attr('src', e.target.result)
-        .width("auto")
-        .height(100);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-        }
-
-        }
-        </script> 
-
         <fieldset style="text-align:center;width:100%;"> 
-        <img id="adjaij"   
-        src="https://ufe-section-indonesie.org/ufeapp/images/agent/<?php echo $kj2['gambar2'] ?>"
-        style="width:200px;visibility:hidden;" />
+        <img id="adjaij" src="" style="width:200px;visibility:hidden;" />
         </fieldset> 
 
         <input 
@@ -16557,7 +16323,7 @@ alert("Failed");
         name="image_liun" class="form-control"/>
         </a>
         <div>
-        Recommended file size (398*728)
+        Recommended image size (300*534)
         </div>
 
         <script>
@@ -16569,7 +16335,7 @@ alert("Failed");
         $('#adjaij')
         .attr('src', e.target.result)
         .width("auto")
-        .height(100);
+        .height(200);
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -16583,349 +16349,288 @@ alert("Failed");
         <span class="input-group-text" 
         style="width:120px;">Name</span>
         </div>
-
-
         <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
         <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
         <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-        <input type="text" name="namaagent" value="<?php echo $kj2['namaagent'] ?>" 
-        class="form-control" placeholder="Nama" required>
+        <input type="text" name="namaagent" 
+        class="form-control" placeholder="Name" required>
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">Gmaps</span>
         </div>
-
-        <input type="text" name="gmaps" value="<?php echo $kj2['gmaps'] ?>" 
+        <input type="text" name="gmaps"  
         class="form-control" placeholder="Gmaps" required>
         </div>
-
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">
-        Alamat</span>
+        Address</span>
         </div>
-        <textarea type="text" style="height:150px;" name="alamatagent"
-        class="form-control"
-        required><?php echo $kj2['alamatagent'] ?></textarea>
-
-        <!-- <input type="text" name="alamatagent" value="<?php echo $kj2['alamatagent'] ?>" 
-        class="form-control" placeholder="Alamat" required> -->
-        </div>
-
-
-        <!-- <div class="input-group mb-3" style="margin-top:10px;">
-        <div class="input-group-prepend">
-        <span class="input-group-text" style="width:120px;">No. Kantor</span>
-        </div>
-
-        <input type="text" name="alamat2agent" value="<?php echo $kj2['alamat2agent'] ?>" 
-        class="form-control" placeholder="No." required>
+        <textarea type="text" style="height:150px;" name="alamatagent" class="form-control" required></textarea>
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
-        <span class="input-group-text" style="width:120px;">Kota</span>
+        <span class="input-group-text" style="width:120px;">City</span>
         </div>
-
-        <input type="text" name="kotaagent" value="<?php echo $kj2['kotaagent'] ?>" 
-        class="form-control" placeholder="Kota" required>
+        <input type="text" name="kotaagent" class="form-control" placeholder="City" required>
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
-        <span class="input-group-text" style="width:120px;">Kodepos</span>
+        <span class="input-group-text" style="width:120px;">Postal Code</span>
         </div> 
-
-        <input type="text" name="kodeposagent" value="<?php echo $kj2['kodeposagent'] ?>" 
-        class="form-control" placeholder="Kodepos" required>
-        </div>-->
+        <input type="text" name="kodeposagent" 
+        class="form-control" placeholder="Postal Code">
+        </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">Phone</span>
         </div>
-
-        <input type="text" name="telpagent" value="<?php echo $kj2['telpagent'] ?>" 
-        class="form-control" placeholder="Telp" required>
+        <input type="text" name="telpagent" class="form-control" placeholder="Phone" required>
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">Mobile</span>
         </div>
+        <input type="text" name="mobileagent" class="form-control" placeholder="Mobile" >
+        </div>
 
-        <input type="text" name="mobileagent" value="<?php echo $kj2['mobileagent'] ?>" 
-        class="form-control" placeholder="HP" >
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" style="width:120px;">WhatsApp</span>
+        </div>
+        <input type="text" name="waagent" class="form-control" placeholder="WhatsApp" >
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">Email</span>
         </div>
-
-        <input type="text" name="emailagent" value="<?php echo $kj2['emailagent'] ?>" 
-        class="form-control" placeholder="Email" required>
+        <input type="text" name="emailagent" class="form-control" placeholder="Email" required>
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">Web</span>
         </div>
+        <input type="text" name="webagent" class="form-control" placeholder="Web">
+        </div>
 
-        <input type="text" name="webagent" value="<?php echo $kj2['webagent'] ?>" 
-        class="form-control" placeholder="No." required>
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" style="width:120px;">Telegram</span>
+        </div>
+        <input type="text" name="telegramagent" class="form-control" placeholder="Telegram">
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">FB</span>
         </div>
-
-        <input type="text" name="fbagent" value="<?php echo $kj2['fbagent'] ?>" 
-        class="form-control" placeholder="FB" >
+        <input type="text" name="fbagent" class="form-control" placeholder="FB" >
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">Twitter</span>
         </div>
-
-        <input type="text" name="twiteragent" value="<?php echo $kj2['twiteragent'] ?>" 
-        class="form-control" placeholder="Twitter" >
+        <input type="text" name="twiteragent" class="form-control" placeholder="Twitter" >
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
         <span class="input-group-text" style="width:120px;">IG</span>
         </div>
-
-        <input type="text" name="igagent" value="<?php echo $kj2['igagent'] ?>" 
-        class="form-control" placeholder="IG" >
+        <input type="text" name="igagent" class="form-control" placeholder="IG" >
         </div>
 
         <div class="input-group mb-3" style="margin-top:10px;">
         <div class="input-group-prepend">
-        <span class="input-group-text" style="width:120px;">Playstore</span>
+        <span class="input-group-text" style="width:120px;">Youtube</span>
+        </div>
+        <input type="text" name="youtubeagent" class="form-control" placeholder="Youtube" >
         </div>
 
-        <input type="text" name="playstoreagent" value="<?php echo $kj2['playstoreagent'] ?>" 
-        class="form-control" placeholder="Playstore" >
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" style="width:120px;">LinkedIn</span>
+        </div>
+        <input type="text" name="linkedagent" class="form-control" placeholder="LinkedIn" >
+        </div>
+
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" style="width:120px;">Play Store</span>
+        </div>
+        <input type="text" name="playstoreagent" class="form-control" placeholder="Play Store" >
+        </div>
+
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" style="width:120px;">App Store</span>
+        </div>
+        <input type="text" name="appstoreagent" class="form-control" placeholder="App Store" >
         </div>
 
         <div>
-        Short Desc
+          Description
         </div>
-        <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
+        <textarea class="form-control" name="long_desc" placeholder="Place some text here" required></textarea>
 
-        required><?php echo $kj2['short_desc'] ?></textarea>
-
-        <div style="margin-top:15px;">
-        Long Desc
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" style="width:120px;">Rating</span>
         </div>
-        <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"><?php echo $kj2['long_desc'] ?></textarea>
+        <input type="number" name="rating1" class="form-control" placeholder="Rating">
+        </div>
+
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" style="width:120px;">Price Rating</span>
+        </div>
+        <input type="number" name="rating2" class="form-control" placeholder="Price Rating">
+        </div>
+
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" style="width:120px;">Delicacy Rating</span>
+        </div>
+        <input type="number" name="rating3" class="form-control" placeholder="Delicacy Rating">
+        </div>
+
+        <div class="input-group mb-9" style="margin-top:10px;">
+        <span style="padding: 15px 15px 0px 0px;">Show in search suggest</span>
+        <select style="margin-top:10px;" class="form-control" name="searching">
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+        </div>
+
+        <div class="input-group mb-9" style="margin-top:10px;">
+        <span style="padding: 15px 15px 0px 0px;">Send notification to members</span>
+        <select style="margin-top:10px;" class="form-control" name="isshownotif">
+          <option value="0">No</option>
+          <option value="1" selected>Yes</option>
+        </select>
+        </div>
 
         </div>
         <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" name="tambahproduk2agent" class="btn btn-primary">Add</button>
+        <button type="submit" name="addagent" class="btn btn-primary">Add</button>
         </div>
         </form>
         </div>
-        <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-        </div>      
-                                           
-                   <?php 
-                   include('../db.php');
-                   $kj = mysqli_query($koneksi,"select * from tb_agent where id_kategori = '$_GET[id]' and visibility = '1'");
-
-
-                   ?>                            
+    </div>
+  </div>      
+                                                                     
      <?php 
-if(isset($_POST['updatekategori2'])){
-
-if(($_POST['namaagent'])){
-
-$shortbaru = str_replace("'","&petiksatu&",$_POST['short_desc']);
-$longbaru = str_replace("'","&petiksatu&",$_POST['long_desc']);
-
-$maxDimW = 1000;
-$maxDimH = 500;
-list($width, $height, $type, $attr) = getimagesize( $_FILES['image_linkee']['tmp_name'] );
-if ( $width > $maxDimW || $height > $maxDimH ) {
-    $target_filename = $_FILES['image_linkee']['tmp_name'];
-    $fn = $_FILES['image_linkee']['tmp_name'];
-    $size = getimagesize( $fn );
-    $ratio = $size[0]/$size[1]; // width/height
-    // if( $ratio > 1) {
-    //     $width = $maxDimW;
-    //     $height = $maxDimH/$ratio;
-    // } else {
-    //     $width = $maxDimW*$ratio;
-    //     $height = $maxDimH;
-    // }
-
-
-
-    $width = $maxDimW;
-    $height = ($maxDimW / $size[0]) * $size[1];
-
-    $src = imagecreatefromstring(file_get_contents($fn));
-    $dst = imagecreatetruecolor( $width, $height );
-    imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
-
-    imagejpeg($dst, $target_filename); // adjust format as needed
-}
-
-$maxDimW = 700;
-$maxDimH = 500;
-list($width, $height, $type, $attr) = getimagesize( $_FILES['image_linkeex']['tmp_name'] );
-if ( $width > $maxDimW || $height > $maxDimH ) {
-    $target_filename = $_FILES['image_linkeex']['tmp_name'];
-    $fn = $_FILES['image_linkeex']['tmp_name'];
-    $size = getimagesize( $fn );
-    $ratio = $size[0]/$size[1]; // width/height
-    // if( $ratio > 1) {
-    //     $width = $maxDimW;
-    //     $height = $maxDimH/$ratio;
-    // } else {
-    //     $width = $maxDimW*$ratio;
-    //     $height = $maxDimH;
-    // }
-   
+if(isset($_POST['updateagent'])){
+  if(($_POST['namaagent'])){
+  $maxDimW = 700;
+  $maxDimH = 500;
+  list($width, $height, $type, $attr) = getimagesize( $_FILES['image_linkeex']['tmp_name'] );
+  if ( $width > $maxDimW || $height > $maxDimH ) {
+      $target_filename = $_FILES['image_linkeex']['tmp_name'];
+      $fn = $_FILES['image_linkeex']['tmp_name'];
+      $size = getimagesize( $fn );
+      $ratio = $size[0]/$size[1]; // width/height
+      // if( $ratio > 1) {
+      //     $width = $maxDimW;
+      //     $height = $maxDimH/$ratio;
+      // } else {
+      //     $width = $maxDimW*$ratio;
+      //     $height = $maxDimH;
+      // }
     
-    $width = $maxDimW;
-    $height = ($maxDimW / $size[0]) * $size[1];
+      
+      $width = $maxDimW;
+      $height = ($maxDimW / $size[0]) * $size[1];
 
-    $src = imagecreatefromstring(file_get_contents($fn));
-    $dst = imagecreatetruecolor( $width, $height );
-    imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
+      $src = imagecreatefromstring(file_get_contents($fn));
+      $dst = imagecreatetruecolor( $width, $height );
+      imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
+      imagejpeg($dst, $target_filename); // adjust format as needed
+  }
 
-    imagejpeg($dst, $target_filename); // adjust format as needed
+    $namaax = $_FILES['image_linkeex']['name'];
+    $longbaru = str_replace("'","&petiksatu&",$_POST['long_desc']);
+    $rating1 = $_POST['rating1'] ? $_POST['rating1'] :"0";
+    $rating2 = $_POST['rating2'] ? $_POST['rating2'] :"0";
+    $rating3 = $_POST['rating3'] ? $_POST['rating3'] :"0";
 
-
-}
-
-$namaa = $_FILES['image_linkee']['name'];
-
-$namaax = $_FILES['image_linkeex']['name'];
-
-$shortt = str_replace("'","\'",$_POST['short_desc']);
-$longg = str_replace("'","\'",$_POST['long_desc']);
-
-if($namaax == null){
-    mysqli_query($koneksi,"update tb_agent set 
-    short_desc = '$shortbaru',
-    long_desc = '$longbaru',
-    namaagent = '$_POST[namaagent]',
-    gmaps = '$_POST[gmaps]',
-    alamatagent = '$_POST[alamatagent]',
-    alamat2agent = '$_POST[alamat2agent]',
-    kotaagent = '$_POST[kotaagent]',
-    kodeposagent = '$_POST[kodeposagent]',
-    telpagent = '$_POST[telpagent]',
-    mobileagent = '$_POST[mobileagent]',
-    emailagent = '$_POST[emailagent]',
-    webagent = '$_POST[webagent]',
-    fbagent = '$_POST[fbagent]',
-    twiteragent = '$_POST[twiteragent]',
-    igagent = '$_POST[igagent]',
-    playstoreagent = '$_POST[playstoreagent]'
-    where id_agent = '$_POST[idc]'
-    ");
-    
-    }else{
-        
-        move_uploaded_file($_FILES['image_linkeex']['tmp_name'],"../images/agent/".$_FILES['image_linkeex']['name']);
-    mysqli_query($koneksi,"update tb_agent set 
-    short_desc = '$shortbaru',
-    long_desc = '$longbaru',
-    namaagent = '$_POST[namaagent]',
-    gambar2 = '$namaax',
-    gmaps = '$_POST[gmaps]',
-    alamatagent = '$_POST[alamatagent]',
-    alamat2agent = '$_POST[alamat2agent]',
-    kotaagent = '$_POST[kotaagent]',
-    kodeposagent = '$_POST[kodeposagent]',
-    telpagent = '$_POST[telpagent]',
-    mobileagent = '$_POST[mobileagent]',
-    emailagent = '$_POST[emailagent]',
-    webagent = '$_POST[webagent]',
-    fbagent = '$_POST[fbagent]',
-    twiteragent = '$_POST[twiteragent]',
-    igagent = '$_POST[igagent]',
-    playstoreagent = '$_POST[playstoreagent]'
-    where id_agent = '$_POST[idc]'
-    ");
-    
-        
+    if($namaax == null){
+      $sql = "UPDATE tb_agent SET
+        long_desc = '$longbaru',
+        namaagent = '$_POST[namaagent]',
+        gmaps = '$_POST[gmaps]',
+        alamatagent = '$_POST[alamatagent]',
+        kotaagent = '$_POST[kotaagent]',
+        kodeposagent = '$_POST[kodeposagent]',
+        telpagent = '$_POST[telpagent]',
+        mobileagent = '$_POST[mobileagent]',
+        emailagent = '$_POST[emailagent]',
+        webagent = '$_POST[webagent]',
+        fbagent = '$_POST[fbagent]',
+        twiteragent = '$_POST[twiteragent]',
+        igagent = '$_POST[igagent]',
+        waagent = '$_POST[waagent]',
+        telegramagent = '$_POST[telegramagent]',
+        linkedagent = '$_POST[linkedagent]',
+        youtubeagent = '$_POST[youtubeagent]',
+        appstoreagent = '$_POST[appstoreagent]',
+        playstoreagent = '$_POST[playstoreagent]',
+        rating1 = '$rating1',
+        rating2 = '$rating2',
+        rating3 = '$rating3',
+        searching = '$_POST[searching]'
+        where id_agent = '$_POST[idc]'";
+      mysqli_query($koneksi, $sql);
+    } else {
+      move_uploaded_file($_FILES['image_linkeex']['tmp_name'],"../images/agent/".$_FILES['image_linkeex']['name']);
+      $sql = "UPDATE tb_agent SET 
+        long_desc = '$longbaru',
+        namaagent = '$_POST[namaagent]',
+        gambar2 = '$namaax',
+        gmaps = '$_POST[gmaps]',
+        alamatagent = '$_POST[alamatagent]',
+        kotaagent = '$_POST[kotaagent]',
+        kodeposagent = '$_POST[kodeposagent]',
+        telpagent = '$_POST[telpagent]',
+        mobileagent = '$_POST[mobileagent]',
+        emailagent = '$_POST[emailagent]',
+        webagent = '$_POST[webagent]',
+        fbagent = '$_POST[fbagent]',
+        twiteragent = '$_POST[twiteragent]',
+        igagent = '$_POST[igagent]',
+        waagent = '$_POST[waagent]',
+        telegramagent = '$_POST[telegramagent]',
+        linkedagent = '$_POST[linkedagent]',
+        youtubeagent = '$_POST[youtubeagent]',
+        appstoreagent = '$_POST[appstoreagent]',
+        playstoreagent = '$_POST[playstoreagent]',
+        rating1 = '$rating1',
+        rating2 = '$rating2',
+        rating3 = '$rating3',
+        searching = '$_POST[searching]'
+        where id_agent = '$_POST[idc]'";
+      mysqli_query($koneksi, $sql);      
     }
 
+    ?>
+    <script>
+    alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
+    </script>
+    <?php 
 
-
-
-if($namaa == null){
-mysqli_query($koneksi,"update tb_agent set 
-short_desc = '$shortbaru',
-long_desc = '$longbaru',
-namaagent = '$_POST[namaagent]',
-gmaps = '$_POST[gmaps]',
-alamatagent = '$_POST[alamatagent]',
-alamat2agent = '$_POST[alamat2agent]',
-kotaagent = '$_POST[kotaagent]',
-kodeposagent = '$_POST[kodeposagent]',
-telpagent = '$_POST[telpagent]',
-mobileagent = '$_POST[mobileagent]',
-emailagent = '$_POST[emailagent]',
-webagent = '$_POST[webagent]',
-fbagent = '$_POST[fbagent]',
-twiteragent = '$_POST[twiteragent]',
-igagent = '$_POST[igagent]',
-playstoreagent = '$_POST[playstoreagent]'
-where id_agent = '$_POST[idc]'
-");
-
-}else{
-  
-  move_uploaded_file($_FILES['image_linkee']['tmp_name'],"../images/agent/".$_FILES['image_linkee']['name']);
-mysqli_query($koneksi,"update tb_agent set 
-short_desc = '$shortbaru',
-long_desc = '$longbaru',
-namaagent = '$_POST[namaagent]',
-gambar = '$namaa',
-gmaps = '$_POST[gmaps]',
-alamatagent = '$_POST[alamatagent]',
-alamat2agent = '$_POST[alamat2agent]',
-kotaagent = '$_POST[kotaagent]',
-kodeposagent = '$_POST[kodeposagent]',
-telpagent = '$_POST[telpagent]',
-mobileagent = '$_POST[mobileagent]',
-emailagent = '$_POST[emailagent]',
-webagent = '$_POST[webagent]',
-fbagent = '$_POST[fbagent]',
-twiteragent = '$_POST[twiteragent]',
-igagent = '$_POST[igagent]',
-playstoreagent = '$_POST[playstoreagent]'
-where id_agent = '$_POST[idc]'
-");
-  
-}
-
-?>
-
-<script>
-alert("Data berhasil di ubah <?php echo mysqli_error($koneksi); ?>");
-location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
-
-</script>
-
-
-<?php 
- } 
+  } 
 }
  ?>
     <div class="table-responsive" style="padding:5px;">
@@ -16934,27 +16639,24 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-<th>Options</th>
-<th>Logo</th>       
+<th>Options</th>    
 <th>Picture</th>                   
 <th>Name</th>
 <th>Gmaps</th>
 <th>Address</th>
-<!-- <th>Alamat 2</th>
-<th>Kota</th>
-<th>Kodepos</th> -->
+<th>City</th>
+<th>Postal Code</th>
 <th>Phone</th>
 <th>Mobile</th>
 <th>Email</th>
-<th>Web</th>
-<th>Fb</th>
-<th>Twitter</th>
-<th>IG</th>
-<th>Playstore</th>                
+<th>Web</th>            
 </tr>
 </thead>
 <tbody>
             <?php 
+
+            include('../db.php');
+            $kj = mysqli_query($koneksi,"select * from tb_agent where id_kategori = '$_GET[id]' and visibility = '1'");
             $no = 1;
             while($kj2 = mysqli_fetch_array($kj)){
             $idd = $kj2['id_agent'];
@@ -16967,18 +16669,12 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
 
                                 <a data-toggle="modal" data-target="#modal-lg2_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
 
-                                <!-- <a href="?p=rincian2&id=<?php echo $idd ?>" class="btn btn-primary btn-circle btn-sm">More Actions
-                                &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-edit"></i></a> -->
          <a onclick="return confirm('Are you sure you want to delete this item?');"  href="hapustbagent.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Delete
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-trash"></i></a>
 
 
-                            </td>    
-  
-                            <td><img src="../images/agent/<?php echo $kj2['gambar'] ?>" style="width:120px;" /></td>
-    
+                            </td> 
                             <td>
                             <?php if(!empty($kj2['gambar2'])){ ?>
                             <img src="../images/agent/<?php echo $kj2['gambar2'] ?>" style="width:120px;" />
@@ -16986,22 +16682,16 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
                             </td>
     
 
-    <td><?php echo $kj2['namaagent'] ?></td>
+                      <td><?php echo $kj2['namaagent'] ?></td>
                             <td><?php echo $kj2['gmaps'] ?></td>
                             <td><?php echo $kj2['alamatagent'] ?></td>
-                            <!-- <td><?php echo $kj2['alamat2agent'] ?></td>
                             <td><?php echo $kj2['kotaagent'] ?></td>
-                            <td><?php echo $kj2['kodeposagent'] ?></td> -->
+                            <td><?php echo $kj2['kodeposagent'] ?></td>
                             <td><?php echo $kj2['telpagent'] ?></td>
                             <td><?php echo $kj2['mobileagent'] ?></td>
                             <td><?php echo $kj2['emailagent'] ?></td>
                             <td><?php echo $kj2['webagent'] ?></td>
-                            <td><?php echo $kj2['fbagent'] ?></td>
-                            <td><?php echo $kj2['twiteragent'] ?></td>
-                            <td><?php echo $kj2['igagent'] ?></td>
-                                          <td><?php echo $kj2['playstoreagent'] ?></td>
-                            
-  
+                            <td><?php echo $kj2['playstoreagent'] ?></td>
                         </tr
                         >
             
@@ -17010,174 +16700,112 @@ location = "?p=rincian2&id=<?php echo $_POST['idc2'] ?>";
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-<?php 
-$rt = mysqli_query($koneksi,"select * from tb_demar3 where id_demar = '$idd'");
-$rt2 = mysqli_fetch_array($rt);
-?>
-
-              <h4 class="modal-title">3. Edit <?php //echo $qw2['judul2'] ?></h4>
+              <h4 class="modal-title">Edit <?php echo $kj2['namaagent'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             
 
-
-
       <form method="POST" enctype="multipart/form-data" >
             <div class="modal-body" style="overflow:scroll;height:70vh">
-    
-      <center>
-              <img id="product_imageee<?php echo $idd ?>"  
-                             src="https://ufe-section-indonesie.org/ufeapp/images/agent/<?php echo $kj2['gambar'] ?>"
-                               style="width:200px;" />
-      </center> 
-      
-    
-      
-      
-       <input onchange="readURLee<?php echo $idd; ?>(this);" type="file" name="image_linkee" class="form-control"/>
-      </a>
-                <script>
-  function readURLee<?php echo $idd ?>(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#product_imageee<?php echo $idd ?>')
-                .attr('src', e.target.result)
-                .width(100)
-        .height(100);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-    
-  }
-</script> 
-  
-
-
-<br>
-
-
-<center>
-              <img id="product_imageeex<?php echo $idd ?>"  
-                             src="https://ufe-section-indonesie.org/ufeapp/images/agent/<?php echo $kj2['gambar2'] ?>"
-                               style="width:200px;" />
-      </center> 
-      
-    
-      
-      
+            <center>
+              <img id="product_imageeex<?php echo $idd ?>" src="https://ufe-section-indonesie.org/ufeapp/images/agent/<?php echo $kj2['gambar2'] ?>" style="width:200px;" />
+            </center> 
        <input onchange="readURLeex<?php echo $idd; ?>(this);" type="file" name="image_linkeex" class="form-control"/>
-      </a>
-<div>
-Recommended file size (398*728)
-</div>
+      <div>
+      Recommended image size (300*534)
+      </div>
 
                 <script>
-  function readURLeex<?php echo $idd ?>(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+              function readURLeex<?php echo $idd ?>(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-        reader.onload = function (e) {
-            $('#product_imageeex<?php echo $idd ?>')
-                .attr('src', e.target.result)
-                .width(100)
-        .height(100);
-        };
+                    reader.onload = function (e) {
+                        $('#product_imageeex<?php echo $idd ?>')
+                            .attr('src', e.target.result)
+                            .width(100)
+                    .height(200);
+                    };
 
-        reader.readAsDataURL(input.files[0]);
-    }
-    
-  }
-</script> 
+                    reader.readAsDataURL(input.files[0]);
+                }
+                
+              }
+            </script> 
 
 
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
-          
-          
-          <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
-          <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
+                  <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
+                  <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
                   <input type="text" name="namaagent" value="<?php echo $kj2['namaagent'] ?>" 
-                  class="form-control" placeholder="Nama" required>
+                  class="form-control" placeholder="Name" required>
                 </div>
         
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Gmaps</span>
                   </div>
-          
                 <input type="text" name="gmaps" value="<?php echo $kj2['gmaps'] ?>" 
                   class="form-control" placeholder="Gmaps" required>
                 </div>
         
-        
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Alamat</span>
+                    <span class="input-group-text" style="width:120px;">Address</span>
                   </div>
-          <textarea style="height:150px;" class="form-control" name="alamatagent" required><?php echo $kj2['alamatagent'] ?></textarea>
-                <!-- <input type="text" name="alamatagent" value="<?php echo $kj2['alamatagent'] ?>" 
-                  class="form-control" placeholder="Alamat" required> -->
+                  <textarea style="height:150px;" class="form-control" name="alamatagent" required><?php echo $kj2['alamatagent'] ?></textarea>
                 </div>
         
-
-                <div class="input-group mb-3" style="margin-top:10px;display:none;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">No. Office</span>
-                  </div>
-          
-                <input type="text" name="alamat2agent" value="<?php echo $kj2['alamat2agent'] ?>" 
-                  class="form-control" placeholder="No." >
-                </div>
-
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">City</span>
                   </div>
-          
-                <input type="text" name="kotaagent" value="<?php echo $kj2['kotaagent'] ?>" 
-                  class="form-control" placeholder="Kota" required>
+                  <input type="text" name="kotaagent" value="<?php echo $kj2['kotaagent'] ?>" 
+                  class="form-control" placeholder="City" required>
                 </div>
 
-                <div class="input-group mb-3" style="margin-top:10px;display:none;">
+                <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Postal Code</span>
                   </div>
-          
                 <input type="text" name="kodeposagent" value="<?php echo $kj2['kodeposagent'] ?>" 
-                  class="form-control" placeholder="Kodepos" >
+                  class="form-control" placeholder="Postal Code" >
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Phone</span>
                   </div>
-          
                 <input type="text" name="telpagent" value="<?php echo $kj2['telpagent'] ?>" 
-                  class="form-control" placeholder="Telp" required>
+                  class="form-control" placeholder="Phone" required>
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Mobile</span>
                   </div>
-          
                 <input type="text" name="mobileagent" value="<?php echo $kj2['mobileagent'] ?>" 
-                  class="form-control" placeholder="HP" >
+                  class="form-control" placeholder="Mobile" >
+                </div>
+
+                <div class="input-group mb-3" style="margin-top:10px;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="width:120px;">WhatsApp</span>
+                  </div>
+                <input type="text" name="waagent" value="<?php echo $kj2['waagent'] ?>" 
+                  class="form-control" placeholder="WhatsApp" >
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Email</span>
                   </div>
-          
                 <input type="text" name="emailagent" value="<?php echo $kj2['emailagent'] ?>" 
                   class="form-control" placeholder="Email" required>
                 </div>
@@ -17186,16 +16814,22 @@ Recommended file size (398*728)
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Web</span>
                   </div>
-          
                 <input type="text" name="webagent" value="<?php echo $kj2['webagent'] ?>" 
-                  class="form-control" placeholder="No." required>
+                  class="form-control" placeholder="Web" required>
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
+                    <span class="input-group-text" style="width:120px;">Telegram</span>
+                  </div>
+                <input type="text" name="telegramagent" value="<?php echo $kj2['telegramagent'] ?>" 
+                  class="form-control" placeholder="Telegram" >
+                </div>
+                
+                <div class="input-group mb-3" style="margin-top:10px;">
+                  <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">FB</span>
                   </div>
-          
                 <input type="text" name="fbagent" value="<?php echo $kj2['fbagent'] ?>" 
                   class="form-control" placeholder="FB" >
                 </div>
@@ -17203,8 +16837,7 @@ Recommended file size (398*728)
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Twitter</span>
-                  </div>
-          
+                  </div>   
                 <input type="text" name="twiteragent" value="<?php echo $kj2['twiteragent'] ?>" 
                   class="form-control" placeholder="Twitter" >
                 </div>
@@ -17213,54 +16846,89 @@ Recommended file size (398*728)
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">IG</span>
                   </div>
-          
                 <input type="text" name="igagent" value="<?php echo $kj2['igagent'] ?>" 
                   class="form-control" placeholder="IG" >
                 </div>
 
                 <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Playstore</span>
+                    <span class="input-group-text" style="width:120px;">Youtube</span>
                   </div>
-          
-                <input type="text" name="playstoreagent" value="<?php echo $kj2['playstoreagent'] ?>" 
-                  class="form-control" placeholder="Playstore" >
+                <input type="text" name="youtubeagent" value="<?php echo $kj2['youtubeagent'] ?>" 
+                  class="form-control" placeholder="Youtube" >
                 </div>
 
-          <div>
-                Short Desc
-               </div>
-                <textarea class="form-control" name="short_desc" placeholder="Place some text here"
-                <?php 
-$shirtbaru = str_replace("&petiksatu&","'",$kj2['short_desc']);
-?>
-                           ><?php echo $shirtbaru ?></textarea>
+                <div class="input-group mb-3" style="margin-top:10px;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="width:120px;">LinkeIn</span>
+                  </div>
+                <input type="text" name="linkedagent" value="<?php echo $kj2['linkedagent'] ?>" 
+                  class="form-control" placeholder="LinkeIn" >
+                </div>
+
+                <div class="input-group mb-3" style="margin-top:10px;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="width:120px;">Play Store</span>
+                  </div>
+                <input type="text" name="playstoreagent" value="<?php echo $kj2['playstoreagent'] ?>" 
+                  class="form-control" placeholder="Play Store" >
+                </div>
+
+                <div class="input-group mb-3" style="margin-top:10px;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="width:120px;">App Store</span>
+                  </div>
+                <input type="text" name="appstoreagent" value="<?php echo $kj2['appstoreagent'] ?>" 
+                  class="form-control" placeholder="App Store" >
+                </div>
              
              <div style="margin-top:15px;">
-                           Long Desc
+                Description
                 </div>
-<?php 
-$lingbaru = str_replace("&petiksatu&","'",$kj2['long_desc']);
-?>
+                <textarea class="form-control" name="long_desc" placeholder="Place some text here"><?php echo str_replace("&petiksatu&","'",$kj2['long_desc']); ?></textarea>
 
-                <textarea class="form-control" name="long_desc" placeholder="Place some text here"><?php echo $lingbaru ?></textarea>
-             
-             
-        
-        
-        
-        
-        
+            <div class="input-group mb-3" style="margin-top:10px;">
+            <div class="input-group-prepend">
+            <span class="input-group-text" style="width:120px;">Rating</span>
+            </div>
+            <input type="number" name="rating1" value="<?php echo $kj2['rating1'] ?>" class="form-control" placeholder="Rating">
+            </div>
+
+            <div class="input-group mb-3" style="margin-top:10px;">
+            <div class="input-group-prepend">
+            <span class="input-group-text" style="width:120px;">Price Rating</span>
+            </div>
+            <input type="number" name="rating2" value="<?php echo $kj2['rating2'] ?>" class="form-control" placeholder="Price Rating">
+            </div>
+
+            <div class="input-group mb-3" style="margin-top:10px;">
+            <div class="input-group-prepend">
+            <span class="input-group-text" style="width:120px;">Delicacy Rating</span>
+            </div>
+            <input type="number" name="rating3" value="<?php echo $kj2['rating3'] ?>" class="form-control" placeholder="Delicacy Rating">
+            </div>
+
+            <div class="input-group mb-9" style="margin-top:10px;">
+            <span style="padding: 15px 15px 0px 0px;">Show in search suggest</span>
+            <select style="margin-top:10px;" class="form-control" name="searching">
+            <?php 
+              if($kj2['searching'] == '1') {
+                echo '<option value="0">No</option><option value="1" selected>Yes</option>';
+              } else {
+                echo '<option value="0" selected>No</option><option value="1">Yes</option>';
+              }
+            ?>
+            </select>
+            </div>
+
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" name="updatekategori2" class="btn btn-primary">Save changes</button>
+              <button type="submit" name="updateagent" class="btn btn-primary">Save changes</button>
             </div>
       </form>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>      
             
             
@@ -17428,65 +17096,12 @@ alert("Failed");
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Name</span>
-                  </div>
-<!--
-                  <input type="hidden" name="idc2" value="<?php //echo $_GET['id'] ?>" />
-    -->                     
+                  </div>                
           
           <input type="hidden" name="unik" value="578866556602c6b54236d7.png" />
                 
                   <input type="text" name="nama" value="" class="form-control" placeholder="Name" required>
-                </div>
-<!--
-                <div class="input-group mb-3" style="margin-top:10px;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
-                  </div>
-
-                  <input type="text" name="nama2" value="" class="form-control" placeholder="Nama (Tablayout)" required>
-                </div>
--->
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="" >- kategori -</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div>
-            <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="" class="form-control" placeholder="Short Desc" required>
-                </div>
-        
-        
-           -->
-      <!--  <div>Short Desc</div>        
-                <textarea class="form-control" name="short_desc" placeholder="Place some text here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
-             
-             
-                          <div style="margin-top:15px">Long Desc</div>        
-                <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea>
-          -->   
-          
-        
-        
-        
-        
+                </div>     
         
       </div>
             <div class="modal-footer justify-content-between">
