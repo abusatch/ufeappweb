@@ -14421,52 +14421,6 @@ $rt2 = mysqli_fetch_array($rt);
       
                   <input type="text" name="ket4" value="<?php echo $kj2['ket4'] ?>" class="form-control" placeholder="" required>
                 </div>
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        
-        <!--  <div>
-                Short Desc
-               </div>
-             
-                <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
-              
-                           required><?php echo $kj2['short_desc'] ?></textarea>
-             
-             <div style="margin-top:15px;">
-                           Long Desc
-                </div>
-                <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
-              
-                          ><?php echo $kj2['long_desc'] ?></textarea>
-             
-             -->
-        
-        
-        
-        
-        
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -14573,50 +14527,20 @@ $ket_instruktur1 = str_replace("'","&petiksatu&",$_POST['ket_instruktur']);
 
 
 if($namaa == null){
-mysqli_query($koneksi,"insert into tb_activites (
-    id_jenis,
-    judul,
-    deskripsi,
-    instruktur,
-    ket_instruktur
-    ) values
-(
-'$_POST[idc2]',
-'$nama1,
-'$long_deskripsi1',
-'$instruktur1',
-'$ket_instruktur1'
-)
-");
+  $sql = "INSERT INTO tb_activites (id_jenis, judul, deskripsi, instruktur, ket_instruktur) 
+    values('$_POST[idc2]', '$nama1', '$long_deskripsi1', '$instruktur1', '$ket_instruktur1')";
+  mysqli_query($koneksi, $sql);
 }else{
-  
-move_uploaded_file($_FILES['image_link']['tmp_name'],"../images/activites/".$_FILES['image_link']['name']);
-mysqli_query($koneksi,"insert into tb_activites (
-    gambar,
-    id_jenis,
-    judul,
-    deskripsi,
-    instruktur,
-    ket_instruktur
-    ) values
-(
-    '$namaa',
-    '$_POST[idc2]',
-    '$nama1,
-    '$long_deskripsi1',
-    '$instruktur1',
-    '$ket_instruktur1'
-    )
-"); 
+  move_uploaded_file($_FILES['image_link']['tmp_name'],"../images/activites/".$_FILES['image_link']['name']);
+  $sql = "INSERT INTO tb_activites (gambar, id_jenis, judul, deskripsi, instruktur, ket_instruktur) 
+    values ('$namaa', '$_POST[idc2]', '$nama1', '$long_deskripsi1', '$instruktur1', '$ket_instruktur1')";
+  mysqli_query($koneksi, $sql); 
 }
 ?>
 <script>
 alert('Data added successfully<?php echo mysqli_error($koneksi); ?>');
 location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 </script>
-
-
-
 <?php }else{
 ?>
 <script>
@@ -14625,15 +14549,7 @@ alert("Failed");
 <?php
 }
 
-}//else{
-  ?>
-<!-- <script>
-alert("Failed");
-</script> -->
-  <?php
-//}
-
-
+}
 ?>
 
       <form method="POST" enctype="multipart/form-data" >
@@ -14713,41 +14629,95 @@ alert("Failed");
                    include('../db.php');
                    $kj = mysqli_query($koneksi,"select * from tb_activites where id_jenis = '$_GET[id]'");
  
-if(isset($_POST['tambahjadwalac'])){
-    
-if(($_POST['nama'])){
-  mysqli_query($koneksi," insert into tb_jadwal_program (
-    id_activites,
-    jadwal,
-    keterangan
-    ) values (
-        '$_POST[idc]',
-        '$nama1',
-        '$deskripsi1'
-  )");
-  
-if($_FILES['image_link']['name'] == null){
+if(isset($_POST['tambahhargaac'])) {
+  if(($_POST['harga'])) {
+  $keterangan = str_replace("'","&petiksatu&",$_POST['keterangan']);
+  mysqli_query($koneksi," INSERT INTO tb_harga_program (id_activites, mata_uang, harga, keterangan, periode) 
+    values ('$_POST[idc]', '$_POST[mata_uang]', '$_POST[harga]', '$keterangan', '$_POST[periode]')");
+    ?>
+    <script>
+    alert("Data added successfully <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
+    </script>
+    <?php
+  } 
+}
 
-?>
+if(isset($_POST['tambahjadwalac'])) {
+  if(($_POST['nama'])) {
+  $nama1 = str_replace("'","&petiksatu&",$_POST['nama']);
+  $deskripsi1 = str_replace("'","&petiksatu&",$_POST['deskripsi']);
+  mysqli_query($koneksi," INSERT INTO tb_jadwal_program (id_activites, jadwal, keterangan) values ('$_POST[idc]', '$nama1', '$deskripsi1')");
+    ?>
+    <script>
+    alert("Data added successfully <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
+    </script>
+    <?php
+  } 
+}
 
-<script>
-alert("Data berhasil di tambahkan <?php echo mysqli_error($koneksi); ?>");
-location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
+if(isset($_POST['tambahnotifac'])) {
+  if(($_POST['titlenotif'])) {
+    class startSendNotification {
+      function sendNoti($titleNoti, $bodyNoti) {
+        define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+        include('../db.php');
+        $ewww = mysqli_query($koneksi,"SELECT * from user where token_push != '' ");
+        while ($tyu = mysqli_fetch_array($ewww)){
+          $qw[] = $tyu['token_push'];
+        }
 
-</script>
+        $fcmMsg = array(
+          'title' => $titleNoti,
+          'body' => $bodyNoti,
+          'icon' => 'image/look24-logo-s.png',
+          'sound' => 'default' 
+        );
 
-<?php }else{ ?>
+        $fcmData = array(
+          'halaman' => 'activities',
+          'nomor' => $_POST['idc'],
+        );
+        
+        $fcmFields = array(
+          'registration_ids' => $qw,
+          'priority' => 'high',
+          'notification' => $fcmMsg,
+          'data' => $fcmData
+        );
 
-<script>
-alert("Data berhasil di tambahkan <?php echo mysqli_error($koneksi); ?>");
-location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
+        $headers = array(
+          'Authorization: key=' . API_ACCESS_KEY,
+          'Content-Type: application/json'
+        );
+        
+        $ch = curl_init();
+        curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+        curl_setopt( $ch,CURLOPT_POST, true );
+        curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+        curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+        curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+        curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+        $result = curl_exec($ch );
+        curl_close( $ch );
+        echo $result . "\n\n".$qw;
+      }
+    }
 
-</script>
+    $tgl = date('d/m/Y');
+    mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+      VALUES ('activities', 'UFE Indonesié', '$_POST[titlenotif]', 'Activités', '$tgl', '', '".$_POST['idc']."', 'all', '-', '-')");
+    $callNoti = new startSendNotification();
+    $callNoti->sendNoti($_POST['titlenotif'], $bodyNoti);
 
-
-<?php }
-
- } 
+    ?>
+    <script>
+    alert("Notification has been sent <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
+    </script>
+    <?php
+  } 
 }
  
 if(isset($_POST['updatekategori33'])){
@@ -14780,14 +14750,10 @@ if ( $width > $maxDimW || $height > $maxDimH ) {
 
 $namaa = $_FILES['image_link']['name'];
 
-
-
 $nama1 = str_replace("'","&petiksatu&",$_POST['nama']);
 $long_deskripsi1 = str_replace("'","&petiksatu&",$_POST['long_deskripsi']);
 $instruktur1 = str_replace("'","&petiksatu&",$_POST['instruktur']);
 $ket_instruktur1 = str_replace("'","&petiksatu&",$_POST['ket_instruktur']);
-
-
 
 move_uploaded_file($_FILES['image_link']['tmp_name'],"../images/activites/".$_FILES['image_link']['name']);
 
@@ -14844,12 +14810,6 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 }
  ?>
  
- 
- 
- 
- 
- 
- 
     <div class="table-responsive" style="padding:5px;">
         <table class="table table-striped w-100 dt-responsive nowrap" id="dataTable">
             <thead>
@@ -14898,7 +14858,7 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
               Send Notification&nbsp;&nbsp;
               <i class="fa fa-paper-plane"></i>
             </a>
-            <a href="hapustbactivites.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">
+            <a onclick="return confirm('Are you sure you want to delete this item?');" href="hapustbactivites.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">
               Delete&nbsp;&nbsp;
               <i class="fa fa-trash"></i>
             </a>
@@ -14906,17 +14866,12 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
 
                             </td>
                         </tr>
-
-<?php 
-$rt = mysqli_query($koneksi,"select * from tb_activites where id_jenis = '$_GET[id]'");
-$rt2 = mysqli_fetch_array($rt);
-?>
         
       <div class="modal fade" id="modal-tambah3-lg_<?php echo $idd; ?>">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Send Notification <?php echo $rt2['judul'] ?></h4>
+              <h4 class="modal-title">Send Notification <?php echo $kj2['judul'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -14927,9 +14882,10 @@ $rt2 = mysqli_fetch_array($rt);
                   <div class="input-group mb-3" style="margin-top:10px;">
                         <div class="input-group-prepend">
                           <span class="input-group-text" style="width:120px;">Title</span>
-                        </div>          
+                        </div>
+                        <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />          
                         <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                        <input type="text" name="titlenotif" value="Promo - <?php echo $rt2['judul'] ?>" class="form-control" placeholder="Title" required>
+                        <input type="text" name="titlenotif" value="Promo - <?php echo $kj2['judul'] ?>" class="form-control" placeholder="Title" required>
                       </div>       
                 </div>
                   <div class="modal-footer justify-content-between">
@@ -14946,7 +14902,7 @@ $rt2 = mysqli_fetch_array($rt);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Schedule <?php echo $rt2['judul'] ?></h4>
+              <h4 class="modal-title">Add Schedule <?php echo $kj2['judul'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -15021,7 +14977,7 @@ $rt2 = mysqli_fetch_array($rt);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Add Package <?php echo $rt2['judul'] ?></h4>
+              <h4 class="modal-title">Add Package <?php echo $kj2['judul'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -15041,9 +14997,7 @@ $rt2 = mysqli_fetch_array($rt);
       ?>
        <div class="row" style="border:1px #707070 solid;border-radius:10px;margin-left:10px;margin-right:10px;margin-bottom:3px;">
             <div class="col">
-
-               
-              Rp. <?php echo number_format($re2['harga'],0,',','.') ?> | <?php echo $re2['keterangan'] ?>              
+              <?php echo $re2['mata_uang']." ".number_format($re2['harga'],0,',','.')." | ".$re2['keterangan']." | ".$re2['periode']." days"; ?>              
             </div>
 
 
@@ -15061,27 +15015,31 @@ $rt2 = mysqli_fetch_array($rt);
       <?php } ?>
       
       </fieldset>
+      <select style="margin-top:10px;" class="form-control" name="mata_uang">
+        <option value="IDR">IDR</option>
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+      </select>
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Price</span>
                   </div>
           
-          
-          <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
-          <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
+                  <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="number" name="nama" value="<?php echo $kj2['judul'] ?>" class="form-control" placeholder="Price" required>
+                  <input type="number" name="harga" class="form-control" placeholder="Price" required>
                 </div>
-        
-
-        
                      <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Package Name</span>
                   </div>
-          
-          
-                  <input type="text" name="deskripsi" value="" class="form-control" placeholder="Package Name" required>
+                  <input type="text" name="keterangan" value="" class="form-control" placeholder="Package Name" required>
+                </div>
+                <div class="input-group mb-3" style="margin-top:10px;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" style="width:120px;">Period in days</span>
+                  </div>
+                  <input type="number" name="periode" class="form-control" placeholder="Period in days" required>
                 </div>
       </div>
             <div class="modal-footer justify-content-between">
@@ -15099,7 +15057,7 @@ $rt2 = mysqli_fetch_array($rt);
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Edit <?php echo $rt2['judul'] ?></h4>
+              <h4 class="modal-title">Edit <?php echo $kj2['judul'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -15171,63 +15129,12 @@ $rt2 = mysqli_fetch_array($rt);
           class="form-control" placeholder="Instructor Desc." required>
                 </div>
         
-
-<!--
-                <div class="input-group mb-3" style="margin-top:10px;">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Nama (Tablayout)</span>
-                  </div>
-          
-          
-          <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
-                  <input type="hidden" name="idc" value="<?php //echo $idd ?>" />
-                  <input type="text" name="nama2" value="<?php //echo $kj2['judul2'] ?>" class="form-control" placeholder="Nama (Tablayout)" required>
-                </div> -->
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        
-          <!--<div>
-                Short Desc
-               </div>-->
-             <!--   <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
-              
-                           required><?php //echo $kj2['short_desc'] ?></textarea>
-             -->
              <div style="margin-top:15px;">
                            Description
                 </div>
                 <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
               
                           ><?php echo $kj2['deskripsi'] ?></textarea>
-             
-             
-        
-        
-        
-        
-        
       </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -18079,9 +17986,6 @@ $fdb2 = mysqli_fetch_assoc($fdb);
   }
 
 }
-?>
-
-<?php 
 
 $titleNoti = str_replace("-spasi-", " ", $judul2);
 $bodyNoti = str_replace("-spasi-", " ", $deskripsi2);
