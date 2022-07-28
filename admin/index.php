@@ -544,7 +544,7 @@ location = "?p=tb_dm_1";
 
           <li class="nav-item">
             <a href="?p=tb_actualite" class="nav-link">
-              <i class="nav-icon fas fa-flag"></i>
+              <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 News
               </p>
@@ -571,9 +571,27 @@ location = "?p=tb_dm_1";
 
           <li class="nav-item">
             <a href="?p=tb_dm_1" class="nav-link">
-            <i class="nav-icon fas fa-adjust"></i>
+            <i class="nav-icon fas fa-book"></i>
               <p>
                 Demarches
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="?p=moninfo" class="nav-link">
+            <i class="nav-icon fas fa-globe"></i>
+              <p>
+                Global Information
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="?p=reginfo" class="nav-link">
+            <i class="nav-icon fas fa-info"></i>
+              <p>
+                Regional Information
               </p>
             </a>
           </li>
@@ -978,33 +996,6 @@ alert('Data added successfully<?php echo mysqli_error($koneksi); ?>');
                   <input type="text" name="nama" value="" class="form-control" placeholder="Category Name" required>
                 </div>
         
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="" >- kategori -</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div>
-            <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="" class="form-control" placeholder="Short Desc" required>
-                </div>
-        
-        
-           -->
         <div>Short Desc</div>        
                 <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
@@ -1174,7 +1165,7 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
                     <th>Picture</th>
                     <!-- <th>Background Splash</th>
                     <th>Background</th> -->
-                    <th>Short Desc</th>
+                    <th>Description</th>
                     <th>Color</th>
                     <th>Options</th>
                 </tr>
@@ -1215,15 +1206,11 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">4. Edit Product</h4>
+              <h4 class="modal-title">Edit Demarches</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            
-
-
-
       <form method="POST" enctype="multipart/form-data" >
             <div class="modal-body" style="overflow:scroll;height:70vh">
       
@@ -1257,7 +1244,7 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
   
              <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Name</span>
+                    <span class="input-group-text" style="width:120px;">Menu Name</span>
                   </div>
           
           
@@ -1265,34 +1252,8 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
                   <input type="text" name="nama" value="<?php echo $kj2['nama_menu'] ?>" class="form-control" placeholder="Menu Name" required>
                 </div>
-        
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        
           <div>
-                Short Desc
+                Description
                </div>
                <?php 
                $short_desc1 = str_replace("&petiksatu&","'",$kj2['short_desc']);
@@ -1308,7 +1269,7 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
                   <input type="text" name="warna" value="<?php echo $kj2['warna'] ?>" class="form-control" placeholder="Color Theme">
                 </div>
 
-                <div></div>
+                <!-- <div></div>
                 <fieldset style="margin-top:10px;text-align:center;width:100%;">
                 <img id="bgsplashh<?php echo $idd; ?>" style="height:150px;" src="https://ufe-section-indonesie.org/ufeapp/admin/bg/<?php echo $kj2['bg']  ?>" />
                 </fieldset>
@@ -1332,10 +1293,10 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
                 }
 
                 }
-                </script> 
+                </script>  -->
 
 
-                <div></div>
+                <!-- <div></div>
                 <fieldset style="margin-top:10px;text-align:center;width:100%;">
                 <img id="bggg<?php echo $idd; ?>" style="height:150px;" src="https://ufe-section-indonesie.org/ufeapp/admin/bg/<?php echo $kj2['bg2']  ?>" />
                 </fieldset>
@@ -1359,22 +1320,7 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
                 }
 
                 }
-                </script> 
-
-
-             <!--
-             <div style="margin-top:15px;">
-                           Long Desc
-                </div>
-                <textarea class="form-control" name="long_deskripsi" placeholder="Place some text here"
-              
-                          ><?php echo $kj2['long_desc'] ?></textarea>
-             
-             -->
-        
-        
-        
-        
+                </script>  -->
         
       </div>
             <style>
@@ -1392,9 +1338,7 @@ location = "https://ufe-section-indonesie.org/ufeapp/admin/?p=tb_dm_1";
             </div>
       </form>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>      
             
             
@@ -2636,19 +2580,16 @@ location = "?p=tb_actualite&ac=art";
         <table class="table table-striped w-100 dt-responsive nowrap" id="example">
             <thead>
                 <tr>
-                    <th>No. </th>
-          <th>Act</th>                   
-          <th>Country</th>   
-          <th>Category</th>              
-           <th>Title</th>
-               
-                  <th>Description</th>
-          <th>Member name</th>
-                   <th>Email</th>
-           <th>Web link</th>
-           <th>Date</th>
-            <th>Pic</th>
-                    
+                  <th>No. </th>
+                  <th>Option</th>                   
+                  <th>Country</th>   
+                  <th>Category</th>              
+                  <th>Title</th>
+                  <th>Web link</th>
+                  <th>Date</th>
+                  <th>Picture</th>
+                  <th></th>
+                  
                 </tr>
             </thead>
             <tbody>
@@ -2662,14 +2603,11 @@ location = "?p=tb_actualite&ac=art";
             ?>
 
                                               <tr>
-                            <td><table style="background:transparent;width:150px;"><tr><td><?php echo $no; ?></td></tr></table></td>
+                            <td><?php echo $no; ?></td>
                             <td>
-              <table style="background:transparent;width:150px;"><tr><td>
-                                <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
-&nbsp;&nbsp;<a data-toggle="modal" data-target="#modal-lg_del<?php echo $idd ?>" href="" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-trash"></i></a>
-
-</td></tr></table>
-              </td>
+                              <a data-toggle="modal" data-target="#modal-lg_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a>
+                              <a data-toggle="modal" data-target="#modal-lg_del<?php echo $idd ?>" href="" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-trash"></i></a>
+                            </td>
 
                     <?php 
 
@@ -2684,26 +2622,19 @@ $fnss = mysqli_query($koneksi,"select * from tb_kategori_2 where id_kategori2 = 
 $fnss2  = mysqli_fetch_assoc($fnss);
                     
                     ?>
-                       <td><?php echo $fnss2['nama_kategori2'] ?></td>
+              <td><?php echo $fnss2['nama_kategori2'] ?></td>
               <td><?php echo $fns2['nama_kategori'] ?></td>
 
               <td><?php echo $judul1 ?></td>
                           
-                 <td><?php echo substr($deskripsi1,0,100); ?></td>
-            <?php
-            $ok = mysqli_query($koneksi,"select * from user where idUser = '$kj2[id_member_vip]'");
-            $ok2 = mysqli_fetch_array($ok);
-            ?>            
-<td><?php echo $ok2['first_name']."&nbsp;".$ok2['second_name'] ?></td>
-<td><?php echo $ok2['username']; ?></td>  
-<td><?php echo $kj2['linkweb']; ?></td> 
+                 
+<td><?php echo $kj2['url']; ?></td> 
 <td><?php echo $kj2['tanggal']; ?></td>       
                                     <td><img src="https://ufe-section-indonesie.org/ufeapp/images/actualite/<?php echo $kj2['gambar'] ?>"
                   style="width:50px;height:auto;" 
                   /></td>
                 
-                        </tr
-                        >
+                        </tr>
             
       
     <div class="modal fade" id="modal-lg_del<?php echo $idd; ?>">
@@ -5675,7 +5606,7 @@ $qw2 = mysqli_fetch_array($qw);
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">
-                       1. Add
+                       Add
                     </span>
                 </a>
             </div>
@@ -5685,7 +5616,7 @@ $qw2 = mysqli_fetch_array($qw);
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">
-                       1. Import
+                       Import
                     </span>
                 </a>
             </div>
@@ -5848,55 +5779,22 @@ alert("Failed");
                   class="form-control" placeholder="Nama" required>
                 </div>
 
-                <div class="input-group mb-3" style="margin-top:10px;">
+                <!-- <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Name (Tablayout)</span>
                   </div>
 
                   <input type="text" name="nama2" value="" class="form-control" placeholder="Name (Tablayout)" required>
-                </div>
+                </div> -->
 
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
-                  </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="" >- kategori -</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div>
-            <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="" class="form-control" placeholder="Short Desc" required>
-                </div>
-        
-        
-           -->
-        <div>Short Desc</div>        
+        <!-- <div>Short Desc</div>        
                 <textarea class="form-control" name="short_desc" placeholder="Place some text here"
-                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea>
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required></textarea> -->
              
              
-                          <div style="margin-top:15px">Long Desc</div>        
+                          <div style="margin-top:15px">Description</div>        
                 <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" ></textarea>
-             
-          
-        
-        
-        
-        
         
       </div>
             <div class="modal-footer justify-content-between">
@@ -5909,9 +5807,7 @@ alert("Failed");
         </div>
         <!-- /.modal-dialog -->
       </div>      
-            
-            
-                                           
+                                            
                    <?php 
                    include('../db.php');
                    $kj = mysqli_query($koneksi,"select * from tb_demar2 where id_kategori = '$_GET[id]' and visibility = '1'");
@@ -6015,13 +5911,10 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>Options</th>
                     <th>Name</th>
-                    <th>Name (Tablayout)</th>
-
-                  <th>Description</th>
-                  
-
+                    <th>Picture</th>
+                    <th>Options</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
@@ -6031,35 +5924,29 @@ location = "?p=rincian&id=<?php echo $_POST['idc2'] ?>";
             $idd = $kj2['id_demar'];
             ?>
 
-                                              <tr>
+                        <tr>
                             <td><?php echo $no; ?></td>
-              <td>
+                            <?php 
+                            $judul1 = str_replace("&petiksatu&","'",$kj2['judul']);
+                            $short_desc1 = str_replace("&petiksatu&","'",$kj2['long_desc']);
+                            ?>                    
+                            <td><?php echo $judul1 ?></td>
+                            <td><img src="https://ufe-section-indonesie.org/ufeapp/images/menu/<?php echo $kj2['gambar'] ?>" style="height:100px;" /></td>
+                            <td>
                                 <a data-toggle="modal" 
                                 data-target="#modal-lg_<?php echo $idd ?>" 
                                 href="" class="btn btn-warning btn-circle btn-sm">
                                 <i class="fa fa-edit"></i></a>
-                <a href="?p=rincian2&id=<?php echo $idd ?>" 
+                                <a href="?p=rincian2&id=<?php echo $idd ?>" 
                                 class="btn btn-primary btn-circle btn-sm">More Actions
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-edit"></i></a>
-                 <a onclick="return 
+                                  <a onclick="return 
                                  confirm('Are you sure you want to delete this item?');" href="hapustbdemar2.php?id=<?php echo $idd ?>&idc=<?php echo $_GET['id'] ?>" class="btn btn-danger btn-circle btn-sm">Delete
                                 &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-trash"></i></a>
-              </td>
-
-                            <?php 
-                            $judul1 = str_replace("&petiksatu&","'",$kj2['judul']);
-                            $judul21 = str_replace("&petiksatu&","'",$kj2['judul2']);
-                            $short_desc1 = str_replace("&petiksatu&","'",$kj2['short_desc']);
-                            
-                            ?>                    
-          <td><?php echo $judul1 ?></td>
-                            <td><?php echo $judul21 ?></td>
-                 
-                                          <td><?php echo $short_desc1 ?></td>
-                            
-            
+                              </td>
+                              <td><?php echo $short_desc1 ?></td>
                         </tr>
             
             
@@ -6072,7 +5959,7 @@ $rt = mysqli_query($koneksi,"select * from tb_demar2 where id_demar = '$idd'");
 $rt2 = mysqli_fetch_array($rt);
 ?>
 
-              <h4 class="modal-title">1. Edit <?php echo $rt2['judul2'] ?></h4>
+              <h4 class="modal-title">Edit <?php echo $rt2['judul2'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -6116,76 +6003,37 @@ $rt2 = mysqli_fetch_array($rt);
   }
 </script> 
   
-             <div class="input-group mb-3" style="margin-top:10px;">
+                <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Name</span>
                   </div>
-          
-          
-          <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
-          <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
+                  <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
+                  <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />
                   <input type="hidden" name="idc" value="<?php echo $idd ?>" />
                   <input type="text" name="nama" value="<?php echo $judul1 ?>" class="form-control" placeholder="Name" required>
                 </div>
-        
-
-
-                <div class="input-group mb-3" style="margin-top:10px;">
+                <!-- <div class="input-group mb-3" style="margin-top:10px;">
                   <div class="input-group-prepend">
                     <span class="input-group-text" style="width:120px;">Name(Tablayout)</span>
                   </div>
-          
-          
-          <input type="hidden" name="unik" value="430992371602c6b5423c26.png" />
-                  <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                  <input type="text" name="nama2" value="<?php echo $judul21 ?>" class="form-control" placeholder="Name (Tablayout)" required>
-                </div>
-        <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Kategori</span>
+                      <input type="text" name="nama2" value="<?php echo $judul21 ?>" class="form-control" placeholder="Name (Tablayout)" required>
+                    </div>
+                    <div>
+                    Short Desc
                   </div>
-          <select name="kategori" class="form-control" required>
-                  <option value="23" >Jual Mesin Fotocopy</option>
-                    <option value="19" >Layanan Service</option>
-                    <option value="21" >Rental Mesin Fotocopy</option>
-                    <option value="25" >Spare part</option>
-                          </select>
-        </div> -->
-            <!-- <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Harga</span>
-                  </div>
-                  <input type="number" name="harga" value="8000000" class="form-control" placeholder="harga" required>
-                </div>
-        <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" style="width:120px;">Short Desc</span>
-                  </div>
-                  <input type="text" name="short" value="XploitSec-ID" class="form-control" placeholder="Short Desc" required>
-                </div> -->
-        
-        
-          <div>
-                Short Desc
-               </div>
-                <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
+                    <textarea class="form-control" name="deskripsi" placeholder="Place some text here"
               
                            required><?php echo $short_desc1 ?></textarea>
+                 -->
              
              <div style="margin-top:15px;">
-                           Long Desc
+                           Description
                 </div>
                 <textarea class="textarea" name="long_deskripsi" placeholder="Place some text here"
               <?php 
               $long_desc1 = str_replace("&petiksatu&","'",$kj2['long_desc']);
               ?>
                           ><?php echo $long_desc1 ?></textarea>
-             
-             
-        
-        
-        
-        
         
       </div>
             <div class="modal-footer justify-content-between">
@@ -15019,673 +14867,6 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
    </div>
 </div>
 
-
-<?php }else if($_GET['p'] == "testable"){ ?>
-
-   
-    <div class="card shadow-sm border-bottom-primary">
-    <div class="card-header bg-white py-3">
-        <div class="row">
-            <div class="col">
-               <ol class="breadcrumb float-sm-left">
-              <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
-              <li class="breadcrumb-item active">Tes table</li>
-                            </ol>
-            </div>
-</div>
-</div>
-
- <table id="example23" class="display responsive nowrap" style="width:100%">
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-                <th>Extn.</th>
-                <th>E-mail</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger</td>
-                <td>Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-                <td>5421</td>
-                <td>t.nixon@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Garrett</td>
-                <td>Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-                <td>8422</td>
-                <td>g.winters@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Ashton</td>
-                <td>Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td>$86,000</td>
-                <td>1562</td>
-                <td>a.cox@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Cedric</td>
-                <td>Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2012/03/29</td>
-                <td>$433,060</td>
-                <td>6224</td>
-                <td>c.kelly@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Airi</td>
-                <td>Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
-                <td>5407</td>
-                <td>a.satou@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Brielle</td>
-                <td>Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02</td>
-                <td>$372,000</td>
-                <td>4804</td>
-                <td>b.williamson@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Herrod</td>
-                <td>Chandler</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-                <td>2012/08/06</td>
-                <td>$137,500</td>
-                <td>9608</td>
-                <td>h.chandler@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Rhona</td>
-                <td>Davidson</td>
-                <td>Integration Specialist</td>
-                <td>Tokyo</td>
-                <td>55</td>
-                <td>2010/10/14</td>
-                <td>$327,900</td>
-                <td>6200</td>
-                <td>r.davidson@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Colleen</td>
-                <td>Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
-                <td>2360</td>
-                <td>c.hurst@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Sonya</td>
-                <td>Frost</td>
-                <td>Software Engineer</td>
-                <td>Edinburgh</td>
-                <td>23</td>
-                <td>2008/12/13</td>
-                <td>$103,600</td>
-                <td>1667</td>
-                <td>s.frost@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Jena</td>
-                <td>Gaines</td>
-                <td>Office Manager</td>
-                <td>London</td>
-                <td>30</td>
-                <td>2008/12/19</td>
-                <td>$90,560</td>
-                <td>3814</td>
-                <td>j.gaines@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Quinn</td>
-                <td>Flynn</td>
-                <td>Support Lead</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2013/03/03</td>
-                <td>$342,000</td>
-                <td>9497</td>
-                <td>q.flynn@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Charde</td>
-                <td>Marshall</td>
-                <td>Regional Director</td>
-                <td>San Francisco</td>
-                <td>36</td>
-                <td>2008/10/16</td>
-                <td>$470,600</td>
-                <td>6741</td>
-                <td>c.marshall@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Haley</td>
-                <td>Kennedy</td>
-                <td>Senior Marketing Designer</td>
-                <td>London</td>
-                <td>43</td>
-                <td>2012/12/18</td>
-                <td>$313,500</td>
-                <td>3597</td>
-                <td>h.kennedy@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Tatyana</td>
-                <td>Fitzpatrick</td>
-                <td>Regional Director</td>
-                <td>London</td>
-                <td>19</td>
-                <td>2010/03/17</td>
-                <td>$385,750</td>
-                <td>1965</td>
-                <td>t.fitzpatrick@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Michael</td>
-                <td>Silva</td>
-                <td>Marketing Designer</td>
-                <td>London</td>
-                <td>66</td>
-                <td>2012/11/27</td>
-                <td>$198,500</td>
-                <td>1581</td>
-                <td>m.silva@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Paul</td>
-                <td>Byrd</td>
-                <td>Chief Financial Officer (CFO)</td>
-                <td>New York</td>
-                <td>64</td>
-                <td>2010/06/09</td>
-                <td>$725,000</td>
-                <td>3059</td>
-                <td>p.byrd@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Gloria</td>
-                <td>Little</td>
-                <td>Systems Administrator</td>
-                <td>New York</td>
-                <td>59</td>
-                <td>2009/04/10</td>
-                <td>$237,500</td>
-                <td>1721</td>
-                <td>g.little@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Bradley</td>
-                <td>Greer</td>
-                <td>Software Engineer</td>
-                <td>London</td>
-                <td>41</td>
-                <td>2012/10/13</td>
-                <td>$132,000</td>
-                <td>2558</td>
-                <td>b.greer@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Dai</td>
-                <td>Rios</td>
-                <td>Personnel Lead</td>
-                <td>Edinburgh</td>
-                <td>35</td>
-                <td>2012/09/26</td>
-                <td>$217,500</td>
-                <td>2290</td>
-                <td>d.rios@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Jenette</td>
-                <td>Caldwell</td>
-                <td>Development Lead</td>
-                <td>New York</td>
-                <td>30</td>
-                <td>2011/09/03</td>
-                <td>$345,000</td>
-                <td>1937</td>
-                <td>j.caldwell@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Yuri</td>
-                <td>Berry</td>
-                <td>Chief Marketing Officer (CMO)</td>
-                <td>New York</td>
-                <td>40</td>
-                <td>2009/06/25</td>
-                <td>$675,000</td>
-                <td>6154</td>
-                <td>y.berry@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Caesar</td>
-                <td>Vance</td>
-                <td>Pre-Sales Support</td>
-                <td>New York</td>
-                <td>21</td>
-                <td>2011/12/12</td>
-                <td>$106,450</td>
-                <td>8330</td>
-                <td>c.vance@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Doris</td>
-                <td>Wilder</td>
-                <td>Sales Assistant</td>
-                <td>Sydney</td>
-                <td>23</td>
-                <td>2010/09/20</td>
-                <td>$85,600</td>
-                <td>3023</td>
-                <td>d.wilder@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Angelica</td>
-                <td>Ramos</td>
-                <td>Chief Executive Officer (CEO)</td>
-                <td>London</td>
-                <td>47</td>
-                <td>2009/10/09</td>
-                <td>$1,200,000</td>
-                <td>5797</td>
-                <td>a.ramos@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Gavin</td>
-                <td>Joyce</td>
-                <td>Developer</td>
-                <td>Edinburgh</td>
-                <td>42</td>
-                <td>2010/12/22</td>
-                <td>$92,575</td>
-                <td>8822</td>
-                <td>g.joyce@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Jennifer</td>
-                <td>Chang</td>
-                <td>Regional Director</td>
-                <td>Singapore</td>
-                <td>28</td>
-                <td>2010/11/14</td>
-                <td>$357,650</td>
-                <td>9239</td>
-                <td>j.chang@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Brenden</td>
-                <td>Wagner</td>
-                <td>Software Engineer</td>
-                <td>San Francisco</td>
-                <td>28</td>
-                <td>2011/06/07</td>
-                <td>$206,850</td>
-                <td>1314</td>
-                <td>b.wagner@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Fiona</td>
-                <td>Green</td>
-                <td>Chief Operating Officer (COO)</td>
-                <td>San Francisco</td>
-                <td>48</td>
-                <td>2010/03/11</td>
-                <td>$850,000</td>
-                <td>2947</td>
-                <td>f.green@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Shou</td>
-                <td>Itou</td>
-                <td>Regional Marketing</td>
-                <td>Tokyo</td>
-                <td>20</td>
-                <td>2011/08/14</td>
-                <td>$163,000</td>
-                <td>8899</td>
-                <td>s.itou@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Michelle</td>
-                <td>House</td>
-                <td>Integration Specialist</td>
-                <td>Sydney</td>
-                <td>37</td>
-                <td>2011/06/02</td>
-                <td>$95,400</td>
-                <td>2769</td>
-                <td>m.house@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Suki</td>
-                <td>Burks</td>
-                <td>Developer</td>
-                <td>London</td>
-                <td>53</td>
-                <td>2009/10/22</td>
-                <td>$114,500</td>
-                <td>6832</td>
-                <td>s.burks@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Prescott</td>
-                <td>Bartlett</td>
-                <td>Technical Author</td>
-                <td>London</td>
-                <td>27</td>
-                <td>2011/05/07</td>
-                <td>$145,000</td>
-                <td>3606</td>
-                <td>p.bartlett@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Gavin</td>
-                <td>Cortez</td>
-                <td>Team Leader</td>
-                <td>San Francisco</td>
-                <td>22</td>
-                <td>2008/10/26</td>
-                <td>$235,500</td>
-                <td>2860</td>
-                <td>g.cortez@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Martena</td>
-                <td>Mccray</td>
-                <td>Post-Sales support</td>
-                <td>Edinburgh</td>
-                <td>46</td>
-                <td>2011/03/09</td>
-                <td>$324,050</td>
-                <td>8240</td>
-                <td>m.mccray@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Unity</td>
-                <td>Butler</td>
-                <td>Marketing Designer</td>
-                <td>San Francisco</td>
-                <td>47</td>
-                <td>2009/12/09</td>
-                <td>$85,675</td>
-                <td>5384</td>
-                <td>u.butler@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Howard</td>
-                <td>Hatfield</td>
-                <td>Office Manager</td>
-                <td>San Francisco</td>
-                <td>51</td>
-                <td>2008/12/16</td>
-                <td>$164,500</td>
-                <td>7031</td>
-                <td>h.hatfield@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Hope</td>
-                <td>Fuentes</td>
-                <td>Secretary</td>
-                <td>San Francisco</td>
-                <td>41</td>
-                <td>2010/02/12</td>
-                <td>$109,850</td>
-                <td>6318</td>
-                <td>h.fuentes@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Vivian</td>
-                <td>Harrell</td>
-                <td>Financial Controller</td>
-                <td>San Francisco</td>
-                <td>62</td>
-                <td>2009/02/14</td>
-                <td>$452,500</td>
-                <td>9422</td>
-                <td>v.harrell@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Timothy</td>
-                <td>Mooney</td>
-                <td>Office Manager</td>
-                <td>London</td>
-                <td>37</td>
-                <td>2008/12/11</td>
-                <td>$136,200</td>
-                <td>7580</td>
-                <td>t.mooney@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Jackson</td>
-                <td>Bradshaw</td>
-                <td>Director</td>
-                <td>New York</td>
-                <td>65</td>
-                <td>2008/09/26</td>
-                <td>$645,750</td>
-                <td>1042</td>
-                <td>j.bradshaw@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Olivia</td>
-                <td>Liang</td>
-                <td>Support Engineer</td>
-                <td>Singapore</td>
-                <td>64</td>
-                <td>2011/02/03</td>
-                <td>$234,500</td>
-                <td>2120</td>
-                <td>o.liang@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Bruno</td>
-                <td>Nash</td>
-                <td>Software Engineer</td>
-                <td>London</td>
-                <td>38</td>
-                <td>2011/05/03</td>
-                <td>$163,500</td>
-                <td>6222</td>
-                <td>b.nash@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Sakura</td>
-                <td>Yamamoto</td>
-                <td>Support Engineer</td>
-                <td>Tokyo</td>
-                <td>37</td>
-                <td>2009/08/19</td>
-                <td>$139,575</td>
-                <td>9383</td>
-                <td>s.yamamoto@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Thor</td>
-                <td>Walton</td>
-                <td>Developer</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2013/08/11</td>
-                <td>$98,540</td>
-                <td>8327</td>
-                <td>t.walton@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Finn</td>
-                <td>Camacho</td>
-                <td>Support Engineer</td>
-                <td>San Francisco</td>
-                <td>47</td>
-                <td>2009/07/07</td>
-                <td>$87,500</td>
-                <td>2927</td>
-                <td>f.camacho@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Serge</td>
-                <td>Baldwin</td>
-                <td>Data Coordinator</td>
-                <td>Singapore</td>
-                <td>64</td>
-                <td>2012/04/09</td>
-                <td>$138,575</td>
-                <td>8352</td>
-                <td>s.baldwin@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Zenaida</td>
-                <td>Frank</td>
-                <td>Software Engineer</td>
-                <td>New York</td>
-                <td>63</td>
-                <td>2010/01/04</td>
-                <td>$125,250</td>
-                <td>7439</td>
-                <td>z.frank@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Zorita</td>
-                <td>Serrano</td>
-                <td>Software Engineer</td>
-                <td>San Francisco</td>
-                <td>56</td>
-                <td>2012/06/01</td>
-                <td>$115,000</td>
-                <td>4389</td>
-                <td>z.serrano@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Jennifer</td>
-                <td>Acosta</td>
-                <td>Junior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>43</td>
-                <td>2013/02/01</td>
-                <td>$75,650</td>
-                <td>3431</td>
-                <td>j.acosta@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Cara</td>
-                <td>Stevens</td>
-                <td>Sales Assistant</td>
-                <td>New York</td>
-                <td>46</td>
-                <td>2011/12/06</td>
-                <td>$145,600</td>
-                <td>3990</td>
-                <td>c.stevens@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Hermione</td>
-                <td>Butler</td>
-                <td>Regional Director</td>
-                <td>London</td>
-                <td>47</td>
-                <td>2011/03/21</td>
-                <td>$356,250</td>
-                <td>1016</td>
-                <td>h.butler@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Lael</td>
-                <td>Greer</td>
-                <td>Systems Administrator</td>
-                <td>London</td>
-                <td>21</td>
-                <td>2009/02/27</td>
-                <td>$103,500</td>
-                <td>6733</td>
-                <td>l.greer@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Jonas</td>
-                <td>Alexander</td>
-                <td>Developer</td>
-                <td>San Francisco</td>
-                <td>30</td>
-                <td>2010/07/14</td>
-                <td>$86,500</td>
-                <td>8196</td>
-                <td>j.alexander@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Shad</td>
-                <td>Decker</td>
-                <td>Regional Director</td>
-                <td>Edinburgh</td>
-                <td>51</td>
-                <td>2008/11/13</td>
-                <td>$183,000</td>
-                <td>6373</td>
-                <td>s.decker@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Michael</td>
-                <td>Bruce</td>
-                <td>Javascript Developer</td>
-                <td>Singapore</td>
-                <td>29</td>
-                <td>2011/06/27</td>
-                <td>$183,000</td>
-                <td>5384</td>
-                <td>m.bruce@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Donna</td>
-                <td>Snider</td>
-                <td>Customer Support</td>
-                <td>New York</td>
-                <td>27</td>
-                <td>2011/01/25</td>
-                <td>$112,000</td>
-                <td>4226</td>
-                <td>d.snider@datatables.net</td>
-            </tr>
-        </tbody>
-    </table>
-
-
- 
-</div>
-
-
-
 <?php }else if($_GET['p'] == "rincian2"){
 ?>
 
@@ -17784,11 +16965,11 @@ $propic = $fdb2['propic'] ? "https://ufe-section-indonesie.org/ufeapp/images/pro
 
 $tgl = date('d/m/Y');
 mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
-VALUES ('myespace', 'Espace Members', 'Alerte – Votre contenu doit être révisé', '', '$tgl', '', '".$fdb2['id_advert']."', '".$fdb2['id_member']."', '-', '-')
+VALUES ('myespace', 'Espace Members', '$_POST[titlenotif]', '', '$tgl', '', '".$fdb2['id_advert']."', '".$fdb2['id_member']."', '-', '-')
 ");
 
 $callNoti = new startSendNotification();
-$callNoti->sendNotif('Alerte – Votre contenu doit être révisé', $titleNoti);
+$callNoti->sendNotif($_POST['titlenotif'], $titleNoti);
 
 }
 
@@ -17949,20 +17130,41 @@ $rt2 = mysqli_fetch_array($rt);
               
                           ><?php echo $deskripsi2 ?></textarea>
              
-        <select style="margin-top:10px;" class="form-control" name="keterangan">
-        <option value="<?php echo $rt2['keterangan'] ?>">
-        <?php echo ucwords($rt2['keterangan']) ?></option>
-        <?php if($rt2['keterangan'] == "release"){ ?>
-        <option value="pending">Pending</option>
-        <option value="rejected">Rejected</option>
-        <?php }else if($rt2['keterangan'] == "pending"){ ?>
-        <option value="release">Release</option>
-        <option value="rejected">Rejected</option>
-        <?php }else{ ?>
-        <option value="pending">Pending</option>
-        <option value="release">Release</option>
-        <?php } ?>
+        <select style="margin-top:10px;" class="form-control" name="keterangan" onchange="showReasonRejected<?php echo $idd; ?>(this.value)">
+        <?php 
+          if($rt2['keterangan'] == "release"){
+            echo '<option value="pending">Pending</option>
+                  <option value="release" selected>Release</option>
+                  <option value="rejected">Rejected</option>';
+          }else if($rt2['keterangan'] == "rejected"){
+            echo '<option value="pending">Pending</option>
+                  <option value="release">Release</option>
+                  <option value="rejected" selected>Rejected</option>';
+          }else{
+            echo '<option value="pending" selected>Pending</option>
+                  <option value="release">Release</option>
+                  <option value="rejected">Rejected</option>';
+          }
+        ?>
         </select>
+
+        <div class="input-group mb-3" style="margin-top:10px;display:none;" id="dvReasonRejected<?php echo $idd; ?>">
+            <div class="input-group-prepend">
+              <span class="input-group-text" style="width:120px;">Alert Rejected</span>
+            </div>
+            <input type="text" name="titlenotif" value="Alerte – Votre contenu doit être révisé" class="form-control" placeholder="Reason rejected">
+        </div>
+
+        <script>
+          function showReasonRejected<?php echo $idd; ?>(nilai) {
+            console.log(nilai);
+            if(nilai == "rejected" ) {
+              $("#dvReasonRejected<?php echo $idd; ?>").show();
+            } else {
+              $("#dvReasonRejected<?php echo $idd; ?>").hide();
+            }
+          }
+        </script>
         
       </div>
             <div class="modal-footer justify-content-between">
@@ -17971,9 +17173,7 @@ $rt2 = mysqli_fetch_array($rt);
             </div>
       </form>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>      
             
              <?php $no++;} ?>          
@@ -18001,9 +17201,641 @@ $rt2 = mysqli_fetch_array($rt);
    </div>
 </div>
 
-<?php
-}else if($_GET['p'] == "home"){
+<?php }else if($_GET['p'] == "reginfo"){ ?>
+
+<div class="card shadow-sm border-bottom-primary">
+    <div class="card-header bg-white py-3">
+        <div class="row">
+            <div class="col">
+  <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
+              <li class="breadcrumb-item active">Regional Information</li>
+                            </ol>
+            </div>
+         <div class="col-auto">
+                <a href="" data-toggle="modal" data-target="#modaladdreginfo" class="btn btn-sm btn-primary btn-icon-split">
+                    <span class="icon">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    <span class="text">
+                       Add
+                    </span>
+                </a>
+            </div>
+            </div>          
+<?php 
+if(isset($_POST['addreginfo'])) {
+  include('../db.php');
+  $tanggal = date('Y-m-d');
+  $sql = "INSERT INTO tb_informasi (jenis, tanggal, judul, isi, isaktif) 
+      VALUES ('2', '$tanggal', '$_POST[judul]', '$_POST[isi]', '$_POST[isaktif]')";
+  mysqli_query($koneksi, $sql);
+
+  if($_POST['isshownotif'] == '1') {
+    class startSendNotification {
+      function sendNotifi($titleNoti, $bodyNoti, $imageNoti, $dataNomor) {
+        define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+        include('../db.php');
+        $ewww = mysqli_query($koneksi,"SELECT * from user where token_push != '' ");
+        while ($tyu = mysqli_fetch_array($ewww)){
+          $qw[] = $tyu['token_push'];
+        }
+
+        $fcmMsg = array(
+          'title' => $titleNoti,
+          'body' => $bodyNoti,
+          'icon' => 'image/look24-logo-s.png',
+          'sound' => 'default',
+          'image' => $imageNoti 
+        );
+
+        $fcmData = array(
+          'halaman' => 'reginfo',
+          'nomor' => $dataNomor,
+        );
+        
+        $fcmFields = array(
+          'registration_ids' => $qw,
+          'priority' => 'high',
+          'notification' => $fcmMsg,
+          'data' => $fcmData
+        );
+
+        $headers = array(
+          'Authorization: key=' . API_ACCESS_KEY,
+          'Content-Type: application/json'
+        );
+        
+        $ch = curl_init();
+        curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+        curl_setopt( $ch,CURLOPT_POST, true );
+        curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+        curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+        curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+        curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+        $result = curl_exec($ch );
+        curl_close( $ch );
+        echo $result . "\n\n".$qw;
+      }
+    }
+
+    $idnya = mysqli_insert_id($koneksi);
+    $gambar_kategori = "https://ufe-section-indonesie.org/ufeapp/images/logo/ufe_indo.png";
+    $tgl = date('d/m/Y');
+
+    // mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+    //   VALUES ('reginfo', 'UFE Indonesié', '$_POST[judul]', '".$_COOKIE['first_name']." ".$_COOKIE['second_name']."', '$tgl', '$gambar_kategori', '$idnya', 'all', '-', '-')");
+    $callNoti = new startSendNotification();
+    $callNoti->sendNotifi('UFE Indonesié', $_POST['judul'], $gambar_kategori, $idnya);
+  }
   ?>
+    <script>
+    console.log("Data added successfully");
+    alert("Data added successfully <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=reginfo";
+    </script> <?php
+} ?>
+    <div class="modal fade" id="modaladdreginfo">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Regional Information</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        <form method="POST" enctype="multipart/form-data" >
+        <div class="modal-body" style="height:70vh;overflow:scroll;">
+
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" 
+        style="width:120px;">Title</span>
+        </div>
+        <input type="text" name="judul" value="Informations régionales pour tous les membres"
+        class="form-control" placeholder="Title" required>
+        </div>
+
+        <div>
+          Description
+        </div>
+        <textarea class="textarea" name="isi" placeholder="Place some text here" required></textarea>
+
+        <div class="input-group mb-9" style="margin-top:10px;">
+        <span style="padding: 15px 15px 0px 0px;">Is Active</span>
+        <select style="margin-top:10px;" class="form-control" name="isaktif">
+          <option value="0">No</option>
+          <option value="1" selected>Yes</option>
+        </select>
+        </div>
+
+        <div class="input-group mb-9" style="margin-top:10px;">
+        <span style="padding: 15px 15px 0px 0px;">Send notification to members</span>
+        <select style="margin-top:10px;" class="form-control" name="isshownotif">
+          <option value="0">No</option>
+          <option value="1" selected>Yes</option>
+        </select>
+        </div>
+
+        </div>
+        <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" name="addreginfo" class="btn btn-primary">Add</button>
+        </div>
+        </form>
+        </div>
+    </div>
+  </div>      
+                                                                     
+     <?php 
+if(isset($_POST['updatereginfo'])){
+  if(($_POST['judul'])){
+    $sql = "UPDATE tb_informasi SET
+        judul = '$_POST[judul]',
+        isi = '$_POST[isi]',
+        isaktif = '$_POST[isaktif]'
+        where id_info = '$_POST[id_info]'";
+      mysqli_query($koneksi, $sql);
+
+    if($_POST['isshownotif'] == '1') {
+      class startSendNotification {
+        function sendNotific($titleNoti, $bodyNoti, $imageNoti, $dataNomor) {
+          define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+          include('../db.php');
+          $ewww = mysqli_query($koneksi,"SELECT * from user where token_push != '' ");
+          while ($tyu = mysqli_fetch_array($ewww)){
+            $qw[] = $tyu['token_push'];
+          }
+  
+          $fcmMsg = array(
+            'title' => $titleNoti,
+            'body' => $bodyNoti,
+            'icon' => 'image/look24-logo-s.png',
+            'sound' => 'default',
+            'image' => $imageNoti 
+          );
+  
+          $fcmData = array(
+            'halaman' => 'reginfo',
+            'nomor' => $dataNomor,
+          );
+          
+          $fcmFields = array(
+            'registration_ids' => $qw,
+            'priority' => 'high',
+            'notification' => $fcmMsg,
+            'data' => $fcmData
+          );
+  
+          $headers = array(
+            'Authorization: key=' . API_ACCESS_KEY,
+            'Content-Type: application/json'
+          );
+          
+          $ch = curl_init();
+          curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+          curl_setopt( $ch,CURLOPT_POST, true );
+          curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+          curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+          curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+          curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+          $result = curl_exec($ch );
+          curl_close( $ch );
+          echo $result . "\n\n".$qw;
+        }
+      }
+
+      $gambar_kategori = "https://ufe-section-indonesie.org/ufeapp/images/logo/ufe_indo.png";
+      $tgl = date('d/m/Y');
+
+      // mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+      //   VALUES ('reginfo', 'UFE Indonesié', '$_POST[judul]', '".$_COOKIE['first_name']." ".$_COOKIE['second_name']."', '$tgl', '$gambar_kategori', '$_POST[id_info]', 'all', '-', '-')");
+      $callNoti = new startSendNotification();
+      $callNoti->sendNotific('UFE Indonesié', $_POST['judul'], $gambar_kategori, $_POST['id_info']);
+    }
+
+    ?>
+    <script>
+    alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=reginfo";
+    </script>
+    <?php 
+
+  } 
+}
+ ?>
+    <div class="table-responsive" style="padding:5px;">
+      <table class="display responsive nowrap" id="example23">
+        <thead>
+          <tr>
+            <th>No. </th>
+            <th>Options</th>    
+            <th>Date</th>                   
+            <th>Title</th>
+            <th>Is Active</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+          include('../db.php');
+          $kj = mysqli_query($koneksi,"SELECT * from tb_informasi where jenis = '2' order by isaktif desc, id_info desc");
+          $no = 1;
+          while($kj2 = mysqli_fetch_array($kj)){
+              $idd = $kj2['id_info'];
+              ?>
+              <tr>
+                <td><?php echo $no; ?></td>
+                <td><a data-toggle="modal" data-target="#modal-lg2_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a></td> 
+                <td><?php echo $kj2['tanggal'] ?></td>
+                <td><?php echo $kj2['judul'] ?></td>
+                <td><?php echo $kj2['isaktif'] == '1' ? "Yes" : "No"; ?></td>
+                <td><?php echo $kj2['isi'] ?></td>              
+              </tr>
+            
+              <div class="modal fade" id="modal-lg2_<?php echo $idd; ?>">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Edit Regional information</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form method="POST" enctype="multipart/form-data" >
+                    <div class="modal-body" style="overflow:scroll;height:70vh">
+
+
+                    <div class="input-group mb-3" style="margin-top:10px;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" style="width:120px;">Title</span>
+                    </div>
+                    <input type="hidden" name="id_info" value="<?php echo $idd ?>" />
+                    <input type="text" name="judul" value="<?php echo $kj2['judul'] ?>" 
+                    class="form-control" placeholder="Name" required>
+                    </div>
+      
+                    <div style="margin-top:15px;">
+                        Description
+                    </div>
+                    <textarea class="textarea" name="long_desc" placeholder="Place some text here"><?php echo $kj2['isi'] ?></textarea>
+
+
+                    <div class="input-group mb-9" style="margin-top:10px;">
+                    <span style="padding: 15px 15px 0px 0px;">Is Active</span>
+                    <select style="margin-top:10px;" class="form-control" name="isaktif">
+                    <?php 
+                      if($kj2['isaktif'] == '1') {
+                        echo '<option value="0">No</option><option value="1" selected>Yes</option>';
+                      } else {
+                        echo '<option value="0" selected>No</option><option value="1">Yes</option>';
+                      }
+                    ?>
+                    </select>
+                    </div>
+
+                    <div class="input-group mb-9" style="margin-top:10px;">
+                    <span style="padding: 15px 15px 0px 0px;">Send notification to members</span>
+                    <select style="margin-top:10px;" class="form-control" name="isshownotif">
+                      <option value="0" selected>No</option>
+                      <option value="1">Yes</option>
+                    </select>
+                    </div>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" name="updatereginfo" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              </div>
+             <?php $no++;} ?>          
+        </tbody>
+      </table>
+    </div>
+</div>
+</div>
+
+<?php }else if($_GET['p'] == "moninfo"){ ?>
+
+<div class="card shadow-sm border-bottom-primary">
+    <div class="card-header bg-white py-3">
+        <div class="row">
+            <div class="col">
+  <ol class="breadcrumb float-sm-left">
+              <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
+              <li class="breadcrumb-item active">Global Information</li>
+                            </ol>
+            </div>
+         <div class="col-auto">
+                <a href="" data-toggle="modal" data-target="#modaladdmoninfo" class="btn btn-sm btn-primary btn-icon-split">
+                    <span class="icon">
+                        <i class="fa fa-plus"></i>
+                    </span>
+                    <span class="text">
+                       Add
+                    </span>
+                </a>
+            </div>
+            </div>          
+<?php 
+if(isset($_POST['addmoninfo'])) {
+  include('../db.php');
+  $tanggal = date('Y-m-d');
+  $sql = "INSERT INTO tb_informasi (jenis, tanggal, judul, isi, isaktif) 
+      VALUES ('1', '$tanggal', '$_POST[judul]', '$_POST[isi]', '$_POST[isaktif]')";
+  mysqli_query($koneksi, $sql);
+
+  if($_POST['isshownotif'] == '1') {
+    class startSendNotification {
+      function sendNotifica($titleNoti, $bodyNoti, $imageNoti, $dataNomor) {
+        define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+        include('../db.php');
+        $ewww = mysqli_query($koneksi,"SELECT * from user where token_push != '' ");
+        while ($tyu = mysqli_fetch_array($ewww)){
+          $qw[] = $tyu['token_push'];
+        }
+
+        $fcmMsg = array(
+          'title' => $titleNoti,
+          'body' => $bodyNoti,
+          'icon' => 'image/look24-logo-s.png',
+          'sound' => 'default',
+          'image' => $imageNoti 
+        );
+
+        $fcmData = array(
+          'halaman' => 'moninfo',
+          'nomor' => $dataNomor,
+        );
+        
+        $fcmFields = array(
+          'registration_ids' => $qw,
+          'priority' => 'high',
+          'notification' => $fcmMsg,
+          'data' => $fcmData
+        );
+
+        $headers = array(
+          'Authorization: key=' . API_ACCESS_KEY,
+          'Content-Type: application/json'
+        );
+        
+        $ch = curl_init();
+        curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+        curl_setopt( $ch,CURLOPT_POST, true );
+        curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+        curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+        curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+        curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+        $result = curl_exec($ch );
+        curl_close( $ch );
+        echo $result . "\n\n".$qw;
+      }
+    }
+
+    $idnya = mysqli_insert_id($koneksi);
+    $gambar_kategori = "https://ufe-section-indonesie.org/ufeapp/images/logo/ufe_monde.png";
+    $tgl = date('d/m/Y');
+
+    // mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+    //   VALUES ('moninfo', 'UFE Monde', '$_POST[judul]', 'Monde Admin', '$tgl', '$gambar_kategori', '$idnya', 'all', '-', '-')");
+    $callNoti = new startSendNotification();
+    $callNoti->sendNotifica('UFE Monde', $_POST['judul'], $gambar_kategori, $idnya);
+  }
+  ?>
+    <script>
+    console.log("Data added successfully");
+    alert("Data added successfully <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=moninfo";
+    </script> <?php
+} ?>
+    <div class="modal fade" id="modaladdmoninfo">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Add Global Information</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        <form method="POST" enctype="multipart/form-data" >
+        <div class="modal-body" style="height:70vh;overflow:scroll;">
+
+        <div class="input-group mb-3" style="margin-top:10px;">
+        <div class="input-group-prepend">
+        <span class="input-group-text" 
+        style="width:120px;">Title</span>
+        </div>
+        <input type="text" name="judul" value="Informations globales pour tous les membres"
+        class="form-control" placeholder="Title" required>
+        </div>
+
+        <div>
+          Description
+        </div>
+        <textarea class="textarea" name="isi" placeholder="Place some text here" required></textarea>
+
+        <div class="input-group mb-9" style="margin-top:10px;">
+        <span style="padding: 15px 15px 0px 0px;">Is Active</span>
+        <select style="margin-top:10px;" class="form-control" name="isaktif">
+          <option value="0">No</option>
+          <option value="1" selected>Yes</option>
+        </select>
+        </div>
+
+        <div class="input-group mb-9" style="margin-top:10px;">
+        <span style="padding: 15px 15px 0px 0px;">Send notification to members</span>
+        <select style="margin-top:10px;" class="form-control" name="isshownotif">
+          <option value="0">No</option>
+          <option value="1" selected>Yes</option>
+        </select>
+        </div>
+
+        </div>
+        <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" name="addmoninfo" class="btn btn-primary">Add</button>
+        </div>
+        </form>
+        </div>
+    </div>
+  </div>      
+                                                                     
+     <?php 
+if(isset($_POST['updatemoninfo'])){
+  if(($_POST['judul'])){
+    $sql = "UPDATE tb_informasi SET
+        judul = '$_POST[judul]',
+        isi = '$_POST[isi]',
+        isaktif = '$_POST[isaktif]'
+        where id_info = '$_POST[id_info]'";
+      mysqli_query($koneksi, $sql);
+
+    if($_POST['isshownotif'] == '1') {
+      class startSendNotification {
+        function sendNotificat($titleNoti, $bodyNoti, $imageNoti, $dataNomor) {
+          define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+          include('../db.php');
+          $ewww = mysqli_query($koneksi,"SELECT * from user where token_push != '' ");
+          while ($tyu = mysqli_fetch_array($ewww)){
+            $qw[] = $tyu['token_push'];
+          }
+  
+          $fcmMsg = array(
+            'title' => $titleNoti,
+            'body' => $bodyNoti,
+            'icon' => 'image/look24-logo-s.png',
+            'sound' => 'default',
+            'image' => $imageNoti 
+          );
+  
+          $fcmData = array(
+            'halaman' => 'moninfo',
+            'nomor' => $dataNomor,
+          );
+          
+          $fcmFields = array(
+            'registration_ids' => $qw,
+            'priority' => 'high',
+            'notification' => $fcmMsg,
+            'data' => $fcmData
+          );
+  
+          $headers = array(
+            'Authorization: key=' . API_ACCESS_KEY,
+            'Content-Type: application/json'
+          );
+          
+          $ch = curl_init();
+          curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+          curl_setopt( $ch,CURLOPT_POST, true );
+          curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+          curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+          curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+          curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+          $result = curl_exec($ch );
+          curl_close( $ch );
+          echo $result . "\n\n".$qw;
+        }
+      }
+
+      $gambar_kategori = "https://ufe-section-indonesie.org/ufeapp/images/logo/ufe_monde.png";
+      $tgl = date('d/m/Y');
+
+      // mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+      //   VALUES ('moninfo', 'UFE Monde', '$_POST[judul]', 'Admin Monde', '$tgl', '$gambar_kategori', '$_POST[id_info]', 'all', '-', '-')");
+      $callNoti = new startSendNotification();
+      $callNoti->sendNotificat('UFE Monde', $_POST['judul'], $gambar_kategori, $_POST['id_info']);
+    }
+
+    ?>
+    <script>
+    alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
+    location = "?p=moninfo";
+    </script>
+    <?php 
+
+  } 
+}
+ ?>
+    <div class="table-responsive" style="padding:5px;">
+      <table class="display responsive nowrap" id="example23">
+        <thead>
+          <tr>
+            <th>No. </th>
+            <th>Options</th>    
+            <th>Date</th>                   
+            <th>Title</th>
+            <th>Is Active</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+          include('../db.php');
+          $kj = mysqli_query($koneksi,"SELECT * from tb_informasi where jenis = '1' order by isaktif desc, id_info desc");
+          $no = 1;
+          while($kj2 = mysqli_fetch_array($kj)){
+              $idd = $kj2['id_info'];
+              ?>
+              <tr>
+                <td><?php echo $no; ?></td>
+                <td><a data-toggle="modal" data-target="#modal-lg2_<?php echo $idd ?>" href="" class="btn btn-warning btn-circle btn-sm"><i class="fa fa-edit"></i></a></td> 
+                <td><?php echo $kj2['tanggal'] ?></td>
+                <td><?php echo $kj2['judul'] ?></td>
+                <td><?php echo $kj2['isaktif'] == '1' ? "Yes" : "No"; ?></td>
+                <td><?php echo $kj2['isi'] ?></td>              
+              </tr>
+            
+              <div class="modal fade" id="modal-lg2_<?php echo $idd; ?>">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Edit Global information</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form method="POST" enctype="multipart/form-data" >
+                    <div class="modal-body" style="overflow:scroll;height:70vh">
+
+
+                    <div class="input-group mb-3" style="margin-top:10px;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" style="width:120px;">Title</span>
+                    </div>
+                    <input type="hidden" name="id_info" value="<?php echo $idd ?>" />
+                    <input type="text" name="judul" value="<?php echo $kj2['judul'] ?>" 
+                    class="form-control" placeholder="Name" required>
+                    </div>
+      
+                    <div style="margin-top:15px;">
+                        Description
+                    </div>
+                    <textarea class="textarea" name="long_desc" placeholder="Place some text here"><?php echo $kj2['isi'] ?></textarea>
+
+
+                    <div class="input-group mb-9" style="margin-top:10px;">
+                    <span style="padding: 15px 15px 0px 0px;">Is Active</span>
+                    <select style="margin-top:10px;" class="form-control" name="isaktif">
+                    <?php 
+                      if($kj2['isaktif'] == '1') {
+                        echo '<option value="0">No</option><option value="1" selected>Yes</option>';
+                      } else {
+                        echo '<option value="0" selected>No</option><option value="1">Yes</option>';
+                      }
+                    ?>
+                    </select>
+                    </div>
+
+                    <div class="input-group mb-9" style="margin-top:10px;">
+                    <span style="padding: 15px 15px 0px 0px;">Send notification to members</span>
+                    <select style="margin-top:10px;" class="form-control" name="isshownotif">
+                      <option value="0" selected>No</option>
+                      <option value="1">Yes</option>
+                    </select>
+                    </div>
+
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" name="updatemoninfo" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              </div>
+             <?php $no++;} ?>          
+        </tbody>
+      </table>
+    </div>
+</div>
+</div>
+
+<?php } else if($_GET['p'] == "home") { ?>
  <div class="card shadow-sm border-bottom-primary">
     <div class="card-header bg-white py-3">
        
