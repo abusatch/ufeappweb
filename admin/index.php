@@ -2066,23 +2066,7 @@ class startSendNotification
 
     $ewww = mysqli_query($koneksi,"select * from user where token_push != '' ");
 while ($tyu = mysqli_fetch_array($ewww)){
-  
-  
-$qw[] = $tyu['token_push'];
-
-//  'cOBybN36ytM:APA91bF8E44iCwgwI6aSL7XGMIpQXA8u-PD3SpPbVJUSBbkYJgDEwiGFlYnkFQcTRrjdwac0BSpsA6elLn5wpuH7tyrLGbqfIDJ0imGt6_lvF1tRz5G8nxtKVvlAWUo7Pzbq829kPbIC',
-  //  'faldz28ZSVs:APA91bEZ26qqfKMN9j2Vo9Dp1iMNVRLwbcPYOUL4cTVrcWcckpprX2x6sVG4Wxn_UTIxfpjzT_DV9-eobIiWpco-5KhLy-S8pBKPQtrTdeVPtSrAgcf8_ICg28w8sgwtOD88mEhrkxE3',
-
-//echo $qw;
-
-
-  //  $registrationIDs = [
-  //  'cOBybN36ytM:APA91bF8E44iCwgwI6aSL7XGMIpQXA8u-PD3SpPbVJUSBbkYJgDEwiGFlYnkFQcTRrjdwac0BSpsA6elLn5wpuH7tyrLGbqfIDJ0imGt6_lvF1tRz5G8nxtKVvlAWUo7Pzbq829kPbIC',
-//    'faldz28ZSVs:APA91bEZ26qqfKMN9j2Vo9Dp1iMNVRLwbcPYOUL4cTVrcWcckpprX2x6sVG4Wxn_UTIxfpjzT_DV9-eobIiWpco-5KhLy-S8pBKPQtrTdeVPtSrAgcf8_ICg28w8sgwtOD88mEhrkxE3',
-
-  //  ];
-//echo $qw;
-
+  $qw[] = $tyu['token_push'];
 }
 
 
@@ -14761,7 +14745,7 @@ location = "?p=r_tb_ufe&id=<?php echo $_POST['idc2'] ?>";
                         </div>
                         <input type="hidden" name="idc2" value="<?php echo $_GET['id'] ?>" />          
                         <input type="hidden" name="idc" value="<?php echo $idd ?>" />
-                        <input type="text" name="titlenotif" value="Promo - <?php echo $kj2['judul'] ?>" class="form-control" placeholder="Title" required>
+                        <input type="text" name="titlenotif" value="Promotion - <?php echo $kj2['judul'] ?>" class="form-control" placeholder="Title" required>
                       </div>       
                 </div>
                   <div class="modal-footer justify-content-between">
@@ -16244,7 +16228,7 @@ if(isset($_POST['addagent'])) {
 
   if($_POST['isshownotif'] == '1') {
     class startSendNotification {
-      function sendNoti($titleNoti, $bodyNoti) {
+      function sendNoti($titleNoti, $bodyNoti, $imageNoti, $dataNomor) {
         define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
         include('../db.php');
         $ewww = mysqli_query($koneksi,"SELECT * from user where token_push != '' ");
@@ -16256,12 +16240,13 @@ if(isset($_POST['addagent'])) {
           'title' => $titleNoti,
           'body' => $bodyNoti,
           'icon' => 'image/look24-logo-s.png',
-          'sound' => 'default' 
+          'sound' => 'default',
+          'image' => $imageNoti 
         );
 
         $fcmData = array(
-          'halaman' => 'activities',
-          'nomor' => $_POST['idc'],
+          'halaman' => 'demar',
+          'nomor' => $dataNomor,
         );
         
         $fcmFields = array(
@@ -16289,11 +16274,22 @@ if(isset($_POST['addagent'])) {
       }
     }
 
+    $idnya = mysqli_insert_id($koneksi);
+    $fdb = mysqli_query($koneksi,"SELECT a.id_agent, a.id_kategori, a.judul, a.judul2, a.short_desc, a.long_desc, a.gambar, a.gambar2, a.namaagent, a.gmaps, a.alamatagent, a.alamat2agent, 
+          a.kotaagent, a.kodeposagent, a.telpagent, a.mobileagent, a.emailagent, a.webagent, a.fbagent, a.twiteragent, a.igagent, a.playstoreagent,
+          a.rating1, a.rating2, a.rating3, a.visibility, b.judul AS judul_kategori, b.gambar AS gambar_kategori, c.id_menu, c.nama_menu AS judul_menu, c.gambar2 AS gambar_menu
+      FROM tb_agent a
+      JOIN tb_demar2 b ON(a.id_kategori = b.id_demar)
+      JOIN tb_menu c ON(b.id_kategori = c.id_menu)
+      WHERE a.id_agent = '$idnya'");
+    $fdb2 = mysqli_fetch_assoc($fdb);
+    $gambar_kategori = $fdb2['gambar_kategori'] ? "https://ufe-section-indonesie.org/ufeapp/images/menu/".$fdb2['gambar_kategori'] : "";
     $tgl = date('d/m/Y');
+
     mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
-      VALUES ('activities', 'UFE Indonesié', '$_POST[titlenotif]', 'Activités', '$tgl', '', '".$_POST['idc']."', 'all', '-', '-')");
+      VALUES ('demar', '$fdb2[judul_menu]', 'Nouveau - ".$fdb2['namaagent']."', '', '$tgl', '$gambar_kategori', '$fdb2[id_agent]', 'all', '-', '-')");
     $callNoti = new startSendNotification();
-    $callNoti->sendNoti($_POST['titlenotif'], 'Activités');
+    $callNoti->sendNoti($fdb2['judul_menu'], "Nouveau - ".$fdb2['namaagent'], $gambar_kategori, $fdb2['id_agent']);
   }
   ?>
     <script>
@@ -16623,6 +16619,71 @@ if(isset($_POST['updateagent'])){
       mysqli_query($koneksi, $sql);      
     }
 
+    if($_POST['isshownotif'] == '1') {
+      class startSendNotification {
+        function sendNoti($titleNoti, $bodyNoti, $imageNoti, $dataNomor) {
+          define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
+          include('../db.php');
+          $ewww = mysqli_query($koneksi,"SELECT * from user where token_push != '' ");
+          while ($tyu = mysqli_fetch_array($ewww)){
+            $qw[] = $tyu['token_push'];
+          }
+  
+          $fcmMsg = array(
+            'title' => $titleNoti,
+            'body' => $bodyNoti,
+            'icon' => 'image/look24-logo-s.png',
+            'sound' => 'default',
+            'image' => $imageNoti 
+          );
+  
+          $fcmData = array(
+            'halaman' => 'demar',
+            'nomor' => $dataNomor,
+          );
+          
+          $fcmFields = array(
+            'registration_ids' => $qw,
+            'priority' => 'high',
+            'notification' => $fcmMsg,
+            'data' => $fcmData
+          );
+  
+          $headers = array(
+            'Authorization: key=' . API_ACCESS_KEY,
+            'Content-Type: application/json'
+          );
+          
+          $ch = curl_init();
+          curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+          curl_setopt( $ch,CURLOPT_POST, true );
+          curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+          curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+          curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+          curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fcmFields ) );
+          $result = curl_exec($ch );
+          curl_close( $ch );
+          echo $result . "\n\n".$qw;
+        }
+      }
+
+      $fdb = mysqli_query($koneksi,"SELECT a.id_agent, a.id_kategori, a.judul, a.judul2, a.short_desc, a.long_desc, a.gambar, a.gambar2, a.namaagent, a.gmaps, a.alamatagent, a.alamat2agent, 
+            a.kotaagent, a.kodeposagent, a.telpagent, a.mobileagent, a.emailagent, a.webagent, a.fbagent, a.twiteragent, a.igagent, a.playstoreagent,
+            a.rating1, a.rating2, a.rating3, a.visibility, b.judul AS judul_kategori, b.gambar AS gambar_kategori, c.id_menu, c.nama_menu AS judul_menu, c.gambar2 AS gambar_menu
+        FROM tb_agent a
+        JOIN tb_demar2 b ON(a.id_kategori = b.id_demar)
+        JOIN tb_menu c ON(b.id_kategori = c.id_menu)
+        WHERE a.id_agent = '$_POST[idc]'");
+      $fdb2 = mysqli_fetch_assoc($fdb);
+      $gambar_kategori = $fdb2['gambar_kategori'] ? "https://ufe-section-indonesie.org/ufeapp/images/menu/".$fdb2['gambar_kategori'] : "";
+      $tgl = date('d/m/Y');
+  
+      mysqli_query($koneksi,"INSERT INTO tb_notification(kategori, judul, isi, keterangan, tanggal, gambar, data, kepada, dibaca, dihapus) 
+        VALUES ('demar', '$fdb2[judul_menu]', 'Promotion - ".$fdb2['namaagent']."', '', '$tgl', '$gambar_kategori', '$fdb2[id_agent]', 'all', '-', '-')");
+      $callNoti = new startSendNotification();
+      $callNoti->sendNoti($fdb2['judul_menu'], "Promotion - ".$fdb2['namaagent'], $gambar_kategori, $fdb2['id_agent']);
+    }
+
     ?>
     <script>
     alert("Data changed successfully <?php echo mysqli_error($koneksi); ?>");
@@ -16918,6 +16979,14 @@ if(isset($_POST['updateagent'])){
                 echo '<option value="0" selected>No</option><option value="1">Yes</option>';
               }
             ?>
+            </select>
+            </div>
+
+            <div class="input-group mb-9" style="margin-top:10px;">
+            <span style="padding: 15px 15px 0px 0px;">Send notification to members</span>
+            <select style="margin-top:10px;" class="form-control" name="isshownotif">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
             </select>
             </div>
 
@@ -17648,7 +17717,7 @@ $callNoti->sendNoti($titleNoti, $bodyNoti);
 class startSendNotification
 {
   
-    function sendNoti($titleNoti, $bodyNoti){
+    function sendNotif($titleNoti, $bodyNoti){
 
     define( 'API_ACCESS_KEY', 'AAAARVfjooY:APA91bEAKbWGNffjb80WnOsnE4U_iNWJOUhW1UqiMsnLiJXah2oFmEcn2Y5EcBvUeCWHWgAfBwmFZHhnCdKvyvrUf4m7okrNCICisXtzNyxfKu4F8FxfhXcnxPICACaUrLQJekNqYZPy');
         include('../db.php');
@@ -17719,7 +17788,7 @@ VALUES ('myespace', 'Espace Members', 'Alerte – Votre contenu doit être révi
 ");
 
 $callNoti = new startSendNotification();
-$callNoti->sendNoti('Alerte – Votre contenu doit être révisé', $titleNoti);
+$callNoti->sendNotif('Alerte – Votre contenu doit être révisé', $titleNoti);
 
 }
 
