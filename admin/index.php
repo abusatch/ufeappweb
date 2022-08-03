@@ -609,12 +609,12 @@ location = "?p=tb_dm_1";
 
 
 
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a href="#" class="nav-link">
 
               <i class="nav-icon fas fa-flag"></i>
               <p>
-                Tb Article
+                Article
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -633,7 +633,7 @@ location = "?p=tb_dm_1";
               </li>
        
             </ul>
-          </li> -->
+          </li>
 
            
       
@@ -4358,28 +4358,12 @@ $deskripsi1 = str_replace("&petiksatu&","'",$rt2['deskripsi']);
  <div class="card shadow-sm border-bottom-primary">
     <div class="card-header bg-white py-3">
         <div class="row">
-            <div class="col">
-<?php 
-include('../db.php');
-//$idmenuu = "MENU".$_GET['id_menu'];
-//$qw = mysqli_query($koneksi,"select * from tb_menu where id_menu = '$_GET[id_menu]'");
-//$qw2 = mysqli_fetch_array($qw);
-?>
-  
+            <div class="col">  
            <ol class="breadcrumb float-sm-left">
               <li class="breadcrumb-item"><a href="?p=tb_dm_1">Home</a></li>
     
               <li class="breadcrumb-item active">Article Waiting Confirmation </li>
                             </ol>
-      
-      
-      <!--
-<center>
-      <fieldset style="background-color:grey;width:90%;max-width:500px;align:center;">
-      tessss
-      </fieldset>
-    </center> 
-      -->
       </div>
    
 
@@ -4397,10 +4381,6 @@ if(isset($_POST['updatetb_artikel'])){
 
     
 if(!empty($_POST['judul'])){
-
-
-
-
 
 $maxDimW = 1000;
 $maxDimH = 500;
@@ -4420,25 +4400,17 @@ if ( $width > $maxDimW || $height > $maxDimH ) {
     $src = imagecreatefromstring(file_get_contents($fn));
     $dst = imagecreatetruecolor( $width, $height );
     imagecopyresampled($dst, $src, 0, 0, 0, 0, $width, $height, $size[0], $size[1] );
-
     imagejpeg($dst, $target_filename); // adjust format as needed
-
-
 }
 
 $namaa = $_FILES['image_link']['name'];
-
 move_uploaded_file($_FILES['image_link']['tmp_name'],"../images/actualite/".$_FILES['image_link']['name']);
-
-
 
 $judul1 = str_replace("'","&petiksatu&",$_POST['judul']);
 $judul2 = str_replace('"','&petikdua&',$judul1);
 
 $deskripsi1 = str_replace("'","&petiksatu&",$_POST['deskripsi']);
 $deskripsi2 = str_replace('"','&petikdua&',$deskripsi1);
-
-
 
     if($_FILES['image_link']['name'] == null){
 mysqli_query($koneksi,"update tb_template set 
@@ -4462,25 +4434,13 @@ where id_template = '$_POST[id_template]'
 
 if($_FILES['image_link']['name'] == null){
 
-
-mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan1','pesan1')");
-?>
-
-
-<?php
 if($_POST['keterangan'] == "release"){
   mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan3','pesan3')");
 
-
-
-
-
-
   ?>
-<script>
+<!-- <script>
 window.open("https://ufe-section-indonesie.org/ufeapp/tesfb2.php?from=member");
-
-</script>
+</script> -->
 
           <?php
 class startSendNotification
@@ -4493,23 +4453,7 @@ class startSendNotification
 
     $ewww = mysqli_query($koneksi,"select * from user where token_push != '' ");
 while ($tyu = mysqli_fetch_array($ewww)){
-  
-  
-$qw[] = $tyu['token_push'];
-
-//  'cOBybN36ytM:APA91bF8E44iCwgwI6aSL7XGMIpQXA8u-PD3SpPbVJUSBbkYJgDEwiGFlYnkFQcTRrjdwac0BSpsA6elLn5wpuH7tyrLGbqfIDJ0imGt6_lvF1tRz5G8nxtKVvlAWUo7Pzbq829kPbIC',
-  //  'faldz28ZSVs:APA91bEZ26qqfKMN9j2Vo9Dp1iMNVRLwbcPYOUL4cTVrcWcckpprX2x6sVG4Wxn_UTIxfpjzT_DV9-eobIiWpco-5KhLy-S8pBKPQtrTdeVPtSrAgcf8_ICg28w8sgwtOD88mEhrkxE3',
-
-//echo $qw;
-
-
-  //  $registrationIDs = [
-  //  'cOBybN36ytM:APA91bF8E44iCwgwI6aSL7XGMIpQXA8u-PD3SpPbVJUSBbkYJgDEwiGFlYnkFQcTRrjdwac0BSpsA6elLn5wpuH7tyrLGbqfIDJ0imGt6_lvF1tRz5G8nxtKVvlAWUo7Pzbq829kPbIC',
-//    'faldz28ZSVs:APA91bEZ26qqfKMN9j2Vo9Dp1iMNVRLwbcPYOUL4cTVrcWcckpprX2x6sVG4Wxn_UTIxfpjzT_DV9-eobIiWpco-5KhLy-S8pBKPQtrTdeVPtSrAgcf8_ICg28w8sgwtOD88mEhrkxE3',
-
-  //  ];
-//echo $qw;
-
+  $qw[] = $tyu['token_push'];
 }
 
 
@@ -4526,10 +4470,7 @@ $fdb2 = mysqli_fetch_assoc($fdb);
     );
     
     $fcmFields = array(
-    //  'to' => "e2Ns7U3A0GI:APA91bFVM1soWWG-MrQAsjkiuxgkMdnDdZY3jKzYnhzcx4bJFblyuAdBTkiocnrJNBOWCQuieQVNoOWIttpknML46HF-zgjeEHsm9iGvZ4wfyShCKVX-BO83yLSnq4AoVhIUvqXT2sYq",
-    //  'registration_ids' => $registrationIDs,
       'registration_ids' => $qw,
-      
       'priority' => 'high',
       'notification' => $fcmMsg
     );
@@ -4556,26 +4497,11 @@ $fdb2 = mysqli_fetch_assoc($fdb);
 
 <?php 
 
-$bagian = $_GET['dsafds'];
-$nama = $_GET['fdfvcx'];
-$tujuan = $_GET['vsde'];
-
-
-// include ('koneksi3.php');
-
-// $iu = mysqli_query($con,"select * from temanuser where idtemanuser = '$_POST[dari]'");
-// $iu2 = mysqli_fetch_array($iu);
-
-// How to use
 $titleNoti = str_replace("-spasi-", " ", $judul2);
 $bodyNoti = str_replace("-spasi-", " ", $deskripsi2);
-$actionNoti = "https://medium.com/@ptuckyeagle";
 
 $callNoti = new startSendNotification();
 
-
-
-//$callNoti->sendNoti($titleNoti, $bodyNoti, $actionNoti);
 $callNoti->sendNoti($titleNoti, $bodyNoti);
 
 ?>
@@ -4599,10 +4525,7 @@ location = "?p=article_waiting_confirm&ac=art";
 
 <?php }else{
 mysqli_query($koneksi,"insert into tes_pesan (isipesan,keterangan) values ('pesan2','pesan2')");
-  ?>
 
-
-<?php
 if($_POST['keterangan'] == "release"){
   ?>
   
@@ -4617,23 +4540,7 @@ class startSendNotification
 
     $ewww = mysqli_query($koneksi,"select * from user where token_push != '' ");
 while ($tyu = mysqli_fetch_array($ewww)){
-  
-  
-$qw[] = $tyu['token_push'];
-
-//  'cOBybN36ytM:APA91bF8E44iCwgwI6aSL7XGMIpQXA8u-PD3SpPbVJUSBbkYJgDEwiGFlYnkFQcTRrjdwac0BSpsA6elLn5wpuH7tyrLGbqfIDJ0imGt6_lvF1tRz5G8nxtKVvlAWUo7Pzbq829kPbIC',
-  //  'faldz28ZSVs:APA91bEZ26qqfKMN9j2Vo9Dp1iMNVRLwbcPYOUL4cTVrcWcckpprX2x6sVG4Wxn_UTIxfpjzT_DV9-eobIiWpco-5KhLy-S8pBKPQtrTdeVPtSrAgcf8_ICg28w8sgwtOD88mEhrkxE3',
-
-//echo $qw;
-
-
-  //  $registrationIDs = [
-  //  'cOBybN36ytM:APA91bF8E44iCwgwI6aSL7XGMIpQXA8u-PD3SpPbVJUSBbkYJgDEwiGFlYnkFQcTRrjdwac0BSpsA6elLn5wpuH7tyrLGbqfIDJ0imGt6_lvF1tRz5G8nxtKVvlAWUo7Pzbq829kPbIC',
-//    'faldz28ZSVs:APA91bEZ26qqfKMN9j2Vo9Dp1iMNVRLwbcPYOUL4cTVrcWcckpprX2x6sVG4Wxn_UTIxfpjzT_DV9-eobIiWpco-5KhLy-S8pBKPQtrTdeVPtSrAgcf8_ICg28w8sgwtOD88mEhrkxE3',
-
-  //  ];
-//echo $qw;
-
+  $qw[] = $tyu['token_push'];
 }
     
 $fdb = mysqli_query($koneksi,"select * from tb_template where id_template = '$_POST[id_template]'");
@@ -4649,10 +4556,7 @@ $fdb2 = mysqli_fetch_assoc($fdb);
     );
     
     $fcmFields = array(
-    //  'to' => "e2Ns7U3A0GI:APA91bFVM1soWWG-MrQAsjkiuxgkMdnDdZY3jKzYnhzcx4bJFblyuAdBTkiocnrJNBOWCQuieQVNoOWIttpknML46HF-zgjeEHsm9iGvZ4wfyShCKVX-BO83yLSnq4AoVhIUvqXT2sYq",
-    //  'registration_ids' => $registrationIDs,
       'registration_ids' => $qw,
-      
       'priority' => 'high',
       'notification' => $fcmMsg
     );
@@ -4679,26 +4583,10 @@ $fdb2 = mysqli_fetch_assoc($fdb);
 
 <?php 
 
-$bagian = $_GET['dsafds'];
-$nama = $_GET['fdfvcx'];
-$tujuan = $_GET['vsde'];
-
-
-// include ('koneksi3.php');
-
-// $iu = mysqli_query($con,"select * from temanuser where idtemanuser = '$_POST[dari]'");
-// $iu2 = mysqli_fetch_array($iu);
-
-// How to use
 $titleNoti = str_replace("-spasi-", " ", $judul2);
 $titleNoti = str_replace("-spasi-", " ", $deskripsi2);
-$actionNoti = "https://medium.com/@ptuckyeagle";
 
 $callNoti = new startSendNotification();
-
-
-
-//$callNoti->sendNoti($titleNoti, $bodyNoti, $actionNoti);
 $callNoti->sendNoti($titleNoti, $bodyNoti);
 
 ?>
@@ -4792,7 +4680,7 @@ $rt = mysqli_query($koneksi,"select * from tb_template where id_template = '$idd
 $rt2 = mysqli_fetch_array($rt);
 ?>
 
-              <h4 class="modal-title">163. Edit <?php echo $rt2['judul'] ?></h4>
+              <h4 class="modal-title">Edit <?php echo $rt2['judul'] ?></h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
